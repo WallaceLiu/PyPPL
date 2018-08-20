@@ -790,6 +790,19 @@ The transformed Channel  </p>
 The transformed Channel  </p>
 </li>
 </ul>
+<h4 id="nones-length-width-staticmethod"><code>nones (length, width) [@staticmethod]</code></h4>
+<p>Create a channel with <code>None</code>s  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>length</code>: The length of the channel<br />
+<code>width</code>:  The width of the channel  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+The created channel  </p>
+</li>
+</ul>
 <h4 id="rbind-self-rows"><code>rbind (self, *rows)</code></h4>
 <p>The multiple-argument versoin of <code>rbind</code>  </p>
 <ul>
@@ -883,6 +896,10 @@ The Channel with fetched columns  </p>
 <li><strong>returns:</strong><br />
 The list of single-column Channels  </li>
 </ul>
+<h4 id="t-self"><code>t (self)</code></h4>
+<p>Transpose a channel  </p>
+<h4 id="transpose-self"><code>transpose (self)</code></h4>
+<p>Transpose a channel  </p>
 <h4 id="unfold-self-n"><code>unfold (self, n)</code></h4>
 <p>Do the reverse thing as self.fold does  </p>
 <ul>
@@ -1617,17 +1634,15 @@ The variable name  </p>
 <blockquote>
 <p>.</p>
 </blockquote>
-<h4 id="class-box_1"><code>class: Box</code></h4>
-<div class="highlight"><pre><span></span>Allow dot operation for OrderedDict
-</pre></div>
-
 <h4 id="class-cmd"><code>class: Cmd</code></h4>
 <div class="highlight"><pre><span></span>A command (subprocess) wapper
 </pre></div>
 
-<h4 id="asstr-s-encoding-staticmethod"><code>asStr (s, encoding) [@staticmethod]</code></h4>
-<p>Convert everything (str, unicode, bytes) to str with python2, python3 compatiblity  </p>
-<h4 id="run-cmd-bg-raiseexc-kwargs-staticmethod"><code>run (cmd, bg, raiseExc, **kwargs) [@staticmethod]</code></h4>
+<h4 id="class-timeout"><code>class: Timeout</code></h4>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+<h4 id="run-cmd-bg-raiseexc-timeout-kwargs-staticmethod"><code>run (cmd, bg, raiseExc, timeout, **kwargs) [@staticmethod]</code></h4>
 <p>A shortcut of <code>Command.run</code><br />
 To chain another command, you can do:<br />
 <code>run('seq 1 3', bg = True).pipe('grep 1')</code>  </p>
@@ -1645,6 +1660,14 @@ To chain another command, you can do:<br />
 The <code>Command</code> instance  </p>
 </li>
 </ul>
+<h4 id="sleep-cmd-bg-raiseexc-timeout-kwargs-kwargs"><code>sleep (cmd, bg, raiseExc, timeout, **kwargs, **kwargs)</code></h4>
+<p>sleep(seconds)  </p>
+<p>Delay execution for a given number of seconds.  The argument may be<br />
+a floating point number for subsecond precision.  </p>
+<h4 id="time-cmd-bg-raiseexc-timeout-kwargs-kwargs-kwargs"><code>time (cmd, bg, raiseExc, timeout, **kwargs, **kwargs, **kwargs)</code></h4>
+<p>time() -&gt; floating point number  </p>
+<p>Return the current time in seconds since the Epoch.<br />
+Fractions of a second may be present if the system clock provides them.  </p>
 <h2 id="module-utilsparallel">Module <code>utils.parallel</code></h2>
 <blockquote>
 <p>.</p>
@@ -2060,7 +2083,7 @@ True: success/fail<br />
 False: needs retry  </li>
 </ul>
 <h4 id="submit-self"><code>submit (self)</code></h4>
-<p>Try to submit the job use Popen  </p>
+<p>Try to submit the job  </p>
 <h2 id="module-runnersrunnerlocal">Module <code>runners.RunnerLocal</code></h2>
 <blockquote>
 <p>Constructor

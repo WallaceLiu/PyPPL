@@ -151,6 +151,8 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#aug-20-2018-110">Aug 20, 2018: 1.1.0</a></li>
+        
             <li><a class="toctree-l3" href="#july-31-2018-101">July 31, 2018: 1.0.1</a></li>
         
             <li><a class="toctree-l3" href="#july-10-2018-100">July 10, 2018: 1.0.0 !</a></li>
@@ -236,6 +238,17 @@
             <div class="section">
               
                 <h1 id="change-log">Change log</h1>
+<h2 id="aug-20-2018-110">Aug 20, 2018: 1.1.0</h2>
+<ul>
+<li>Let pipeline halt if any job fails (#33).</li>
+<li>Add KeyboardInterupt handling.</li>
+<li>Add Warning message when a process is locked (another instance is running)</li>
+<li>Clean up utils and runners source codes</li>
+<li>Support and add tests to travis for python2.7 and python3.3+ for both OSX and Linux.</li>
+<li>Allow global functions/values to be used in builtin templates.</li>
+<li>Add shortcut for lambda function in builtin templates.</li>
+<li>Add <code>nones</code> and <code>transpose</code> method for <code>Channel</code>.</li>
+</ul>
 <h2 id="july-31-2018-101">July 31, 2018: 1.0.1</h2>
 <ul>
 <li>Change the default path of flowchart and log from script directory to current directory.</li>
