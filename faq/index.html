@@ -13,18 +13,19 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "FAQ";
     var mkdocs_page_input_path = "faq.md";
-    var mkdocs_page_url = "/faq/";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -38,7 +39,7 @@
         <a href=".." class="icon icon-home"> PyPPL</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -192,7 +193,7 @@
 <li>Default configuration files were changed to <code>~/.PyPPL.json</code> and <code>~/.PyPPL</code></li>
 <li>Log configurations were grouped to <code>{"log": {...}}</code> instead of <code>{"logtheme": ..., "loglevels": ...}</code></li>
 <li>Flowchart is themeable now: in configuration file: <code>{"flowchart": {...}}</code></li>
-<li>Templating enhanced from previous placeholders (Jinja2 supported). See <a href="../placeholders/">templating</a></li>
+<li>Templating enhanced from previous placeholders (Jinja2 supported). See <a href="./placeholders/">templating</a></li>
 <li>Input and output placeholders are now under <code>in</code> and <code>out</code> namespaces, respectively.</li>
 <li><code>updateArgs</code> is merged into <code>set</code> for <code>Aggr</code>.</li>
 <li>Module <code>doct</code> removed, <code>python-box</code> is used instead.</li>
@@ -251,9 +252,8 @@
     </span>
 </div>
     <script>var base_url = '..';</script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>

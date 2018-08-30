@@ -13,18 +13,19 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Other attributes of a process";
     var mkdocs_page_input_path = "set-other-properties-of-a-process.md";
-    var mkdocs_page_url = "/set-other-properties-of-a-process/";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -38,7 +39,7 @@
         <a href=".." class="icon icon-home"> PyPPL</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -217,14 +218,14 @@
 <td>The id of the process</td>
 <td><code>str</code></td>
 <td><code>&lt;the variable name&gt;</code></td>
-<td><a href="../placeholders/#proc-property-placeholders">Link</a></td>
+<td><a href="./placeholders/#proc-property-placeholders">Link</a></td>
 </tr>
 <tr>
 <td><code>tag</code></td>
 <td>The tag of the process, makes it possible to have two processes with the same <code>id</code> but different <code>tag</code>.</td>
 <td><code>str</code></td>
 <td><code>"notag"</code></td>
-<td><a href="../placeholders/#proc-property-placeholders">Link</a></td>
+<td><a href="./placeholders/#proc-property-placeholders">Link</a></td>
 </tr>
 <tr>
 <td><code>desc</code></td>
@@ -238,147 +239,147 @@
 <td>Whether to print out the <code>stdout</code> and <code>stderr</code></td>
 <td><code>bool</code>/<code>dict</code></td>
 <td><code>False</code></td>
-<td><a href="../placeholders/#proc-property-placeholders">Link</a></td>
+<td><a href="./placeholders/#proc-property-placeholders">Link</a></td>
 </tr>
 <tr>
 <td><code>input</code></td>
 <td>The input of the process</td>
 <td><code>dict</code>/<code>list</code>/<code>str</code></td>
 <td></td>
-<td><a href="../specify-input-and-output-of-a-process/#specify-input-of-a-process">Link</a></td>
+<td><a href="./specify-input-and-output-of-a-process/#specify-input-of-a-process">Link</a></td>
 </tr>
 <tr>
 <td><code>output</code></td>
 <td>The output of the process</td>
 <td><code>list</code>/<code>str</code>/<code>OrderedDict</code></td>
 <td></td>
-<td><a href="../specify-input-and-output-of-a-process/#specify-output-of-a-process">Link</a></td>
+<td><a href="./specify-input-and-output-of-a-process/#specify-output-of-a-process">Link</a></td>
 </tr>
 <tr>
 <td><code>script</code></td>
 <td>The script of the process</td>
 <td><code>str</code></td>
 <td></td>
-<td><a href="../write-your-script/">Link</a></td>
+<td><a href="./write-your-script/">Link</a></td>
 </tr>
 <tr>
 <td><code>lang</code></td>
 <td>The language for the script</td>
 <td><code>str</code></td>
 <td><code>"bash"</code></td>
-<td><a href="../write-your-script/">Link</a></td>
+<td><a href="./write-your-script/">Link</a></td>
 </tr>
 <tr>
 <td><code>exdir</code></td>
 <td>The export directory</td>
 <td><code>str</code></td>
 <td></td>
-<td><a href="../export-output-files/">Link</a></td>
+<td><a href="./export-output-files/">Link</a></td>
 </tr>
 <tr>
 <td><code>exhow</code></td>
 <td>How to export</td>
 <td><code>"move"</code>, <code>"copy"</code>, <code>"symlink"</code>, <code>"gzip"</code></td>
 <td><code>"move"</code></td>
-<td><a href="../export-output-files/">Link</a></td>
+<td><a href="./export-output-files/">Link</a></td>
 </tr>
 <tr>
 <td><code>exow</code></td>
 <td>Whether to overwrite existing files when export</td>
 <td><code>bool</code></td>
 <td><code>True</code></td>
-<td><a href="../export-output-files/">Link</a></td>
+<td><a href="./export-output-files/">Link</a></td>
 </tr>
 <tr>
 <td><code>cache</code></td>
 <td>Whether to cache the process</td>
 <td><code>True</code>, <code>False</code>, <code>"export"</code></td>
 <td><code>True</code></td>
-<td><a href="../caching/">Link</a></td>
+<td><a href="./caching/">Link</a></td>
 </tr>
 <tr>
 <td><code>runner</code></td>
 <td>Which runner to use</td>
 <td><code>str</code></td>
 <td><code>"local"</code></td>
-<td><a href="../runners/">Link</a></td>
+<td><a href="./runners/">Link</a></td>
 </tr>
 <tr>
 <td><code>ppldir</code></td>
 <td>The directory to store <code>&lt;workdir&gt;s</code> for all processes in this pipeline</td>
 <td><code>str</code></td>
 <td><code>"./workdir"</code></td>
-<td><a href="../basic-concepts-and-directory-structure/#folder-structure">Link</a></td>
+<td><a href="./basic-concepts-and-directory-structure/#folder-structure">Link</a></td>
 </tr>
 <tr>
 <td><code>workdir</code></td>
 <td>The work directory of the process</td>
 <td><code>str</code></td>
 <td><code>"&lt;id&gt;.&lt;tag&gt;.&lt;uid&gt;"</code></td>
-<td><a href="../basic-concepts-and-directory-structure/#folder-structure">Link</a></td>
+<td><a href="./basic-concepts-and-directory-structure/#folder-structure">Link</a></td>
 </tr>
 <tr>
 <td><code>expart</code></td>
 <td>Partial export</td>
 <td><code>str</code>/<code>list</code></td>
 <td></td>
-<td><a href="../export-output-files/">Link</a></td>
+<td><a href="./export-output-files/">Link</a></td>
 </tr>
 <tr>
 <td><code>brings</code></td>
 <td>Definition of bring-in files</td>
 <td><code>str</code>/<code>list</code></td>
 <td></td>
-<td><a href="../specify-input-and-output-of-a-process/#specify-input-of-a-process">Link</a></td>
+<td><a href="./specify-input-and-output-of-a-process/#specify-input-of-a-process">Link</a></td>
 </tr>
 <tr>
 <td><code>template</code></td>
 <td>The name of the template engine</td>
 <td><code>str</code></td>
 <td><code>PyPPL</code></td>
-<td><a href="../placeholders/#proc-property-placeholders">Link</a></td>
+<td><a href="./placeholders/#proc-property-placeholders">Link</a></td>
 </tr>
 <tr>
 <td><code>envs</code></td>
 <td>Environments for the template engine</td>
 <td><code>dict</code></td>
 <td></td>
-<td><a href="../placeholders/#proc-property-placeholders">Link</a></td>
+<td><a href="./placeholders/#proc-property-placeholders">Link</a></td>
 </tr>
 <tr>
 <td><code>cclean</code></td>
 <td>Whether do cleanup (output checking/exporting) if a job was cached.</td>
 <td><code>bool</code></td>
 <td><code>False</code></td>
-<td><a href="../export-output-files/#control-of-export-of-cached-jobs">Link</a></td>
+<td><a href="./export-output-files/#control-of-export-of-cached-jobs">Link</a></td>
 </tr>
 <tr>
 <td><code>dirsig</code></td>
 <td>Get the modified time for directory recursively (taking into account the dirs and files in it) for cache checking</td>
 <td><code>bool</code></td>
 <td><code>True</code></td>
-<td><a href="../caching/#calculating-signatures-for-caching">Link</a></td>
+<td><a href="./caching/#calculating-signatures-for-caching">Link</a></td>
 </tr>
 <tr>
 <td><code>errhow</code></td>
 <td>What's next if jobs fail</td>
 <td><code>"terminate"</code>, <code>"retry"</code>, <code>"ignore"</code></td>
 <td><code>"terminate"</code></td>
-<td><a href="../error-handling/">Link</a></td>
+<td><a href="./error-handling/">Link</a></td>
 </tr>
 <tr>
 <td><code>errntry</code></td>
 <td>If <code>errhow</code> is <code>"retry"</code>, how many time to re-try?</td>
 <td><code>int</code></td>
 <td>3</td>
-<td><a href="../error-handling/">Link</a></td>
+<td><a href="./error-handling/">Link</a></td>
 </tr>
 <tr>
 <td><code>expect</code></td>
 <td>A command to check whether expected results generated</td>
 <td><code>str</code></td>
 <td></td>
-<td><a href="../error-handling/">Link</a></td>
+<td><a href="./error-handling/">Link</a></td>
 </tr>
 <tr>
 <td><code>nthread</code></td>
@@ -521,7 +522,7 @@ To set prior processes not only let the process use the output channel as input 
 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span> <span class="p">(</span><span class="n">pSingle</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
-You can also use a callback in <code>pCombine.input</code> to modify the channel, see <a href="../specify-input-and-output-of-a-process/#use-a-callback-to-modify-the-output-channel-of-the-prior-process">here</a>, which is recommended. Because <code>p.callback</code> will change the original output channel of <code>pSingle</code>, but the <code>input</code> callback will keep the output channel intact. However, <code>p.callback</code> can not only change the output channel, but also change other properties of current process or even set the properties of coming processes.</p>
+You can also use a callback in <code>pCombine.input</code> to modify the channel, see <a href="./specify-input-and-output-of-a-process/#use-a-callback-to-modify-the-output-channel-of-the-prior-process">here</a>, which is recommended. Because <code>p.callback</code> will change the original output channel of <code>pSingle</code>, but the <code>input</code> callback will keep the output channel intact. However, <code>p.callback</code> can not only change the output channel, but also change other properties of current process or even set the properties of coming processes.</p>
 <h2 id="use-callfront-to-modify-the-process-pxxxcallfront">Use callfront to modify the process <code>pXXX.callfront</code></h2>
 <p>One possible scenario is that, value in  <code>pXXX.args</code> depends on the other process.
 For example:
@@ -587,9 +588,8 @@ For example:
     </span>
 </div>
     <script>var base_url = '..';</script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>

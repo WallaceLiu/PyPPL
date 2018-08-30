@@ -1,103 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/basic-concepts-and-directory-structure/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/placeholders/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/channels/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/specify-input-and-output-of-a-process/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/write-your-script/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/export-output-files/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/caching/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/runners/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/error-handling/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/set-other-properties-of-a-process/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/configure-your-logs/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/draw-flowchart-of-a-pipeline/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/configure-a-pipeline/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/command-line-argument-parser/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/aggregations/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/command-line-tool/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/api/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/faq/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/change-log/</loc>
-     <lastmod>2018-08-20</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

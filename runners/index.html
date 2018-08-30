@@ -13,18 +13,19 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Runners and running profiles";
     var mkdocs_page_input_path = "runners.md";
-    var mkdocs_page_url = "/runners/";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -38,7 +39,7 @@
         <a href=".." class="icon icon-home"> PyPPL</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -212,11 +213,11 @@
 <p>A running profile defines the parameters that needed for a pipeline to run. Generally it contains the runner, the parameters for the runner and the common settings for the processes.
 A typical running profile is as follows:
 <div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;1-day&#39;</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;forks&#39;</span><span class="p">:</span> <span class="mi">32</span>
+	<span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;1-day&#39;</span>
+	<span class="p">},</span>
+	<span class="s1">&#39;forks&#39;</span><span class="p">:</span> <span class="mi">32</span>
 <span class="p">}</span>
 </pre></div></p>
 <div class="admonition caution">
@@ -225,7 +226,7 @@ A typical running profile is as follows:
 1. The value will not be overridden if the attribute is set explicitly (i.e: <code>p.forks = 10</code>)
 2. Only set common attributes for all processes in a pipeline to avoid unexprected behavior. For example, you probably don't want this in general cases to set the same script for all processes: 
 <div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="s1">&#39;file:/path/to/script&#39;</span>
+	<span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="s1">&#39;file:/path/to/script&#39;</span>
 <span class="p">}</span>
 </pre></div></p>
 </div>
@@ -236,17 +237,17 @@ A typical running profile is as follows:
 </pre></div>
 You can define profiles in <code>PyPPL</code>'s default configuration files: <code>$HOME/.PyPPL.yaml</code>, <code>$HOME/.PyPPL</code> and/or <code>$HOME/.PyPPL.json</code>. The latter ones have high priorities. <code>$HOME/.PyPPL</code> should also be in <code>JSON</code> format. Take <code>$HOME/.PyPPL.yaml</code> (requiring <code>pyyaml</code>) for example, the content is like:
 <div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> 
-    <span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-    <span class="l l-Scalar l-Scalar-Plain">forks</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="l l-Scalar l-Scalar-Plain">echo</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">stderr</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">forks</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">echo</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">stderr</span>
 <span class="l l-Scalar l-Scalar-Plain">profile1</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
-    <span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1-day</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
+<span class="err">		</span><span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1-day</span>
 <span class="l l-Scalar l-Scalar-Plain">profile2</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
-    <span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">7-days</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
+<span class="err">		</span><span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">7-days</span>
 </pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -261,23 +262,23 @@ You can define profiles in <code>PyPPL</code>'s default configuration files: <co
 </div>
 <p>You can also pass the profiles to <code>PyPPL</code> constructor directly:
 <div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">({</span>
-    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;local&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;forks&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s1">&#39;echo&#39;</span><span class="p">:</span> <span class="s1">&#39;stderr&#39;</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;profile1&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;1-day&#39;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;profile2&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;7-days&#39;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+	<span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;local&#39;</span><span class="p">,</span>
+		<span class="s1">&#39;forks&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+		<span class="s1">&#39;echo&#39;</span><span class="p">:</span> <span class="s1">&#39;stderr&#39;</span>
+	<span class="p">},</span>
+	<span class="s1">&#39;profile1&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
+		<span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;1-day&#39;</span>
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="s1">&#39;profile2&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
+		<span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;7-days&#39;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
 <span class="p">})</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pXXX</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;profile1&#39;</span><span class="p">)</span>
 </pre></div></p>
 <div class="admonition note">
@@ -286,10 +287,10 @@ You can define profiles in <code>PyPPL</code>'s default configuration files: <co
 </div>
 <p>Or even, you can also specify a profile to <code>run</code> function to ask the pipeline run with the profile directly:
 <div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pXXX</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">({</span>
-    <span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;1-day&#39;</span>
-    <span class="p">}</span>
+	<span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;sge&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;queue&#39;</span><span class="p">:</span> <span class="s1">&#39;1-day&#39;</span>
+	<span class="p">}</span>
 <span class="p">})</span>
 </pre></div></p>
 <div class="admonition note">
@@ -298,7 +299,7 @@ You can define profiles in <code>PyPPL</code>'s default configuration files: <co
 </div>
 <h2 id="built-in-runners">Built-in runners</h2>
 <p>We have 5 built-in runners (<code>RunnerLocal</code>, <code>RunnerSsh</code>, <code>RunnerSge</code>, <code>RunnerSlurm</code>, <code>runnerDry</code>), you can also define you own runners.</p>
-<p>You can either tell one process to use a runner, or even, you can tell the pipeline to use one runner for all the processes. That means each process can have the same runner or a different one. To tell a process which runner to use, just specify the runner name to <code>pXXX.runner</code> (for example, <code>pXXX.runner = "sge"</code> to use the sge runner). Each process may use different configuration for the runner (<code>pXXX.sgeRunner</code>) or the same one by <a href="../configure-a-pipeline/">configuring the pipeline</a>.</p>
+<p>You can either tell one process to use a runner, or even, you can tell the pipeline to use one runner for all the processes. That means each process can have the same runner or a different one. To tell a process which runner to use, just specify the runner name to <code>pXXX.runner</code> (for example, <code>pXXX.runner = "sge"</code> to use the sge runner). Each process may use different configuration for the runner (<code>pXXX.sgeRunner</code>) or the same one by <a href="./configure-a-pipeline/">configuring the pipeline</a>.</p>
 <h2 id="configurations-for-ssh-runner">Configurations for ssh runner</h2>
 <p>Ssh runner takes the advantage to use the computing resources from other servers that can be connected via <code>ssh</code>. The <code>ssh</code> command allows us to pass the command to the server and execute it: <code>ssh [options] [command]</code></p>
 <div class="admonition caution">
@@ -311,76 +312,74 @@ You can define profiles in <code>PyPPL</code>'s default configuration files: <co
 </div>
 <p>To tell a process the available ssh servers:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">sshRunner</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span> <span class="s2">&quot;server2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> 
-    <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/keyfile1&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/keyfile2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+	<span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span> <span class="s2">&quot;server2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> 
+	<span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/keyfile1&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/keyfile2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div></p>
 <p>You can have complicated ssh configurations which can be set by the system ssh config subsystem:</p>
 <p><code>$HOME/.ssh/config</code>:
 <div class="highlight"><pre><span></span># contents of $HOME/.ssh/config
 Host dev
-    HostName dev.example.com
-    Port 22000
-    User fooey
+	HostName dev.example.com
+	Port 22000
+	User fooey
 </pre></div></p>
 <p>If you use different usernames to log on the servers, you may also specify the usernames as well:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">sshRunner</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;user1@server1&quot;</span><span class="p">,</span> <span class="s2">&quot;user2@server2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]}</span>
 </pre></div></p>
 <p>You can also add <code>preScript</code> and <code>postScript</code> for all jobs:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">sshRunner</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;servers&quot;</span><span class="p">:[</span><span class="o">...</span><span class="p">],</span> 
-    <span class="s2">&quot;preScript&quot;</span><span class="p">:</span> <span class="s2">&quot;mkdir some/dir/to/be/made&quot;</span><span class="p">,</span> 
-    <span class="s2">&quot;postScript&quot;</span><span class="p">:</span> <span class="s2">&quot;rm -rf /path/to/job/tmp/dir&quot;</span>
+	<span class="s2">&quot;servers&quot;</span><span class="p">:[</span><span class="o">...</span><span class="p">],</span> 
+	<span class="s2">&quot;preScript&quot;</span><span class="p">:</span> <span class="s2">&quot;mkdir some/dir/to/be/made&quot;</span><span class="p">,</span> 
+	<span class="s2">&quot;postScript&quot;</span><span class="p">:</span> <span class="s2">&quot;rm -rf /path/to/job/tmp/dir&quot;</span>
 <span class="p">}</span>
 </pre></div></p>
 <p>To make a running profile with it for a pipeline for all processes:
 <div class="highlight"><pre><span></span><span class="n">PyPPL</span> <span class="p">({</span>
-    <span class="c1"># default profile</span>
-    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;sshRunner&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;user1@server1&quot;</span><span class="p">,</span> <span class="s2">&quot;user2@server2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]}</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;ssh3&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;ssh&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;sshRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span> <span class="s2">&quot;server2&quot;</span><span class="p">,</span> <span class="s2">&quot;server3&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/key1&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/key2&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/key3&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+	<span class="c1"># default profile</span>
+	<span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;sshRunner&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;user1@server1&quot;</span><span class="p">,</span> <span class="s2">&quot;user2@server2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]}</span>
+	<span class="p">},</span>
+	<span class="s1">&#39;ssh3&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;runner&#39;</span><span class="p">:</span> <span class="s1">&#39;ssh&#39;</span><span class="p">,</span>
+		<span class="s1">&#39;sshRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span> <span class="s2">&quot;server2&quot;</span><span class="p">,</span> <span class="s2">&quot;server3&quot;</span><span class="p">],</span>
+			<span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/key1&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/key2&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/key3&quot;</span><span class="p">]</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
 <span class="p">})</span>
 </pre></div>
-Also see "<a href="../configure-a-pipeline/">pipeline configration</a>" for more details.</p>
+Also see "<a href="./configure-a-pipeline/">pipeline configration</a>" for more details.</p>
 <p>The constructor of the runner will change the actual script to run the following (<code>&lt;workdir&gt;/0/job.script.ssh</code>):</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
-<span class="nb">trap</span> <span class="s2">&quot;status=\$?; echo \$status &gt; &lt;workdir&gt;/scripts/script.0.rc; exit \$status&quot;</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">15</span> <span class="m">16</span> <span class="m">17</span> EXIT
 ssh -i <span class="s2">&quot;/path/to/key1&quot;</span> user1@server1 <span class="s2">&quot;cd &lt;cwd&gt;; &lt;workdir&gt;/0/job.script&quot;</span>
 </pre></div>
 
-<p><code>trap</code> command makes sure a return code file will be generated. </p>
 <h2 id="configurations-for-sge-runner">Configurations for sge runner</h2>
 <p>Similarly, you can also submit your jobs to SGE servers using <code>qsub</code>. To set the options for a process:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">sgeRunner</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;sge.q&quot;</span> <span class="p">:</span> <span class="s2">&quot;1-day&quot;</span><span class="p">,</span>          <span class="c1"># the queue</span>
-    <span class="s2">&quot;sge.M&quot;</span> <span class="p">:</span> <span class="s2">&quot;user@domain.com&quot;</span><span class="p">,</span><span class="c1"># The email for notification</span>
-    <span class="s2">&quot;sge.l&quot;</span> <span class="p">:</span> <span class="s2">&quot;h_vmem=4G&quot;</span><span class="p">,</span>        
-    <span class="s2">&quot;sge.l &quot;</span><span class="p">:</span> <span class="s2">&quot;h_stack=512M&quot;</span><span class="p">,</span>   <span class="c1"># Remember to add an extra space </span>
-                                <span class="c1"># so that it won&#39;t override the previous &quot;sge.l&quot;</span>
-    <span class="s2">&quot;sge.m&quot;</span> <span class="p">:</span> <span class="s2">&quot;abe&quot;</span><span class="p">,</span>            <span class="c1"># When to notify</span>
-    <span class="s2">&quot;sge.notify&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s2">&quot;preScript&quot;</span><span class="p">:</span>  <span class="s2">&quot;source /home/user/.bash_profile &gt;&amp;/dev/null; mkdir /tmp/my&quot;</span><span class="p">,</span>  <span class="c1"># load the environment and create the temporary directory</span>
-    <span class="s2">&quot;postScript&quot;</span><span class="p">:</span> <span class="s2">&quot;rm -rf /tmp/my&quot;</span> <span class="c1"># clean up</span>
+	<span class="s2">&quot;sge.q&quot;</span> <span class="p">:</span> <span class="s2">&quot;1-day&quot;</span><span class="p">,</span>          <span class="c1"># the queue</span>
+	<span class="s2">&quot;sge.M&quot;</span> <span class="p">:</span> <span class="s2">&quot;user@domain.com&quot;</span><span class="p">,</span><span class="c1"># The email for notification</span>
+	<span class="s2">&quot;sge.l&quot;</span> <span class="p">:</span> <span class="s2">&quot;h_vmem=4G&quot;</span><span class="p">,</span>        
+	<span class="s2">&quot;sge.l &quot;</span><span class="p">:</span> <span class="s2">&quot;h_stack=512M&quot;</span><span class="p">,</span>   <span class="c1"># Remember to add an extra space </span>
+								<span class="c1"># so that it won&#39;t override the previous &quot;sge.l&quot;</span>
+	<span class="s2">&quot;sge.m&quot;</span> <span class="p">:</span> <span class="s2">&quot;abe&quot;</span><span class="p">,</span>            <span class="c1"># When to notify</span>
+	<span class="s2">&quot;sge.notify&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+	<span class="s2">&quot;preScript&quot;</span><span class="p">:</span>  <span class="s2">&quot;source /home/user/.bash_profile &gt;&amp;/dev/null; mkdir /tmp/my&quot;</span><span class="p">,</span>  <span class="c1"># load the environment and create the temporary directory</span>
+	<span class="s2">&quot;postScript&quot;</span><span class="p">:</span> <span class="s2">&quot;rm -rf /tmp/my&quot;</span> <span class="c1"># clean up</span>
 <span class="p">}</span>
 </pre></div>
 Please check <code>man qsub</code> to find other options. Remember to add a <code>sge.</code> prefix to the option name.</p>
 <p>To make a running profile with it for a pipeline for all processes:
 <div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">({</span>
-    <span class="s1">&#39;proc&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="c1">#...</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+	<span class="s1">&#39;proc&#39;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="s1">&#39;sgeRunner&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="c1">#...</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
 <span class="p">})</span>
 </pre></div>
-Also see "<a href="../configure-a-pipeline/">pipeline configuration</a>" for more details.</p>
+Also see "<a href="./configure-a-pipeline/">pipeline configuration</a>" for more details.</p>
 <p>The constructor of the runner will change the script to run to the following (<code>&lt;workdir&gt;/0/job.script.sge</code>):
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 <span class="c1">#$ -N &lt;id&gt;.&lt;tag&gt;.0</span>
@@ -408,18 +407,18 @@ For single process:
 For running profiles:
 <div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">&quot;proc&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="o">...</span> <span class="c1"># other configurations</span>
-    <span class="s2">&quot;runner&quot;</span><span class="p">:</span> <span class="s2">&quot;slurm&quot;</span><span class="p">,</span> <span class="c1"># all processes run with slurm</span>
-    <span class="s2">&quot;slurmRunner&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="o">...</span>
-    <span class="p">}</span>
+	<span class="o">...</span> <span class="c1"># other configurations</span>
+	<span class="s2">&quot;runner&quot;</span><span class="p">:</span> <span class="s2">&quot;slurm&quot;</span><span class="p">,</span> <span class="c1"># all processes run with slurm</span>
+	<span class="s2">&quot;slurmRunner&quot;</span><span class="p">:</span> <span class="p">{</span>
+	   <span class="o">...</span>
+	<span class="p">}</span>
   <span class="p">},</span> <span class="c1"># or you can also create a profile</span>
   <span class="s2">&quot;runWithSlurm&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="o">...</span> <span class="c1"># other configurations</span>
-    <span class="s2">&quot;runner&quot;</span><span class="p">:</span> <span class="s2">&quot;slurm&quot;</span><span class="p">,</span> 
-    <span class="s2">&quot;slurmRunner&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="o">...</span>
-    <span class="p">}</span>
+	<span class="o">...</span> <span class="c1"># other configurations</span>
+	<span class="s2">&quot;runner&quot;</span><span class="p">:</span> <span class="s2">&quot;slurm&quot;</span><span class="p">,</span> 
+	<span class="s2">&quot;slurmRunner&quot;</span><span class="p">:</span> <span class="p">{</span>
+	   <span class="o">...</span>
+	<span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
 <span class="n">PyPPL</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="c1"># uses configurations of &#39;proc&#39;</span>
@@ -461,50 +460,49 @@ For running profiles:
 </ul>
 </div>
 <h2 id="define-your-own-runner">Define your own runner</h2>
-<p>You are also able to define your own runner, which should be a class extends <code>Runner</code> (jobs run immediately after submission) or <code>RunnerQueue</code> (jobs are put into a queue after submission). There are several methods and variables you may need to redefine (You may check the <a href="../API/#runner">API documentation</a> for all available methods and variables).</p>
+<p>You are also able to define your own runner, which should be a class extends <code>Runner</code> (jobs run immediately after submission) or <code>RunnerQueue</code> (jobs are put into a queue after submission). There are several methods and variables you may need to redefine (You may check the <a href="./API/#runner">API documentation</a> for all available methods and variables).</p>
 <p>The class name <strong>MUST</strong> start with <code>Runner</code> and end with the runner name with first letter capitalized. For example, to define the runner <code>my</code>:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl.runners</span> <span class="kn">import</span> <span class="n">Runner</span>
 <span class="k">class</span> <span class="nc">RunnerMy</span> <span class="p">(</span><span class="n">Runner</span><span class="p">):</span>
 	<span class="k">pass</span>
 </pre></div></p>
 <p>The base class <code>Runner</code> defines the runners where the jobs will immediately run after submission; while <code>RunnerQueue</code> defines the runners where the jobs will be put into a queue and wait for its turn to run (for example, clusters).</p>
-<p>Some important method to be redefined:</p>
-<div class="admonition hint">
-<p class="admonition-title">Checklist (What you have to do in the constructor redefinition)</p>
-<ul>
-<li>choose the right base class (<code>pyppl.runners.Runner</code> or <code>pyppl.runners.RunnerQueue</code>)</li>
-<li><code>super(RunnerMy, self).__init__(job)</code></li>
-<li>setup the right <code>self.script</code> for submission.</li>
-<li>MAKE SURE you save the identity of the job to <code>job.pidfile</code>, rc to <code>job.rcfile</code>, stdout to <code>job.outfile</code> and <code>stderr</code> to <code>job.errfile</code></li>
-</ul>
-</div>
-<ul>
-<li>
-<p>Get the job identity on the system: <code>getpid()</code>
-  Sometimes you cannot determin the job identity (e.g. <code>pid</code> for local jobs) when you are composing the script file. For example, for <code>SGE</code> runner, only after you submit the job, the job id will be saved in <code>job.pidfile</code>. In this case, you have to parse the job identity from <code>job.outfile</code>. Then you may save it by <code>self.job.pid(&lt;jobid&gt;)</code>.<br />
-  The purpose to save the job identity is to tell whether the job is already running before we submit the job. So you can ignore this, but the same job may be submitted twice. 
-  Also see <code>isRunning</code> below.</p>
-</li>
-<li>
-<p>Tell whether a job is still running: <code>isRunning(self)</code><br />
-    This function is used to detect whether a job is running. 
-    Basically, it uses the job id got by <code>getpid()</code> to tell whether the job is still running.
-    <strong>This function is specially useful when you try to run the pipeline again if some of the jobs are still running but the main thread (pipeline) quite unintentionally.</strong><br />
-    But it's optional, you can make the function always return <code>False</code>. Then the jobs are anyway to be submitted. In this case, <code>getpid</code> redefinition is not needed.</p>
-</li>
-<li>
-<p>How many jobs to submit at one time (static variable): <code>maxsubmit</code> (WILL BE DEPRECATED!)
-    This variable defines how many jobs to submit at one time. It defaults to <code>multiprocessing.cpu_count()/2</code> if you don't have the value for your runner, which means it will use half of the cpus to submit the jobs you want to run simultaneously at one time. Then wait for sometime (<code>interval</code>, see below), and submit another batch. The purpose is to avoid local machine to get stuck if you have too many jobs to submit.</p>
-</li>
-</ul>
-<p><strong>Key points in writing your own runner</strong>:</p>
-<ol>
-<li>Choose the right base class (<code>pyppl.runners.Runner</code> or <code>pyppl.runners.RunnerQueue</code>) (required).</li>
-<li>Compose the right script to submit the job (<code>self.script</code>) in <code>__init__</code>(required).</li>
-<li>Use <code>getpid</code> to get the job id (optional).</li>
-<li>Tell <code>PyPPL</code> how to judge when the jobs are still running (<code>self.isRunning()</code>) (optional). </li>
-<li>MAKE SURE you save the identity of the job to <code>job.pidfile</code>, rc to <code>job.rcfile</code>, stdout to <code>job.outfile</code> and <code>stderr</code> to <code>job.errfile</code></li>
-</ol>
+<p>Before you define your own runner, you may have to write a helper class, which includes following methods:
+- <code>__init__(self, script, cmds = None)</code> The constructor.
+  - <code>script</code>: The real script to run.
+  - <code>cmds</code>: Some extra commands, such as <code>qsub</code>, <code>qstat</code> and <code>qdel</code> for sge runner
+- <code>@property pid(self)</code>: How to get the job id from job pid file.
+- <code>@pid.setter pid(self, pid)</code>: Save job id to job pid file.
+- <code>submit(self)</code>: How to submit the job
+- <code>kill(self)</code>: How to kill the job
+- <code>alive(self)</code>: Tell if a job is alive</p>
+<p>See https://github.com/pwwang/PyPPL/blob/master/pyppl/runners/helpers.py .</p>
+<p>Then it's easy to write your own runner, just parse the configuration and create a real script to run, and use it to initialize a <code>helper</code>.</p>
+<p>Example: a delay runner:
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RunnerDelay</span> <span class="p">(</span><span class="n">Runner</span><span class="p">):</span>
+	<span class="k">def</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Constructor</span>
+<span class="sd">		@params:</span>
+<span class="sd">			`job`: The job object</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">RunnerDelay</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+
+		<span class="c1"># construct an local script</span>
+		<span class="n">delayfile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">script</span> <span class="o">+</span> <span class="s1">&#39;.delay&#39;</span>
+		<span class="n">delaysrc</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#!/usr/bin/env bash&#39;</span><span class="p">]</span>
+		<span class="n">delaysrc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;sleep 10&#39;</span><span class="p">)</span>
+		<span class="n">delaysrc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd2run</span><span class="p">)</span>
+		
+		<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">delayfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+			<span class="n">f</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">delaysrc</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+		
+		<span class="bp">self</span><span class="o">.</span><span class="n">helper</span> <span class="o">=</span> <span class="n">DelayHelper</span><span class="p">(</span><span class="n">delayfile</span><span class="p">)</span>
+</pre></div></p>
+<p><strong>Key points in writing your own runner</strong>:
+- Write a proper helper class
+- Compose the right script to run the job (<code>self.script</code>) in <code>__init__</code>.
+- MAKE SURE you save the identity of the job to <code>job.pidfile</code>, rc to <code>job.rcfile</code>, stdout to <code>job.outfile</code> and <code>stderr</code> to <code>job.errfile</code></p>
 <h2 id="register-your-runner">Register your runner</h2>
 <p>It very easy to register your runner, just do <code>PyPPL.registerRunner (RunnerMy)</code> (static method) before you start to run the pipeline.
 The 5 built-in runners have already been registered: 
@@ -562,9 +560,8 @@ After registration, you are able to ask a process to use it: <code>pXXX.runner =
     </span>
 </div>
     <script>var base_url = '..';</script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>

@@ -13,18 +13,19 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Pipeline configuration";
     var mkdocs_page_input_path = "configure-a-pipeline.md";
-    var mkdocs_page_url = "/configure-a-pipeline/";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -38,7 +39,7 @@
         <a href=".." class="icon icon-home"> PyPPL</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -226,9 +227,9 @@ Here is the full structure of the configurations (<strong><code>yaml</code> conf
     <span class="err">...</span>
 <span class="p">}</span>
 </pre></div>
-- For log configuration please refer to <a href="../configure-your-logs/">configure your logs</a>
-- For flowchart configuration please refer to <a href="../draw-flowchart-of-a-pipeline/">pipeline flowchart</a>
-- <code>proc</code> defines the base running profile for processes in this pipeline. <a href="../set-other-properties-of-a-process/">All the properties</a> of a process can be set here, but just some common one are recommended. Obviously, <code>input</code> is not suitable to be set here, except some extreme cases.
+- For log configuration please refer to <a href="./configure-your-logs/">configure your logs</a>
+- For flowchart configuration please refer to <a href="./draw-flowchart-of-a-pipeline/">pipeline flowchart</a>
+- <code>proc</code> defines the base running profile for processes in this pipeline. <a href="./set-other-properties-of-a-process/">All the properties</a> of a process can be set here, but just some common one are recommended. Obviously, <code>input</code> is not suitable to be set here, except some extreme cases.
 - <code>profiles</code> defines some profiles that may be shared by the processes. To use a profile, just specify the profile name to <code>run</code>: <code>PyPPL(config).start(process).run(&lt;profile&gt;)</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -247,7 +248,7 @@ Here is the full structure of the configurations (<strong><code>yaml</code> conf
 <p>You cannot define profiles with names <code>_flowchart</code> and <code>_log</code></p>
 </div>
 <h2 id="priority-of-configuration-options">Priority of configuration options</h2>
-<p>See <a href="../runners/#defining-running-profiles">here</a> for use of configuration files.<br />
+<p>See <a href="./runners/#defining-running-profiles">here</a> for use of configuration files.<br />
 Now you have 3 ways to set attributes for a process: 
 - directly set the process attributes <em>(1)</em>, 
 - set in the first argument (<code>config</code>) of <code>PyPPL</code> constructor <em>(2)</em>, 
@@ -339,9 +340,8 @@ Here are an examples to illustrate the priority:</p>
     </span>
 </div>
     <script>var base_url = '..';</script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>
