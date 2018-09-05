@@ -139,6 +139,10 @@
         
             <li><a class="toctree-l3" href="#set-other-attributes-of-params">Set other attributes of params</a></li>
         
+            <li><a class="toctree-l3" href="#positional-options">Positional options</a></li>
+        
+            <li><a class="toctree-l3" href="#support-of-subcommands">Support of subcommands</a></li>
+        
         </ul>
     
 
@@ -275,7 +279,7 @@ or
 The type will be inferred from the value. In the first case, the type is <code>None</code>, will in the second, it's <code>'int'</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Let initialize an option first: <code>params.opt</code>, then when the value is set explictly:<br />
+<p>Let it initialize an option first: <code>params.opt</code>, then when the value is set explictly:<br />
 <code>params.opt.value = "a"</code><br />
 Or when the value replaced (set value after initialization):<br />
 <code>params.opt = "a"</code><br />
@@ -349,34 +353,105 @@ Note that by default, the options from the <code>dict</code> will be hidden from
 <p>We have a certain convention of the option names used with <code>params</code>:
 - Make sure it's only composed of alphabetics, underscores and hyphens.
 - Make sure it starts with alphabetics.
-- Make sure it's not one of these words (<code>help</code>, <code>loadDict</code>, <code>loadFile</code> and <code>asDict</code>)</p>
+- Make sure it's not one of these words (<code>help</code>, <code>parse</code>, <code>loadDict</code>, <code>loadFile</code> and <code>asDict</code>)</p>
 <h2 id="set-other-attributes-of-params">Set other attributes of params</h2>
 <h3 id="show-the-usagesexampledescription-of-the-program">Show the usages/example/description of the program</h3>
-<p><code>params('usage', ["{prog} -h", "{prog} -infile &lt;infile&gt; [options]"])</code><br />
-<code>params('example', ["{prog} -h", "{prog} -infile path/to/infile -out /path/to/outfile"])</code><br />
-<code>params('desc', ["This program does this.", "This program also does that."])</code><br />
-Multiple lines can also be passed as a string with <code>"\n"</code>:<br />
-<code>params('desc', ["This program does this.\nThis program also does that."])</code></p>
+<p><code>params._setUsage(["{prog} -h", "{prog} -infile &lt;infile&gt; [options]"])</code><br />
+<code>params._setDesc(["This program does this.", "This program also does that."])</code><br />
+<code>params._setHbald(True) # print help if no arguments passed</code>
+Or<br />
+<code>params._usage = ["{prog} -h", "{prog} -infile &lt;infile&gt; [options]"]</code><br />
+<code>params._desc  = ["This program does this.", "This program also does that."]</code><br />
+<code>params._hbald = True</code><br />
+Notice the leading underscore of the attribute name, this makes sure <code>usage</code>, <code>desc</code> and <code>hbald</code> still avaiable to be used as option names.</p>
 <h3 id="set-the-prefix-of-option-names">Set the prefix of option names</h3>
 <p>By default, the option names are recognized from the command line if they follow the convention and start with <code>-</code>. You may change it, let's say you want the option names to start with <code>--</code>:<br />
 <code>params('prefix', '--')</code><br />
 The only <code>prog --opt 1</code> will be parsed, instead of <code>prog -opt 1</code> to get the value by <code>params.opt.value</code>  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You cannot use an empty prefix</p>
+<p>You cannot use an empty prefix. </p>
 </div>
 <h3 id="set-the-default-help-options">Set the default help options</h3>
-<p>By default, the help options are <code>['-h', '--help', '-H', '-?', '']</code>. The empty string (<code>''</code>) enables the program to print the help page without arguments be passed from the command line. If you don't want it, you can remove it from the default help options:<br />
-<code>params('hopts', '-h, --help, -H, -?')</code> or<br />
-<code>params('hopts', ['-h', '--help', '-H', '-?'])</code><br />
-Or you can just simply remove some of them by:<br />
-<code>params('hopts', ['-H', '-?', ''], excl = True)</code><br />
-Then you will only have <code>['-h', '--help']</code></p>
+<p>By default, the help options are <code>['-h', '--help', '-H', '-?']</code>.<br />
+<code>params._hopts = '-h, --help, -H, -?'</code> or<br />
+<code>params.setHopts(['-h', '--help', '-H', '-?'])</code>  </p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>These statements can also be chained:<br />
-<code>params('usage', ["{prog} -h", "{prog} -infile &lt;infile&gt; [options]"])('prefix', '--')('hopts', ['-H', '-?', ''], excl = True)</code></p>
+<code>params._setUsage(["{prog} -h", "{prog} -infile &lt;infile&gt; [options]"]) \
+       ._setPrefix('--') \
+       ._setHopts(['-H', '-?'])</code></p>
 </div>
+<h2 id="positional-options">Positional options</h2>
+<p>Positional options are activated when you set the descriptions of them:
+<div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;The positional option&#39;</span>
+</pre></div>
+If you want to use a different variable to represent positional option:
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">Parameters</span>
+<span class="n">Parameters</span><span class="o">.</span><span class="n">POSITIONAL</span> <span class="o">=</span> <span class="s1">&#39;POSITIONAL&#39;</span>
+
+<span class="n">params</span><span class="o">.</span><span class="n">POSITIONAL</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;The positional option&#39;</span>
+</pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default type of positional option is <code>list</code>. The values can be appeared in the middle of the command line: <code>prog -a 1 pos1 -b 2 pos2</code>, then <code>params._ == ['pos1', 'pos2']</code></p>
+</div>
+<h2 id="support-of-subcommands">Support of subcommands</h2>
+<h3 id="add-a-subcommand">Add a subcommand</h3>
+<p><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">commands</span>
+<span class="n">commands</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="s1">&#39;list work directories under &lt;wdir&gt;&#39;</span>
+</pre></div>
+<code>commands.list</code> becomes an instance of <code>Parameters</code>, you may do anything like what we did for <code>params</code>. For example, add an option for the command:
+<div class="highlight"><pre><span></span><span class="n">commands</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">wdir</span>      <span class="o">=</span> <span class="s1">&#39;./workdir&#39;</span>
+<span class="n">commands</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">wdir</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;The &lt;ppldir&gt; containing process work directories.&#39;</span>
+</pre></div>
+To parse the arguments:
+<div class="highlight"><pre><span></span><span class="n">command</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+<span class="c1"># command: The command</span>
+<span class="c1"># params : The parsed arguments, a Box object</span>
+<span class="c1">#          To get the value of an option: params.wdir</span>
+<span class="c1"># if you want to get the Parameter objects:</span>
+<span class="c1"># params.wdir == commands[command].wdir.value</span>
+</pre></div></p>
+<h3 id="use-a-different-help-command">Use a different 'help' command</h3>
+<p>By default, you may use <code>prog help &lt;command&gt;</code> to print the help information for the command. Alternatively, you can change it by: 
+<div class="highlight"><pre><span></span><span class="n">commands</span><span class="o">.</span><span class="n">_hcmd</span> <span class="o">=</span> <span class="s1">&#39;h&#39;</span>
+<span class="c1"># prog h &lt;command&gt;</span>
+</pre></div></p>
+<h3 id="use-a-different-theme-for-help-page">Use a different theme for help page</h3>
+<p>There are three built-in themes: <code>default</code>, <code>blue</code> and <code>plain</code>, to switch them:
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">Commands</span>
+<span class="n">commands</span> <span class="o">=</span> <span class="n">Commands</span><span class="p">(</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="c1"># if you don&#39;t like the colors, just use the plain theme</span>
+</pre></div>
+You may also use different theme for <code>params</code>:
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">Parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="p">(</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="use-you-own-theme">Use you own theme:</h3>
+<p>Instead of passing a theme name to <code>Commands/Parameters</code>, you may also pass the entire theme:
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl.logger</span> <span class="kn">import</span> <span class="n">COLORS</span>
+
+<span class="n">commands</span> <span class="o">=</span> <span class="n">Commands</span><span class="p">(</span><span class="n">theme</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># the color for errors</span>
+    <span class="n">error</span>   <span class="o">=</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">red</span><span class="p">,</span>     
+    <span class="c1"># the color for warnings</span>
+    <span class="n">warning</span> <span class="o">=</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span>  
+    <span class="c1"># the color for the title of each section</span>
+    <span class="n">title</span>   <span class="o">=</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">bold</span> <span class="o">+</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">underline</span> <span class="o">+</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">cyan</span><span class="p">,</span> 
+    <span class="c1"># the color for the programe name in any sections</span>
+    <span class="n">prog</span>    <span class="o">=</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">bold</span> <span class="o">+</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">green</span><span class="p">,</span>
+    <span class="c1"># the color for default values</span>
+    <span class="n">default</span> <span class="o">=</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">magenta</span><span class="p">,</span>
+    <span class="c1"># the color for option names</span>
+    <span class="n">optname</span> <span class="o">=</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">bold</span> <span class="o">+</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">green</span><span class="p">,</span>
+    <span class="c1"># the color for option types or placeholders</span>
+    <span class="n">opttype</span> <span class="o">=</span> <span class="n">COLORS</span><span class="o">.</span><span class="n">blue</span><span class="p">,</span>
+    <span class="c1"># the color for option descriptions</span>
+    <span class="n">optdesc</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1"># leave it as default</span>
+<span class="p">})</span>
+</pre></div></p>
               
             </div>
           </div>
