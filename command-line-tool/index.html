@@ -218,13 +218,13 @@ COMMANDS:
 <p><img alt="pyppl-clean" src="../pyppl-cli-clean.png" /></p>
 <p><code>pyppl clean</code> command will ask whether you want to remove the process directory for the older processes with the same <code>id</code> and <code>tag</code>.</p>
 <p>You can remove all those older process directories without confirmation by <code>pyppl clean -force</code></p>
-<p>![pyppl-clean-force][4]</p>
+<p><img alt="pyppl-clean-force" src="../pyppl-cli-clean-force.png" /></p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Be careful when you are using <code>pyppl clean -force</code>, which will remove all workdirs in <code>&lt;wdir&gt;</code></p>
 </div>
 <h2 id="compare-the-settings-of-two-pipeines">Compare the settings of two pipeines</h2>
-<p><img alt="pyppl-compare" src="../pyppl-cli-clean-force.png" /></p>
+<p><img alt="pyppl-compare" src="../pyppl-cli-compare.png" /></p>
 <p><code>pyppl compare</code> uses python's <code>difflib</code> to compare the <code>proc.settings</code> files in the directories of two processes. it can take a process group name (i.e. <code>-pro pSort.notag</code>, in this case, actually, the tag can be omitted if it is <code>notag</code>, so you can use <code>-pro pSort</code>) to compare the top 2 latest processes or two process names with suffices (i.e. <code>-proc1 pSort.notag.4HIhyVbp -proc2 pSort.notag.7hNBe2uT</code>. </p>
               
             </div>
