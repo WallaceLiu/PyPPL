@@ -204,9 +204,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="templating">Templating</h2>
+                <h1 id="templating">Templating</h1>
 <p><code>PyPPL</code> has its own template engine, which is derived from a <a href="https://github.com/aosabook/500lines/tree/master/template-engine">500-line-or-less template engine</a>. It also supports <a href="http://jinja.pocoo.org/">Jinja2</a> if you have it installed and specify <code>"Jinja2"</code> to <code>pXXX.template</code>. The built-in template engine is enabled by default.</p>
-<h3 id="common-data-avaible-for-rendering">Common data avaible for rendering</h3>
+<h2 id="common-data-avaible-for-rendering">Common data avaible for rendering</h2>
 <p>When rendering a template, following data are fed to the render function. So that you can use those values in the template. Some attribute values of a process are shared for all templates that are applied:</p>
 <ul>
 <li><code>proc.aggr</code>: The aggregation name of the process</li>
@@ -235,7 +235,7 @@
 <li><code>proc.tag</code>: The tag of the process</li>
 <li><code>proc.workdir</code>: The workdir of the process</li>
 </ul>
-<h3 id="other-data-for-rendering">Other data for rendering</h3>
+<h2 id="other-data-for-rendering">Other data for rendering</h2>
 <p>For each job, we also have some value available for rendering:</p>
 <ul>
 <li><code>job.index</code>: The index of the job</li>
@@ -252,7 +252,7 @@ For example, you have following definition:
 <span class="n">pXXX</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;a:{{in.a}} world!&quot;</span>
 </pre></div>
 Now you can access them by: <code>{{in.a}}</code>, <code>{{in.b}}</code> and <code>{{out.a}}</code></p>
-<h3 id="the-scope-of-data">The scope of data</h3>
+<h2 id="the-scope-of-data">The scope of data</h2>
 <table>
 <thead>
 <tr>
@@ -299,7 +299,7 @@ Now you can access them by: <code>{{in.a}}</code>, <code>{{in.b}}</code> and <co
 </tr>
 </tbody>
 </table>
-<h3 id="built-in-functions">Built-in functions</h3>
+<h2 id="built-in-functions">Built-in functions</h2>
 <p>Sometimes we need to transform the data in a template. We have some built-in functions available for the transformation.<br />
 For built-in template engine, you may use pipe, for example: <code>{{in.file | basename}}</code>; for <code>Jinja2</code>, you have to use functions as "functions", for example: <code>{{basename(in.file)}}</code>. Here we give the examples with built-in template engine syntax.</p>
 <ul>
@@ -408,7 +408,7 @@ For built-in template engine, you may use pipe, for example: <code>{{in.file | b
 <li><code>{{v, skipEmptyLines | readlines}}</code></li>
 <li><code>repr</code>: Alias of python <code>repr</code> built-in function.</li>
 </ul>
-<h3 id="usage-of-built-in-template-engine">Usage of built-in template engine</h3>
+<h2 id="usage-of-built-in-template-engine">Usage of built-in template engine</h2>
 <ul>
 <li>Basic usage:</li>
 </ul>
@@ -534,7 +534,7 @@ then <code>{{v, skipEmptyLines | readlines}}</code>; or</li>
 </tr>
 </tbody>
 </table>
-<h3 id="set-environment-of-template-engine">Set environment of template engine</h3>
+<h2 id="set-environment-of-template-engine">Set environment of template engine</h2>
 <p>You can define you own functions/data for template rendering:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">envs</span><span class="o">.</span><span class="n">data</span>  <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;v1&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;v2&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
 <span class="n">pXXX</span><span class="o">.</span><span class="n">envs</span><span class="o">.</span><span class="n">os</span>    <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span>
@@ -549,7 +549,7 @@ then <code>{{v, skipEmptyLines | readlines}}</code>; or</li>
 <span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 Then if <code>pXXX.envs.data['b'] is True</code>, it prints <code>a b</code>; otherwise it prints <code>a/b</code>.</p>
-<h3 id="use-jinja2">Use Jinja2</h3>
+<h2 id="use-jinja2">Use Jinja2</h2>
 <p>All the data and environment definition mentioned above are all applicable when you use <code>Jinja2</code> as your template engine.<br />
 For usage of <code>Jinja2</code>, you may refer to its <a href="http://jinja.pocoo.org/">official documentation</a>.</p>
               

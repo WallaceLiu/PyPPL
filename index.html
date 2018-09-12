@@ -218,12 +218,12 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="pyppl-a-python-pipeline-framework"><a href="https://github.com/pwwang/pyppl/">PyPPL</a> - A <a href="#">Py</a>thon <a href="#">P</a>i<a href="#">P</a>e<a href="#">L</a>ine framework</h2>
+                <h1 id="pyppl-a-python-pipeline-framework"><a href="https://github.com/pwwang/pyppl/">PyPPL</a> - A <a href="#">Py</a>thon <a href="#">P</a>i<a href="#">P</a>e<a href="#">L</a>ine framework</h1>
 <p><img alt="Pypi" src="https://img.shields.io/pypi/v/pyppl.svg?style=flat-square" /> <img alt="Github" src="https://img.shields.io/github/tag/pwwang/PyPPL.svg?style=flat-square" /> <img alt="PythonVers" src="https://img.shields.io/pypi/pyversions/PyPPL.svg?style=flat-square" /> <img alt="Travis building" src="https://img.shields.io/travis/pwwang/PyPPL.svg?style=flat-square" />  <img alt="Codacy" src="https://api.codacy.com/project/badge/Grade/a04aac445f384a8dbe47da19c779763f" /> <img alt="Codacy coverage" src="https://api.codacy.com/project/badge/Coverage/a04aac445f384a8dbe47da19c779763f" /></p>
 <p><a href="https://pwwang.github.io/PyPPL/">Documentation</a> | <a href="https://pwwang.github.io/PyPPL/api/">API</a> | <a href="https://pwwang.github.io/PyPPL/change-log/">Change log</a> | <a href="https://pwwang.github.io/PyPPL/faq/">FAQ</a></p>
 <!-- toc -->
 
-<h3 id="features">Features</h3>
+<h2 id="features">Features</h2>
 <ul>
 <li><a href="https://pwwang.github.io/PyPPL/command-line-argument-parser/">Easy-to-use command line parser.</a></li>
 <li><a href="https://pwwang.github.io/PyPPL/configure-your-logs/">Fancy logs.</a></li>
@@ -236,12 +236,12 @@
 <li><a href="https://pwwang.github.io/PyPPL/aggregations/">Aggregations (a set of processes predefined).</a></li>
 <li>Highly reusable processes (see <a href="https://github.com/pwwang/bioprocs">a set of highly reusable bioinformatics processes</a>).</li>
 </ul>
-<h3 id="requirements">Requirements</h3>
+<h2 id="requirements">Requirements</h2>
 <ul>
 <li>OS: Linux or OSX</li>
 <li>Python packages: <a href="https://github.com/benjaminp/six">six</a>, <a href="https://github.com/benediktschmitt/py-filelock">filelock</a>, <a href="https://pypi.org/project/futures/">futures</a> (suggested: <a href="https://github.com/xflr6/graphviz">graphviz</a>, <a href="https://github.com/yaml/pyyaml">pyyaml</a> and <a href="https://github.com/pwwang/testly">python-testly</a>).</li>
 </ul>
-<h3 id="installation">Installation</h3>
+<h2 id="installation">Installation</h2>
 <div class="highlight"><pre><span></span><span class="c1"># install latest version</span>
 git clone https://github.com/pwwang/PyPPL.git
 <span class="nb">cd</span> PyPPL
@@ -267,7 +267,7 @@ make test3
 make tutorials
 </pre></div>
 
-<h3 id="get-started">Get started</h3>
+<h2 id="get-started">Get started</h2>
 <p>See <code>tutorials/getStarted/</code><br />
 Sort 5 files simultaneously: 
 <div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span><span class="p">,</span> <span class="n">Channel</span>
@@ -301,7 +301,7 @@ total <span class="m">0</span>
 -rw-rw-rw- <span class="m">1</span> pwwang pwwang <span class="m">58</span> Sep <span class="m">14</span> <span class="m">20</span>:50 test5.sorted
 </pre></div>
 
-<h3 id="infer-input-channel-from-dependent-process">Infer input channel from dependent process</h3>
+<h2 id="infer-input-channel-from-dependent-process">Infer input channel from dependent process</h2>
 <p>See <code>tutorials/inputFromDependent/</code><br />
 If a process depends on another one, the input channel can be inferred from the output channel of the latter process.<br />
 Sort 5 files and then add line number to each line.
@@ -333,7 +333,7 @@ Sort 5 files and then add line number to each line.
 2.663
 3.625
 </pre></div></p>
-<h3 id="modify-input-channel">Modify input channel</h3>
+<h2 id="modify-input-channel">Modify input channel</h2>
 <p>See <code>tutorials/transformInputChannels/</code><br />
 Sort 5 files, add line numbers, and merge them into one file.
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span><span class="p">,</span> <span class="n">Channel</span>
@@ -373,7 +373,7 @@ Sort 5 files, add line numbers, and merge them into one file.
 2.663   2.3369  2.26223 2.3866  2.7536
 3.625   3.28984 3.25945 3.29971 3.30204
 </pre></div></p>
-<h3 id="use-a-different-language">Use a different language</h3>
+<h2 id="use-a-different-language">Use a different language</h2>
 <p>See <code>tutorials/differentLang/</code><br />
 Plot heatmap using R.
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span>
@@ -398,7 +398,7 @@ Plot heatmap using R.
 </pre></div>
 <code>./export/heatmap.png</code><br />
 <img alt="heatmap.png" src="https://raw.githubusercontent.com/pwwang/PyPPL/master/docs/heatmap.png" /></p>
-<h3 id="use-args">Use args</h3>
+<h2 id="use-args">Use args</h2>
 <p>See <code>tutorials/useArgs/</code><br />
 If the jobs are sharing the same set of configurations (in this case, the number of rows and columns of the matrix), they can be set in <code>pXXX.args</code>. The other benefit is to make the channels intact if the configurations are not suppose to be channeling.<br />
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span>
@@ -437,7 +437,7 @@ If the jobs are sharing the same set of configurations (in this case, the number
 </tr>
 </tbody>
 </table>
-<h3 id="use-the-command-line-argument-parser">Use the command line argument parser</h3>
+<h2 id="use-the-command-line-argument-parser">Use the command line argument parser</h2>
 <p>See <code>tutorials/useParams/</code><br />
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span><span class="p">,</span> <span class="n">Channel</span><span class="p">,</span> <span class="n">params</span>
 
@@ -475,7 +475,7 @@ OPTIONAL OPTIONS:
 </pre></div>
 Provide value to <code>-datadir</code>:<br />
 <code>&gt; python useParams.py -datadir ./data</code></p>
-<h3 id="use-a-different-runner">Use a different runner</h3>
+<h2 id="use-a-different-runner">Use a different runner</h2>
 <p>See <code>/tutorials/differentRunner/</code>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span><span class="p">,</span> <span class="n">Channel</span>
 
@@ -505,7 +505,7 @@ Provide value to <code>-datadir</code>:<br />
 <span class="c1">#   }</span>
 <span class="c1"># }).start(pSort).run()</span>
 </pre></div></p>
-<h3 id="use-jinja2-as-template-engine">Use Jinja2 as template engine</h3>
+<h2 id="use-jinja2-as-template-engine">Use Jinja2 as template engine</h2>
 <p>See <code>/tutorials/useJinja2/</code>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span><span class="p">,</span> <span class="n">Channel</span>
 
@@ -524,7 +524,7 @@ Provide value to <code>-datadir</code>:<br />
 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pSort</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div></p>
-<h3 id="debug-your-script">Debug your script</h3>
+<h2 id="debug-your-script">Debug your script</h2>
 <p>See <code>/tutorials/debugScript/</code><br />
 You can directly go to <code>&lt;workdir&gt;/&lt;job.index&gt;/job.script</code> to debug your script, or you can also print some values out throught <code>PyPPL</code> log system.<br />
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span>
@@ -561,7 +561,7 @@ You can directly go to <code>&lt;workdir&gt;/&lt;job.index&gt;/job.script</code>
 </pre></div>
 You will get something like this in your log:
 <img alt="debugScript.png" src="https://raw.githubusercontent.com/pwwang/PyPPL/master/docs/debugScript.png" /></p>
-<h3 id="switch-runner-profiles">Switch runner profiles</h3>
+<h2 id="switch-runner-profiles">Switch runner profiles</h2>
 <p>See <code>tutorials/siwthcRunnerProfile/</code><br />
 We can define a set of runner profiles in a <code>json</code> file (<code>./profiles.json</code>):</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
@@ -609,7 +609,7 @@ We can define a set of runner profiles in a <code>json</code> file (<code>./prof
 <span class="c1"># You may also use runner name as profile, which means to run using the runner with default options:</span>
 <span class="c1"># PyPPL(cfgfile = &quot;./profiles.json&quot;).start(pHeatmap).run(&#39;sge&#39;) # use 1-day queue</span>
 </pre></div></p>
-<h3 id="draw-the-pipeline-chart">Draw the pipeline chart</h3>
+<h2 id="draw-the-pipeline-chart">Draw the pipeline chart</h2>
 <p><code>PyPPL</code> can generate the graph in <a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language)">DOT language</a>. 
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span>
 
@@ -725,5 +725,5 @@ We can define a set of runner profiles in a <code>json</code> file (<code>./prof
 
 <!--
 MkDocs version : 1.0.3
-Build Date UTC : 2018-09-12 19:34:09
+Build Date UTC : 2018-09-12 19:36:50
 -->

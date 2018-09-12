@@ -194,7 +194,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="channels">Channels</h2>
+                <h1 id="channels">Channels</h1>
 <p>Channels are used to pass data from one process (an instance of <code>Proc</code>) to another. It is derived from a <code>list</code>, where each element is a <code>tuple</code>. <strong>So all python functions/methods that apply on <code>list</code> will also apply on <code>Channel</code>.</strong> The length a the <code>tuple</code> corresponds to the number of variables of the input or output of a <code>proc</code>.
 <div class="highlight"><pre><span></span><span class="c1"># v1  v2  v3</span>
 <span class="n">c</span> <span class="o">=</span> <span class="p">[</span>
@@ -238,7 +238,7 @@ Then the values for different variables in different jobs wil be:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="initialize-a-channel">Initialize a channel</h3>
+<h2 id="initialize-a-channel">Initialize a channel</h2>
 <p>There are several ways to initialize a channel:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -332,14 +332,14 @@ a2&lt;tab&gt;b2&lt;tab&gt;c2
 </pre></div></p>
 </li>
 </ul>
-<h3 id="methods-for-channels">Methods for channels</h3>
-<h4 id="get-the-length-and-width-of-a-channel">Get the length and width of a channel</h4>
+<h2 id="methods-for-channels">Methods for channels</h2>
+<h3 id="get-the-length-and-width-of-a-channel">Get the length and width of a channel</h3>
 <div class="highlight"><pre><span></span><span class="n">chan</span> <span class="o">=</span> <span class="n">Channel</span><span class="o">.</span><span class="n">create</span> <span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
 <span class="c1">#chan.length() == 2 == len(chan)</span>
 <span class="c1">#chan.width()  == 3</span>
 </pre></div>
 
-<h4 id="get-value-from-a-channel">Get value from a channel</h4>
+<h3 id="get-value-from-a-channel">Get value from a channel</h3>
 <div class="highlight"><pre><span></span><span class="n">chan</span> <span class="o">=</span> <span class="n">Channel</span><span class="o">.</span><span class="n">create</span> <span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
 <span class="c1"># chan.get() == 1</span>
 <span class="c1"># chan.get(0) == 1</span>
@@ -350,7 +350,7 @@ a2&lt;tab&gt;b2&lt;tab&gt;c2
 <span class="c1"># chan.get(5) == 6</span>
 </pre></div>
 
-<h4 id="repeat-rows-and-columns">Repeat rows and columns</h4>
+<h3 id="repeat-rows-and-columns">Repeat rows and columns</h3>
 <div class="highlight"><pre><span></span><span class="n">chan</span> <span class="o">=</span> <span class="n">Channel</span><span class="o">.</span><span class="n">create</span> <span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
 <span class="n">chan2</span> <span class="o">=</span> <span class="n">chan</span><span class="o">.</span><span class="n">repCol</span><span class="p">()</span>
 <span class="n">chan3</span> <span class="o">=</span> <span class="n">chan</span><span class="o">.</span><span class="n">repCol</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -362,7 +362,7 @@ a2&lt;tab&gt;b2&lt;tab&gt;c2
 <span class="c1"># chan5 == [(1,2,3), (4,5,6), (1,2,3), (4,5,6), (1,2,3), (4,5,6)]</span>
 </pre></div>
 
-<h4 id="expand-a-channel-by-directory">Expand a channel by directory</h4>
+<h3 id="expand-a-channel-by-directory">Expand a channel by directory</h3>
 <p><code>Channel.expand (col= 0, pattern = '*', t='any', sortby='name', reverse=False)</code></p>
 <p>Sometimes we prepare files in one process (for example, split a big file into small ones in a directory), then handle these files by different jobs in another process, so that they can be processed simultaneously. </p>
 <p><img alt="channel.expand" src="../channel-expand.png" /> </p>
@@ -373,7 +373,7 @@ a2&lt;tab&gt;b2&lt;tab&gt;c2
 <li>Only the value of the column to be expanded will be changed, values of other columns remain the same. </li>
 </ul>
 </div>
-<h4 id="collapse-a-channel-by-files-in-a-common-ancestor-directory">Collapse a channel by files in a common ancestor directory</h4>
+<h3 id="collapse-a-channel-by-files-in-a-common-ancestor-directory">Collapse a channel by files in a common ancestor directory</h3>
 <p><code>Channel.collapse(col=0)</code></p>
 <p>It's basically the reverse process of <code>expand</code>. It applies when you deal with different files and in next process you need them all involved (i.e. combine the results):</p>
 <p><img alt="channel.expand" src="../channel-collapse.png" /> </p>
@@ -384,7 +384,7 @@ a2&lt;tab&gt;b2&lt;tab&gt;c2
 <li>values at other columns should be the same, <code>PyPPL</code> will NOT check it, the first value at the column will be used.</li>
 </ul>
 </div>
-<h4 id="fetch-rows-from-a-channel">Fetch rows from a channel</h4>
+<h3 id="fetch-rows-from-a-channel">Fetch rows from a channel</h3>
 <ul>
 <li><code>Channel.rowAt(index)</code>  </li>
 </ul>
@@ -397,7 +397,7 @@ a2&lt;tab&gt;b2&lt;tab&gt;c2
 <span class="n">chan3</span> <span class="o">==</span> <span class="n">chan1</span>
 </pre></div>
 
-<h4 id="fetch-columns-from-a-channel">Fetch columns from a channel</h4>
+<h3 id="fetch-columns-from-a-channel">Fetch columns from a channel</h3>
 <ul>
 <li><code>Channel.slice(start, length=None)</code></li>
 </ul>
@@ -419,7 +419,7 @@ a2&lt;tab&gt;b2&lt;tab&gt;c2
 <span class="n">chan</span><span class="o">.</span><span class="n">colAt</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="n">chan</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
-<h4 id="flatten-a-channel">Flatten a channel</h4>
+<h3 id="flatten-a-channel">Flatten a channel</h3>
 <p><code>Channel.flatten(col = None)</code>
 Flatten a channel, make it into a list.
 <div class="highlight"><pre><span></span><span class="n">chan</span>  <span class="o">=</span> <span class="n">Channel</span><span class="o">.</span><span class="n">create</span> <span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
@@ -428,7 +428,7 @@ Flatten a channel, make it into a list.
 <span class="n">f2</span> <span class="o">=</span> <span class="n">chan</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># f1 == [2,5]</span>
 </pre></div></p>
-<h4 id="split-a-channel-to-single-width-channels">Split a channel to single-width channels</h4>
+<h3 id="split-a-channel-to-single-width-channels">Split a channel to single-width channels</h3>
 <p><code>Channel.split(flatten = False)</code>
 <div class="highlight"><pre><span></span><span class="n">chan</span>  <span class="o">=</span> <span class="n">Channel</span><span class="o">.</span><span class="n">create</span> <span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
 <span class="n">chans</span> <span class="o">=</span> <span class="n">chan</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -446,7 +446,7 @@ Flatten a channel, make it into a list.
 <span class="c1">#   [3, 6],</span>
 <span class="c1"># ]</span>
 </pre></div></p>
-<h4 id="attach-column-names">Attach column names</h4>
+<h3 id="attach-column-names">Attach column names</h3>
 <p><code>Channel.attach(*names)</code>
 We can attach the column names and then use them to access the columns.
 <div class="highlight"><pre><span></span><span class="n">ch</span> <span class="o">=</span> <span class="n">Channel</span><span class="o">.</span><span class="n">create</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
@@ -463,7 +463,7 @@ We can attach the column names and then use them to access the columns.
 <span class="c1"># ch.col3 == [3,6]</span>
 <span class="c1"># isinstance(ch.col1, Channel) == False</span>
 </pre></div></p>
-<h4 id="map-filter-reduce">Map, filter, reduce</h4>
+<h3 id="map-filter-reduce">Map, filter, reduce</h3>
 <ul>
 <li><code>Channel.map(func)</code></li>
 <li><code>Channel.mapCol(func, col=0)</code>
@@ -509,7 +509,7 @@ We can attach the column names and then use them to access the columns.
 <span class="n">ch1</span><span class="o">.</span><span class="n">reduceCol</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">15</span>           <span class="c1"># x and y are numbers</span>
 </pre></div></li>
 </ul>
-<h4 id="add-rowscolumns-to-a-channel">Add rows/columns to a channel</h4>
+<h3 id="add-rowscolumns-to-a-channel">Add rows/columns to a channel</h3>
 <ul>
 <li><code>Channel.rbind(*rows)</code>  </li>
 </ul>
@@ -608,7 +608,7 @@ We can attach the column names and then use them to access the columns.
 </pre></div></p>
 </li>
 </ul>
-<h4 id="fold-a-channel">Fold a channel</h4>
+<h3 id="fold-a-channel">Fold a channel</h3>
 <p><code>Channel.fold(n = 1)</code>
 Fold a <code>channel</code>, Make a row to n-length chunk rows
 For example, you have the following channel:</p>
@@ -653,10 +653,10 @@ For example, you have the following channel:</p>
 </tr>
 </tbody>
 </table>
-<h4 id="unfold-a-channel">Unfold a channel</h4>
+<h3 id="unfold-a-channel">Unfold a channel</h3>
 <p><code>Channel.unfold(n=2)</code>
 Combine n-rows into one row; do the reverse thing as <code>Channel.fold</code>. But note that the different meaning of <code>n</code>. In <code>fold</code>, <code>n</code> means the length of the chunk that a row is cut to; will in <code>unfold</code>, it means how many rows to combine.</p>
-<h4 id="copy-a-channel">Copy a channel</h4>
+<h3 id="copy-a-channel">Copy a channel</h3>
 <p><code>Channel.copy()</code></p>
               
             </div>

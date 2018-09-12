@@ -200,9 +200,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="configure-your-logs">Configure your logs</h2>
+                <h1 id="configure-your-logs">Configure your logs</h1>
 <p><code>PyPPL</code> has fancy logs. You can define how they look like (theme) and what messages to show (levels).</p>
-<h3 id="built-in-log-themes">Built-in log themes</h3>
+<h2 id="built-in-log-themes">Built-in log themes</h2>
 <p>We have some built-in themes:</p>
 <p>greenOnBlack (default):
 <img alt="greenOnBlack" src="../greenOnBlack.png" /></p>
@@ -231,7 +231,7 @@ Or when you initialize a pipeline:
 </pre></div>
 If you want to disable the theme, just set <code>"theme"</code> to <code>False</code> (<code>false</code> for <code>json</code>)
 If you set <code>theme</code> to <code>True</code>, then default theme <code>greenOnBlack</code> is used.</p>
-<h3 id="levels-of-pyppl-logs">Levels of pyppl logs</h3>
+<h2 id="levels-of-pyppl-logs">Levels of pyppl logs</h2>
 <p>Please note that the levels are different from those of python's <code>logging</code> module. For <code>logging</code> module has <a href="https://docs.python.org/2/library/logging.html#logging-levels">6 levels</a>, with different int values. However, pyppl's log has many levels, or more suitable, flags, which don't have corresponding values. They are somehow equal, but some of them always print out unless you ask them not to.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -262,7 +262,7 @@ Or when you initialize a pipeline:
 <span class="p">}</span>
 </pre></div>
 Then the <code>DEBUG</code>, <code>P.ARGS</code> messages will show, and <code>SUBMIT</code> will hide.</p>
-<h3 id="define-your-theme">Define your theme</h3>
+<h2 id="define-your-theme">Define your theme</h2>
 <p>Let's see how the built-in theme looks like first:
 in <code>pyppl/logger.py</code>:
 <div class="highlight"><pre><span></span><span class="n">themes</span> <span class="o">=</span> <span class="p">{</span>
@@ -387,13 +387,13 @@ Then empty string key (<code>''</code>) defines the colors to use for the messag
     <span class="p">}}</span>
 <span class="p">}</span>
 </pre></div></p>
-<h3 id="log-to-file">Log to file</h3>
+<h2 id="log-to-file">Log to file</h2>
 <p>By default, pyppl will not log to a file until you set a file path to <code>{"_log": {"file": "/path/to/logfile"}}</code> in the configuration. Or you can specfiy <code>False</code> to it to disable logging to file. If you set it to <code>True</code>, a default log file will be used, which is: <code>"./pipeline.pyppl.log"</code> if your pipeline is from file: <code>./pipeline.py</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Filters and themes are not applied to handler to log to file. So you can always find all logs in the log file if your have it enabled.</p>
 </div>
-<h3 id="progress-bar">Progress bar</h3>
+<h2 id="progress-bar">Progress bar</h2>
 <p>Job status and progress are indicated in the log with progress bar:
 <div class="highlight"><pre><span></span>[==============================XXXXX!!!!!&gt;&gt;&gt;&gt;&gt;-----]
 </pre></div>

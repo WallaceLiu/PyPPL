@@ -196,14 +196,14 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="basic-concepts-and-folder-structure">Basic concepts and folder structure</h2>
+                <h1 id="basic-concepts-and-folder-structure">Basic concepts and folder structure</h1>
 <!-- toc -->
 
-<h3 id="layers-of-a-pipeline">Layers of a pipeline</h3>
+<h2 id="layers-of-a-pipeline">Layers of a pipeline</h2>
 <p><img alt="Basic concepts" src="../concept.png" />
 The pipeline consists of channels and processes. A process may have many jobs. Each job uses the corresponding elements from the input channel of the process, and generates values for output channel.<br />
 Actually, what you need to do is just specify the first input channel, and then tell <code>PyPPL</code> the dependencies of the processes. The later processes will use the output channel of the processes they depend on. Of course, you can interfere by using functions in the input specification.</p>
-<h3 id="folder-structure">Folder structure</h3>
+<h2 id="folder-structure">Folder structure</h2>
 <div class="highlight"><pre><span></span>./
 |-- pipeline.py
 `-- workdir/
@@ -314,7 +314,7 @@ Actually, what you need to do is just specify the first input channel, and then 
 <p class="admonition-title">Note</p>
 <p>You are encouraged to set <code>p.ppldir</code> <strong>BUT NOT</strong> <code>p.workdir</code>, as it contains a unique <code>suffix</code> that is automatically computed.  </p>
 </div>
-<h3 id="symbols-used-in-this-documentation">Symbols used in this documentation</h3>
+<h2 id="symbols-used-in-this-documentation">Symbols used in this documentation</h2>
 <ul>
 <li><code>&lt;workdir&gt;</code> refers to <code>./workdir/PyPPL.&lt;id&gt;.&lt;tag&gt;.&lt;suffix&gt;/</code>,  </li>
 <li><code>&lt;indir&gt;</code> refers to <code>./workdir/PyPPL.&lt;id&gt;.&lt;tag&gt;.&lt;suffix&gt;/&lt;job.index&gt;/input/</code>  </li>
