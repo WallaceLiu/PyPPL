@@ -206,14 +206,14 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="command-line-argument-parser">Command line argument parser</h1>
+                <h2 id="command-line-argument-parser">Command line argument parser</h2>
 <!-- toc -->
 
 <p>This module is just for your convenience. You are free to use Python's built-in <code>argparse</code> module or just use <code>sys.argv</code>.</p>
 <p>To start with, just import it from <code>PyPPL</code>:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">params</span>
 </pre></div></p>
-<h2 id="add-an-option">Add an option</h2>
+<h3 id="add-an-option">Add an option</h3>
 <p><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">opt</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
 <span class="c1"># or</span>
 <span class="c1"># params.opt.setValue(&#39;a&#39;)</span>
@@ -240,7 +240,7 @@ Then you can use <code>params.xxx</code> to get the value directly:
 <div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">opt</span> <span class="o">+</span> <span class="s1">&#39;2&#39;</span>
 <span class="n">var2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">opt2</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div></p>
-<h2 id="set-attributes-of-an-option">Set attributes of an option</h2>
+<h3 id="set-attributes-of-an-option">Set attributes of an option</h3>
 <p>An option has server properties:
 - <code>desc</code>: The description of the option, shows in the help page. Default: <code>[]</code>
 - <code>required</code>: Whether the option is required. Default: <code>False</code>
@@ -265,11 +265,11 @@ or
 <span class="c1">#           .setName(&#39;opt1&#39;)       \</span>
 <span class="c1">#           .setValue([1,2,3])</span>
 </pre></div></p>
-<h3 id="about-type">About <code>type</code></h3>
-<h4 id="declear-the-type-of-an-option">Declear the type of an option</h4>
+<h4 id="about-type">About <code>type</code></h4>
+<h5 id="declear-the-type-of-an-option">Declear the type of an option</h5>
 <p>You can use either the type itself or the type name:<br />
 <code>params.opt.type = int</code> or <code>params.opt.type = 'int'</code></p>
-<h4 id="infer-type-when-option-initialized">Infer type when option initialized</h4>
+<h5 id="infer-type-when-option-initialized">Infer type when option initialized</h5>
 <p>When you initialize an option:
 <div class="highlight"><pre><span></span><span class="c1"># with nothing specified</span>
 <span class="n">params</span><span class="o">.</span><span class="n">opt</span>
@@ -285,7 +285,7 @@ Or when the value replaced (set value after initialization):<br />
 <code>params.opt = "a"</code><br />
 The type will not be changed (it's <code>None</code> in this case).</p>
 </div>
-<h4 id="allowed-types">Allowed types</h4>
+<h5 id="allowed-types">Allowed types</h5>
 <p>Literally, allowed types are <code>str</code>, <code>int</code>, <code>float</code>, <code>bool</code> and <code>list</code>. But we allow subtypes (types of elements) for <code>list</code>. By default, the value of <code>list</code> elements will be recognized automatically. For example, <code>'1'</code> will be recognized as an integer <code>1</code>, and <code>"True"</code> will be recognized as bool value <code>True</code>. You can avoid this by specified the subtypes explictly: <code>params.opt.type = 'list:str'</code>, then <code>'1'</code> will be kept as <code>'1'</code> rather than <code>1</code>, and <code>"True"</code> will be <code>"True"</code> instead of <code>True</code>.</p>
 <p>You can use shortcuts for the types:
 <div class="highlight"><pre><span></span>i     -&gt; &#39;int&#39;
@@ -296,7 +296,7 @@ l     -&gt; &#39;list&#39;
 array -&gt; &#39;list&#39;
 </pre></div>
 For subtypes, you can also do <code>params.opt.type = 'l:s'</code> indicating <code>list:str</code>. Or you can even mix them: <code>params.opt.type = 'l:str'</code> or <code>params.opt.type = 'list:s'</code></p>
-<h4 id="overwrite-the-type-from-command-line">Overwrite the type from command line</h4>
+<h5 id="overwrite-the-type-from-command-line">Overwrite the type from command line</h5>
 <p>Even though we may declear the type of an option by <code>params.opt.type = 'list:str'</code>, the users are able to overwrite it by pass the type through command argument:<br />
 <code>&gt; program -opt:list:int 1 2 3</code><br />
 Then we will get: <code>params.opt.value == [1,2,3]</code> instead of <code>params.opt.value == ['1', '2', '3']</code> when we do:<br />
@@ -304,7 +304,7 @@ Then we will get: <code>params.opt.value == [1,2,3]</code> instead of <code>para
 Flexibly, we can have mixed types of elements in a list option:<br />
 <code>&gt; program -opt:list:bool 1 -opt:list:int 2 -opt:list:str 3</code><br />
 We will get: <code>params.opt.value == [True, 2, '3']</code></p>
-<h2 id="load-params-from-a-dict">Load params from a dict</h2>
+<h3 id="load-params-from-a-dict">Load params from a dict</h3>
 <p>You can define a <code>dict</code>, and then load it to <code>params</code>:
 <div class="highlight"><pre><span></span><span class="n">d2load</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;p1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -331,7 +331,7 @@ We will get: <code>params.opt.value == [True, 2, '3']</code></p>
 <span class="c1"># params.p3.type     == float</span>
 </pre></div>
 Note that by default, the options from the <code>dict</code> will be hidden from the help page. If you want to show some of them, just set <code>p2.show = True</code>, or you want to show them all: <code>params.loadDict(d2load, show = True)</code></p>
-<h2 id="load-params-from-a-configuration-file">Load params from a configuration file</h2>
+<h3 id="load-params-from-a-configuration-file">Load params from a configuration file</h3>
 <p>If the configuration file has a name ending with '.json', then <code>json.load</code> will be used to load the file into a <code>dict</code>, and <code>params.loadDict</code> will be used to load it to <code>params</code></p>
 <p>Else python's <code>ConfigParse</code> will be used. All params in the configuration file should be under one section with whatever name:
 <div class="highlight"><pre><span></span><span class="k">[Config]</span>
@@ -349,13 +349,13 @@ Note that by default, the options from the <code>dict</code> will be hidden from
 <p class="admonition-title">Hint</p>
 <p><code>params</code> is a singleton of <code>Parameters</code>. It's a combination of configuration and command line arguments. So you are able to load the configurations from files, which will be used as default values, before you parse the command line arguments. You are also able to choose some of the options for the users to pass value to, and some hidden from the users.</p>
 </div>
-<h2 id="preseved-option-names">Preseved option names</h2>
+<h3 id="preseved-option-names">Preseved option names</h3>
 <p>We have a certain convention of the option names used with <code>params</code>:
 - Make sure it's only composed of alphabetics, underscores and hyphens.
 - Make sure it starts with alphabetics.
 - Make sure it's not one of these words (<code>help</code>, <code>parse</code>, <code>loadDict</code>, <code>loadFile</code> and <code>asDict</code>)</p>
-<h2 id="set-other-attributes-of-params">Set other attributes of params</h2>
-<h3 id="show-the-usagesexampledescription-of-the-program">Show the usages/example/description of the program</h3>
+<h3 id="set-other-attributes-of-params">Set other attributes of params</h3>
+<h4 id="show-the-usagesexampledescription-of-the-program">Show the usages/example/description of the program</h4>
 <p><code>params._setUsage(["{prog} -h", "{prog} -infile &lt;infile&gt; [options]"])</code><br />
 <code>params._setDesc(["This program does this.", "This program also does that."])</code><br />
 <code>params._setHbald(True) # print help if no arguments passed</code>
@@ -364,7 +364,7 @@ Or<br />
 <code>params._desc  = ["This program does this.", "This program also does that."]</code><br />
 <code>params._hbald = True</code><br />
 Notice the leading underscore of the attribute name, this makes sure <code>usage</code>, <code>desc</code> and <code>hbald</code> still avaiable to be used as option names.</p>
-<h3 id="set-the-prefix-of-option-names">Set the prefix of option names</h3>
+<h4 id="set-the-prefix-of-option-names">Set the prefix of option names</h4>
 <p>By default, the option names are recognized from the command line if they follow the convention and start with <code>-</code>. You may change it, let's say you want the option names to start with <code>--</code>:<br />
 <code>params('prefix', '--')</code><br />
 The only <code>prog --opt 1</code> will be parsed, instead of <code>prog -opt 1</code> to get the value by <code>params.opt.value</code>  </p>
@@ -372,7 +372,7 @@ The only <code>prog --opt 1</code> will be parsed, instead of <code>prog -opt 1<
 <p class="admonition-title">Note</p>
 <p>You cannot use an empty prefix. </p>
 </div>
-<h3 id="set-the-default-help-options">Set the default help options</h3>
+<h4 id="set-the-default-help-options">Set the default help options</h4>
 <p>By default, the help options are <code>['-h', '--help', '-H', '-?']</code>.<br />
 <code>params._hopts = '-h, --help, -H, -?'</code> or<br />
 <code>params.setHopts(['-h', '--help', '-H', '-?'])</code>  </p>
@@ -383,7 +383,7 @@ The only <code>prog --opt 1</code> will be parsed, instead of <code>prog -opt 1<
        ._setPrefix('--') \
        ._setHopts(['-H', '-?'])</code></p>
 </div>
-<h2 id="positional-options">Positional options</h2>
+<h3 id="positional-options">Positional options</h3>
 <p>Positional options are activated when you set the descriptions of them:
 <div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;The positional option&#39;</span>
 </pre></div>
@@ -397,8 +397,8 @@ If you want to use a different variable to represent positional option:
 <p class="admonition-title">Note</p>
 <p>The default type of positional option is <code>list</code>. The values can be appeared in the middle of the command line: <code>prog -a 1 pos1 -b 2 pos2</code>, then <code>params._ == ['pos1', 'pos2']</code></p>
 </div>
-<h2 id="support-of-subcommands">Support of subcommands</h2>
-<h3 id="add-a-subcommand">Add a subcommand</h3>
+<h3 id="support-of-subcommands">Support of subcommands</h3>
+<h4 id="add-a-subcommand">Add a subcommand</h4>
 <p><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">commands</span>
 <span class="n">commands</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="s1">&#39;list work directories under &lt;wdir&gt;&#39;</span>
 </pre></div>
@@ -414,12 +414,12 @@ To parse the arguments:
 <span class="c1"># if you want to get the Parameter objects:</span>
 <span class="c1"># params.wdir == commands[command].wdir.value</span>
 </pre></div></p>
-<h3 id="use-a-different-help-command">Use a different 'help' command</h3>
+<h4 id="use-a-different-help-command">Use a different 'help' command</h4>
 <p>By default, you may use <code>prog help &lt;command&gt;</code> to print the help information for the command. Alternatively, you can change it by: 
 <div class="highlight"><pre><span></span><span class="n">commands</span><span class="o">.</span><span class="n">_hcmd</span> <span class="o">=</span> <span class="s1">&#39;h&#39;</span>
 <span class="c1"># prog h &lt;command&gt;</span>
 </pre></div></p>
-<h3 id="use-a-different-theme-for-help-page">Use a different theme for help page</h3>
+<h4 id="use-a-different-theme-for-help-page">Use a different theme for help page</h4>
 <p>There are three built-in themes: <code>default</code>, <code>blue</code> and <code>plain</code>, to switch them:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">Commands</span>
 <span class="n">commands</span> <span class="o">=</span> <span class="n">Commands</span><span class="p">(</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
@@ -429,7 +429,7 @@ You may also use different theme for <code>params</code>:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">Parameters</span>
 <span class="n">params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="p">(</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 </pre></div></p>
-<h3 id="use-you-own-theme">Use you own theme:</h3>
+<h4 id="use-you-own-theme">Use you own theme:</h4>
 <p>Instead of passing a theme name to <code>Commands/Parameters</code>, you may also pass the entire theme:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl.logger</span> <span class="kn">import</span> <span class="n">COLORS</span>
 

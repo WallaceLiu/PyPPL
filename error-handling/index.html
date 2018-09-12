@@ -192,7 +192,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="error-handling-of-processes">Error handling of processes</h1>
+                <h2 id="error-handling-of-processes">Error handling of processes</h2>
 <p>You can ask <code>PyPPL</code> to terminate, retry or ignore a job that fails to run.<br />
 When a job finishes, it should generate a <code>job.rc</code> file containing the return code. When compare with the valid return codes <code>pXXX.rc</code>, the error triggered if it is not in <code>pXXX.rc</code>. <code>pXXX.errhow</code> determines what's next if errors happen. </p>
 <ul>
@@ -200,7 +200,7 @@ When a job finishes, it should generate a <code>job.rc</code> file containing th
 <li><code>"ignore"</code>: ignore the errors, continuing run the next process</li>
 <li><code>"retry"</code>: re-submit and run the job again. <code>pXXX.errntry</code> defines how many time to retry.</li>
 </ul>
-<h2 id="set-expectations-of-a-process-results">Set expectations of a process results</h2>
+<h3 id="set-expectations-of-a-process-results">Set expectations of a process results</h3>
 <p>You can use commands to check whether you have expected output. For example:
 <div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Proc</span> <span class="p">()</span>
 <span class="n">p</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>

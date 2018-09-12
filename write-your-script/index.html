@@ -198,17 +198,17 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="write-and-debug-your-script">Write and debug your script</h1>
+                <h2 id="write-and-debug-your-script">Write and debug your script</h2>
 <!-- toc -->
 
-<h2 id="choose-your-language">Choose your language</h2>
+<h3 id="choose-your-language">Choose your language</h3>
 <p>You can either specify the path of interpreter to <code>pXXX.lang</code>. If the interpreter is in <code>$PATH</code>, you can directly give the basename of the interpreter.<br />
 For example, if you have your own perl installed at <code>/home/user/bin/perl</code>, then you need to tell <code>PyPPL</code> where it is: <code>pXXX.lang = "/home/user/bin/perl"</code>. If <code>/home/user/bin</code> is in your <code>$PATH</code>, you can simply do: <code>p.lang = "perl"</code><br />
 You can also use <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> to specify the interperter:
 <div class="highlight"><pre><span></span><span class="ch">#!/home/usr/bin/perl</span>
 <span class="c1"># You perl code goes here</span>
 </pre></div></p>
-<h2 id="use-script-from-a-file">Use script from a file</h2>
+<h3 id="use-script-from-a-file">Use script from a file</h3>
 <p>You can also put the script into a file, and use it with a <code>file:</code> prefix: <code>pXXX.script = "file:/a/b/c.pl"</code>  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -247,7 +247,7 @@ You may use <code># PYPPL INDENT KEEP</code> to stop removing the white spaces f
 <p class="admonition-title">Caution</p>
 <p><code># PYPPL INDENT REMOVE</code> Should not be at the beginning of the file, otherwise the leading spaces will be stripped so we can detect how many spaces should be removed for the following lines.</p>
 </div>
-<h2 id="debug-your-script">Debug your script</h2>
+<h3 id="debug-your-script">Debug your script</h3>
 <p>If you need to debug your script, you just need to find the real running script, which is at: <code>&lt;workdir&gt;/&lt;job.index&gt;/job.script</code>. The template is rendered already in the file. You can debug it using the tool according to the language you used for the script.</p>
 <p>You may also add logs to pyppl's main logs on the screen or in log files. To do that, you just need to print you message starting with <code>pyppl.log</code> to STDERR:
 <div class="highlight"><pre><span></span><span class="c1"># python</span>
@@ -285,7 +285,7 @@ Just simply by:
 <p>The level name you specified after <code>pyppl.log</code> does not apply to <a href="./configure-your-logs/">normal log filters or themes</a>, because the actual level is <code>_FLAG</code> in this case. So unless you set <code>loglevels</code> to <code>None</code>, it will be anyway printed out. For themes, the color at the empty string key will be used. </p>
 <p>You can define filters or themes for this kind of logs, just remember the actual level name has an <code>_</code> prefix. See <a href="./configure-your-logs/">here</a> to learn how to define filters and themes.</p>
 </div>
-<h2 id="output-stdoutstderr-to-pyppl-logs">Output stdout/stderr to PyPPL logs</h2>
+<h3 id="output-stdoutstderr-to-pyppl-logs">Output stdout/stderr to PyPPL logs</h3>
 <p>Instead of log some information, you may also choose to output the stdout/stderr from the jobs to the main <code>PyPPL</code> log.</p>
 <p>This is controlled by setting <code>p.echo</code>, which is set to <code>False</code> by default. The full configuration of the value could be:
 <div class="highlight"><pre><span></span><span class="p">{</span>

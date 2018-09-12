@@ -196,12 +196,12 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="draw-flowchart-of-a-pipeline">Draw flowchart of a pipeline</h1>
+                <h2 id="draw-flowchart-of-a-pipeline">Draw flowchart of a pipeline</h2>
 <!-- toc -->
 
 <p><code>PyPPL</code> will generate a graph in <a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language)">DOT language</a>, according to the process dependencies. 
 You can have multiple <a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language)#Layout_programs">renderers</a> to visualize to graph. A typical one is <a href="https://en.wikipedia.org/wiki/Graphviz">Graphviz</a>. With its python port <a href="https://github.com/xflr6/graphviz/">graphviz</a> installed, you can output the flowchart to an svg figure. </p>
-<h2 id="generate-the-flowchart">Generate the flowchart</h2>
+<h3 id="generate-the-flowchart">Generate the flowchart</h3>
 <p>For example, if we have a pipeline written in <code>pipeline.py</code>:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span>
 
@@ -257,13 +257,13 @@ You can have multiple <a href="https://en.wikipedia.org/wiki/DOT_(graph_descript
 <p>The graph (<code>svgfile</code>) will be like:<br />
 <img alt="Pipeline" src="../drawFlowchart_pyppl.png" /></p>
 <p>The green processes are the starting processes; ones with purple text are processes that will export the output files; and nodes in red are the end processes of the pipeline.</p>
-<h2 id="use-the-dark-theme">Use the dark theme</h2>
+<h3 id="use-the-dark-theme">Use the dark theme</h3>
 <p><div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">({</span>
 	<span class="s1">&#39;_flowchart&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="s1">&#39;dark&#39;</span><span class="p">}</span>
 <span class="p">})</span><span class="o">.</span><span class="n">star</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p8</span><span class="p">,</span> <span class="n">p9</span><span class="p">)</span><span class="o">.</span><span class="n">flowchart</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 <img alt="Pipeline-flowchart-dark" src="../drawFlowchart_pyppl_dark.png" /></p>
-<h2 id="define-your-own-theme">Define your own theme</h2>
+<h3 id="define-your-own-theme">Define your own theme</h3>
 <p>You just need to define the style for each type of nodes (refer <a href="http://www.graphviz.org/doc/info/shapes.html">DOT node shapes</a> for detailed styles):
 You may also put the definition in the default configuration file (<code>~/.PyPPL.json</code>)
 <div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">({</span>
