@@ -200,7 +200,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="other-attributes-of-a-process">Other attributes of a process</h1>
+                <h2 id="other-attributes-of-a-process">Other attributes of a process</h2>
 <p>Currently we introduced in previous chapters a set of attributes of a process and we will introduce the rest of them in this chapter:</p>
 <table>
 <thead>
@@ -445,7 +445,7 @@
 <div class="highlight"><pre><span></span><span class="n">pXXX</span> <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">attrname</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">attrvalue</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div></p>
 </div>
-<h2 id="set-arguments-of-a-process-pxxxargs">Set arguments of a process <code>pXXX.args</code></h2>
+<h3 id="set-arguments-of-a-process-pxxxargs">Set arguments of a process <code>pXXX.args</code></h3>
 <p>It is a <code>dict</code> used to set some common arguments shared within the process (different jobs). For example, all jobs use the same program: <code>bedtools</code>. but to make the process portable and shareable, you may want others can give a different path of <code>bedtools</code> as well. Then you can use <code>pXXX.args</code>:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span> <span class="o">=</span> <span class="n">Proc</span><span class="p">()</span>
 <span class="n">pXXX</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile1:file, infile2:file&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;file1.bed&quot;</span><span class="p">,</span> <span class="s2">&quot;file2.bed&quot;</span><span class="p">)]}</span>
@@ -476,7 +476,7 @@ Of course, you can do that, but a common argument is not usually generated from 
 <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">bedtools</span> <span class="o">=</span> <span class="s1">&#39;bedtools&#39;</span>
 </pre></div></p>
 </div>
-<h2 id="set-the-valid-returnexit-codes-pxxxrc">Set the valid return/exit codes <code>pXXX.rc</code></h2>
+<h3 id="set-the-valid-returnexit-codes-pxxxrc">Set the valid return/exit codes <code>pXXX.rc</code></h3>
 <p>When a program exits, it will return a code (or <a href="https://en.wikipedia.org/wiki/Exit_status">exit status</a>), usually a small integer to exhibit it's status. Generally if a program finishes successfully, it will return <code>0</code>, which is the default value of <code>p.rc</code>. <code>pyppl</code> relies on this return code to determine whether a job finishes successfully.  If not, <code>p.errorhow</code> will be triggered. You can set multiple valid return codes for a process: 
 <div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">rc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1">#or &quot;0,1&quot;</span>
 <span class="c1"># exit code with 0 or 1 will be both regarded as success</span>
@@ -485,7 +485,7 @@ Of course, you can do that, but a common argument is not usually generated from 
 <p class="admonition-title">Caution</p>
 <p><code>beforeCmd</code>/<code>afterCmd</code> only run locally, no matter which runner you choose to run the jobs.</p>
 </div>
-<h2 id="set-the-processes-current-process-depends-on-pxxxdepends">Set the processes current process depends on <code>pXXX.depends</code></h2>
+<h3 id="set-the-processes-current-process-depends-on-pxxxdepends">Set the processes current process depends on <code>pXXX.depends</code></h3>
 <p>A process can not only depend on a single process: 
 <div class="highlight"><pre><span></span><span class="n">p2</span><span class="o">.</span><span class="n">depends</span> <span class="o">=</span> <span class="n">p1</span>
 </pre></div>
@@ -498,7 +498,7 @@ To set prior processes not only let the process use the output channel as input 
 <p>You can copy a process by <code>p2 = p.copy()</code>, but remember <code>depends</code> will not be copied, you have to specify it for the copied processes.  </p>
 <p>When you specify new dependents for a process, its original ones will be removed, which means each time <code>pXXX.depends</code> will overwrite the previous setting.</p>
 </div>
-<h2 id="use-callback-to-modify-the-process-pxxxcallback">Use callback to modify the process <code>pXXX.callback</code></h2>
+<h3 id="use-callback-to-modify-the-process-pxxxcallback">Use callback to modify the process <code>pXXX.callback</code></h3>
 <p>The processes <strong>NOT</strong> initialized until it's ready to run. So you may not be able to modify some of the values until it is initialized. For example, you may want to change the output channel before it passes to the its dependent process:
 <div class="highlight"><pre><span></span><span class="n">pSingle</span> <span class="o">=</span> <span class="n">Proc</span> <span class="p">()</span>
 <span class="n">pSingle</span><span class="o">.</span><span class="n">input</span>    <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;file1.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;file2.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;file3.txt&quot;</span><span class="p">]}</span>
@@ -523,7 +523,7 @@ To set prior processes not only let the process use the output channel as input 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span> <span class="p">(</span><span class="n">pSingle</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 You can also use a callback in <code>pCombine.input</code> to modify the channel, see <a href="./specify-input-and-output-of-a-process/#use-a-callback-to-modify-the-output-channel-of-the-prior-process">here</a>, which is recommended. Because <code>p.callback</code> will change the original output channel of <code>pSingle</code>, but the <code>input</code> callback will keep the output channel intact. However, <code>p.callback</code> can not only change the output channel, but also change other properties of current process or even set the properties of coming processes.</p>
-<h2 id="use-callfront-to-modify-the-process-pxxxcallfront">Use callfront to modify the process <code>pXXX.callfront</code></h2>
+<h3 id="use-callfront-to-modify-the-process-pxxxcallfront">Use callfront to modify the process <code>pXXX.callfront</code></h3>
 <p>One possible scenario is that, value in  <code>pXXX.args</code> depends on the other process.
 For example:
 <div class="highlight"><pre><span></span><span class="c1"># generate bam files</span>
