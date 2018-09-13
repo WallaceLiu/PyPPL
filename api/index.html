@@ -2008,7 +2008,7 @@
 <code>DEFAULT_CFGFILES</code>: Default configuration file  </li>
 </ul>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, config, cfgfile)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2017,7 +2017,7 @@
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>flowchart</code></p>
+<p class="admonition-title">method: <code>flowchart (self, fcfile, dotfile)</code></p>
 <p>Generate graph in dot language and visualize it.  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2034,7 +2034,7 @@ The pipeline object itself.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>registerRunner</code></p>
+<p class="admonition-title">staticmethod: <code>registerRunner (runner)</code></p>
 <p>Register a runner  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2042,7 +2042,7 @@ The pipeline object itself.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>resume</code></p>
+<p class="admonition-title">method: <code>resume (self, *args)</code></p>
 <p>Mark processes as to be resumed  </p>
 <ul>
 <li>
@@ -2056,7 +2056,7 @@ The pipeline object itself.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>resume2</code></p>
+<p class="admonition-title">method: <code>resume2 (self, *args)</code></p>
 <p>Mark processes as to be resumed  </p>
 <ul>
 <li>
@@ -2070,7 +2070,7 @@ The pipeline object itself.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self, profile)</code></p>
 <p>Run the pipeline  </p>
 <ul>
 <li>
@@ -2084,10 +2084,11 @@ The pipeline object itself.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>showAllRoutes</code></p>
+<p class="admonition-title">method: <code>showAllRoutes (self)</code></p>
+<p>Show all the routes.  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>start</code></p>
+<p class="admonition-title">method: <code>start (self, *args)</code></p>
 <p>Set the starting processes of the pipeline  </p>
 <ul>
 <li>
@@ -2116,16 +2117,16 @@ The pipeline object itself.  </p>
 </li>
 </ul>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__eq__</code></p>
+<p class="admonition-title">method: <code>__eq__ (self, other)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getattr__</code></p>
+<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__hash__</code></p>
+<p class="admonition-title">method: <code>__hash__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, tag, desc, id, **kwargs)</code></p>
 <p>Constructor  </p>
 <ul>
 <li>
@@ -2148,16 +2149,16 @@ expart, template, channel, jobs, ncjobids, size, sets, procvars, suffix, logs  <
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__ne__</code></p>
+<p class="admonition-title">method: <code>__ne__ (self, other)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__repr__</code></p>
+<p class="admonition-title">method: <code>__repr__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__setattr__</code></p>
+<p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>copy</code></p>
+<p class="admonition-title">method: <code>copy (self, tag, desc, id)</code></p>
 <p>Copy a process  </p>
 <ul>
 <li>
@@ -2173,7 +2174,7 @@ The new process  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>log</code></p>
+<p class="admonition-title">method: <code>log (self, msg, level, key)</code></p>
 <p>The log function with aggregation name, process id and tag integrated.  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2183,7 +2184,7 @@ The new process  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>name</code></p>
+<p class="admonition-title">method: <code>name (self, aggr)</code></p>
 <p>Get my name include <code>aggr</code>, <code>id</code>, <code>tag</code>  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -2191,7 +2192,7 @@ the name  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self, profile, profiles)</code></p>
 <p>Run the jobs with a configuration  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2214,10 +2215,10 @@ the name  </li>
 <li>You can use <code>[aggr].[proc].[prop]</code> to set/get the properties of a processes in the aggregation.  </li>
 </ul>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getattr__</code></p>
+<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getitem__</code></p>
+<p class="admonition-title">method: <code>__getitem__ (self, key)</code></p>
 <p>Select processes<br />
 <div class="highlight"><pre><span></span># self._procs = OrderedDict([  
 #	(&#39;a&#39;, Proc(id = &#39;a&#39;)),  
@@ -2236,7 +2237,7 @@ self[Proc(id = &#39;d&#39;)] # proc d
 </pre></div></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, *args, **kwargs)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2247,10 +2248,10 @@ self[Proc(id = &#39;d&#39;)] # proc d
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__setattr__</code></p>
+<p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>addEnd</code></p>
+<p class="admonition-title">method: <code>addEnd (self, *procs)</code></p>
 <p>Add end processes  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2258,7 +2259,7 @@ self[Proc(id = &#39;d&#39;)] # proc d
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>addProc</code></p>
+<p class="admonition-title">method: <code>addProc (self, p, tag, where, copy)</code></p>
 <p>Add a process to the aggregation.<br />
 Note that you have to adjust the dependencies after you add processes.  </p>
 <ul>
@@ -2274,7 +2275,7 @@ the aggregation itself  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>addStart</code></p>
+<p class="admonition-title">method: <code>addStart (self, *procs)</code></p>
 <p>Add start processes  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2282,7 +2283,7 @@ the aggregation itself  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>copy</code></p>
+<p class="admonition-title">method: <code>copy (self, tag, depends, id, delegates, modules)</code></p>
 <p>Like <code>proc</code>'s <code>copy</code> function, copy an aggregation. Each processes will be copied.  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2301,7 +2302,7 @@ The new aggregation  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>delEnd</code></p>
+<p class="admonition-title">method: <code>delEnd (self, *procs)</code></p>
 <p>Delete end processes  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2309,7 +2310,7 @@ The new aggregation  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>delStart</code></p>
+<p class="admonition-title">method: <code>delStart (self, *procs)</code></p>
 <p>Delete start processes  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2317,7 +2318,7 @@ The new aggregation  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>delegate</code></p>
+<p class="admonition-title">method: <code>delegate (self, attrs, procs)</code></p>
 <p>Delegate the procs to have the attributes set by:<br />
 <code>aggr.args.a.b = 1</code><br />
 Instead of setting <code>args.a.b</code> of all processes, <code>args.a.b</code> of only delegated processes will be set.<br />
@@ -2325,7 +2326,7 @@ Instead of setting <code>args.a.b</code> of all processes, <code>args.a.b</code>
 <code>aggr.delegate('args', 'starts')</code>, but not <code>aggr.delegate('args', ['starts', 'pXXX'])</code>  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>module</code></p>
+<p class="admonition-title">method: <code>module (self, name, starts, depends, ends, starts_shared, depends_shared, ends_shared)</code></p>
 <p>Define a function for aggr.<br />
 The "shared" parameters will be indicators not to remove those processes<br />
 when the shared function is on.  </p>
@@ -2342,7 +2343,7 @@ when the shared function is on.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>moduleFunc</code></p>
+<p class="admonition-title">method: <code>moduleFunc (self, name, on, off)</code></p>
 <p>Define modules using functions  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2352,7 +2353,7 @@ when the shared function is on.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>off</code></p>
+<p class="admonition-title">method: <code>off (self, *names)</code></p>
 <p>Turn off modules  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2360,7 +2361,7 @@ when the shared function is on.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>on</code></p>
+<p class="admonition-title">method: <code>on (self, *names)</code></p>
 <p>Turn on modules  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2372,7 +2373,7 @@ when the shared function is on.  </p>
 <h3 id="class-channel">class: <code>Channel</code></h3>
 <p>The channen class, extended from <code>list</code>  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>attach</code></p>
+<p class="admonition-title">method: <code>attach (self, *names, **kwargs)</code></p>
 <p>Attach columns to names of Channel, so we can access each column by:<br />
 <code>ch.col0</code> == ch.colAt(0)  </p>
 <ul>
@@ -2382,7 +2383,7 @@ when the shared function is on.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>cbind</code></p>
+<p class="admonition-title">method: <code>cbind (self, *cols)</code></p>
 <p>Add columns to the channel  </p>
 <ul>
 <li>
@@ -2396,7 +2397,7 @@ The channel with the columns inserted.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>colAt</code></p>
+<p class="admonition-title">method: <code>colAt (self, index)</code></p>
 <p>Fetch one column of a Channel  </p>
 <ul>
 <li>
@@ -2410,7 +2411,7 @@ The Channel with that column  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>collapse</code></p>
+<p class="admonition-title">method: <code>collapse (self, col)</code></p>
 <p>Do the reverse of expand<br />
 length: N -&gt; 1<br />
 width:  M -&gt; M  </p>
@@ -2426,7 +2427,7 @@ The collapsed Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>copy</code></p>
+<p class="admonition-title">method: <code>copy (self)</code></p>
 <p>Copy a Channel using <code>copy.copy</code>  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -2434,7 +2435,7 @@ The copied Channel  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>create</code></p>
+<p class="admonition-title">staticmethod: <code>create (l)</code></p>
 <p>Create a Channel from a list  </p>
 <ul>
 <li>
@@ -2448,7 +2449,7 @@ The Channel created from the list  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>expand</code></p>
+<p class="admonition-title">method: <code>expand (self, col, pattern, t, sortby, reverse)</code></p>
 <p>expand the Channel according to the files in <col>, other cols will keep the same<br />
 <code>[(dir1/dir2, 1)].expand (0, "*")</code> will expand to<br />
 <code>[(dir1/dir2/file1, 1), (dir1/dir2/file2, 1), ...]</code><br />
@@ -2472,7 +2473,7 @@ The expanded Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>filter</code></p>
+<p class="admonition-title">method: <code>filter (self, func)</code></p>
 <p>Alias of python builtin <code>filter</code>  </p>
 <ul>
 <li>
@@ -2486,7 +2487,7 @@ The filtered Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>filterCol</code></p>
+<p class="admonition-title">method: <code>filterCol (self, func, col)</code></p>
 <p>Just filter on the first column  </p>
 <ul>
 <li>
@@ -2501,7 +2502,7 @@ The filtered Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>flatten</code></p>
+<p class="admonition-title">method: <code>flatten (self, col)</code></p>
 <p>Convert a single-column Channel to a list (remove the tuple signs)<br />
 <code>[(a,), (b,)]</code> to <code>[a, b]</code>  </p>
 <ul>
@@ -2516,7 +2517,7 @@ The list converted from the Channel.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>fold</code></p>
+<p class="admonition-title">method: <code>fold (self, n)</code></p>
 <p>Fold a Channel. Make a row to n-length chunk rows<br />
 <div class="highlight"><pre><span></span>a1	a2	a3	a4  
 b1	b2	b3	b4  
@@ -2538,7 +2539,7 @@ The new Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>fromArgv</code></p>
+<p class="admonition-title">staticmethod: <code>fromArgv ()</code></p>
 <p>Create a Channel from <code>sys.argv[1:]</code><br />
 "python test.py a b c" creates a width=1 Channel<br />
 "python test.py a,1 b,2 c,3" creates a width=2 Channel  </p>
@@ -2548,7 +2549,7 @@ The Channel created from the command line arguments  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>fromChannels</code></p>
+<p class="admonition-title">staticmethod: <code>fromChannels (*args)</code></p>
 <p>Create a Channel from Channels  </p>
 <ul>
 <li>
@@ -2562,7 +2563,7 @@ The Channel merged from other Channels  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>fromFile</code></p>
+<p class="admonition-title">staticmethod: <code>fromFile (fn, header, skip, delimit)</code></p>
 <p>Create Channel from the file content<br />
 It's like a matrix file, each row is a row for a Channel.<br />
 And each column is a column for a Channel.  </p>
@@ -2582,7 +2583,7 @@ A Channel created from the file  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>fromPairs</code></p>
+<p class="admonition-title">staticmethod: <code>fromPairs (pattern)</code></p>
 <p>Create a width = 2 Channel from a pattern  </p>
 <ul>
 <li>
@@ -2596,7 +2597,7 @@ The Channel create from every 2 files match the pattern  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>fromParams</code></p>
+<p class="admonition-title">staticmethod: <code>fromParams (*pnames)</code></p>
 <p>Create a Channel from params  </p>
 <ul>
 <li>
@@ -2610,7 +2611,7 @@ The Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>fromPattern</code></p>
+<p class="admonition-title">staticmethod: <code>fromPattern (pattern, t, sortby, reverse)</code></p>
 <p>Create a Channel from a path pattern  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2629,7 +2630,7 @@ The Channel created from the path  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>get</code></p>
+<p class="admonition-title">method: <code>get (self, idx)</code></p>
 <p>Get the element of a flattened channel  </p>
 <ul>
 <li>
@@ -2643,7 +2644,7 @@ The element  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>insert</code></p>
+<p class="admonition-title">method: <code>insert (self, cidx, *cols)</code></p>
 <p>Insert columns to a channel  </p>
 <ul>
 <li>
@@ -2659,7 +2660,7 @@ Note, self is also changed  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>length</code></p>
+<p class="admonition-title">method: <code>length (self)</code></p>
 <p>Get the length of a Channel<br />
 It's just an alias of <code>len(chan)</code>  </p>
 <ul>
@@ -2668,7 +2669,7 @@ The length of the Channel  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>map</code></p>
+<p class="admonition-title">method: <code>map (self, func)</code></p>
 <p>Alias of python builtin <code>map</code>  </p>
 <ul>
 <li>
@@ -2682,7 +2683,7 @@ The transformed Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>mapCol</code></p>
+<p class="admonition-title">method: <code>mapCol (self, func, col)</code></p>
 <p>Map for a column  </p>
 <ul>
 <li>
@@ -2697,7 +2698,7 @@ The transformed Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>nones</code></p>
+<p class="admonition-title">staticmethod: <code>nones (length, width)</code></p>
 <p>Create a channel with <code>None</code>s  </p>
 <ul>
 <li>
@@ -2712,7 +2713,7 @@ The created channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>rbind</code></p>
+<p class="admonition-title">method: <code>rbind (self, *rows)</code></p>
 <p>The multiple-argument versoin of <code>rbind</code>  </p>
 <ul>
 <li>
@@ -2727,7 +2728,7 @@ Note, self is also changed  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>reduce</code></p>
+<p class="admonition-title">method: <code>reduce (self, func)</code></p>
 <p>Alias of python builtin <code>reduce</code>  </p>
 <ul>
 <li>
@@ -2741,7 +2742,7 @@ The reduced value  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>reduceCol</code></p>
+<p class="admonition-title">method: <code>reduceCol (self, func, col)</code></p>
 <p>Reduce a column  </p>
 <ul>
 <li>
@@ -2756,7 +2757,7 @@ The reduced value  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>repCol</code></p>
+<p class="admonition-title">method: <code>repCol (self, n)</code></p>
 <p>Repeat column and return a new channel  </p>
 <ul>
 <li>
@@ -2770,7 +2771,7 @@ The new channel with repeated columns  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>repRow</code></p>
+<p class="admonition-title">method: <code>repRow (self, n)</code></p>
 <p>Repeat row and return a new channel  </p>
 <ul>
 <li>
@@ -2784,7 +2785,7 @@ The new channel with repeated rows  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>rowAt</code></p>
+<p class="admonition-title">method: <code>rowAt (self, index)</code></p>
 <p>Fetch one row of a Channel  </p>
 <ul>
 <li>
@@ -2798,7 +2799,7 @@ The Channel with that row  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>slice</code></p>
+<p class="admonition-title">method: <code>slice (self, start, length)</code></p>
 <p>Fetch some columns of a Channel  </p>
 <ul>
 <li>
@@ -2813,7 +2814,7 @@ The Channel with fetched columns  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>split</code></p>
+<p class="admonition-title">method: <code>split (self, flatten)</code></p>
 <p>Split a Channel to single-column Channels  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -2821,7 +2822,7 @@ The list of single-column Channels  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>t</code></p>
+<p class="admonition-title">method: <code>t (self)</code></p>
 <p>Transpose the channel  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -2829,7 +2830,7 @@ The transposed channel.  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>transpose</code></p>
+<p class="admonition-title">method: <code>transpose (self)</code></p>
 <p>Transpose the channel  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -2837,7 +2838,7 @@ The transposed channel.  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>unfold</code></p>
+<p class="admonition-title">method: <code>unfold (self, n)</code></p>
 <p>Do the reverse thing as self.fold does  </p>
 <ul>
 <li>
@@ -2851,12 +2852,12 @@ The unfolded Channel  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>unique</code></p>
+<p class="admonition-title">method: <code>unique (self)</code></p>
 <p>Make the channel unique, remove duplicated rows<br />
 Try to keep the order  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>width</code></p>
+<p class="admonition-title">method: <code>width (self)</code></p>
 <p>Get the width of a Channel  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -2871,7 +2872,7 @@ The width of the Channel  </li>
 <code>THEMES</code>: predefined themes  </li>
 </ul>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, fcfile, dotfile)</code></p>
 <p>The constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2880,7 +2881,7 @@ The width of the Channel  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>addLink</code></p>
+<p class="admonition-title">method: <code>addLink (self, node1, node2)</code></p>
 <p>Add a link to the chart  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2889,7 +2890,7 @@ The width of the Channel  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>addNode</code></p>
+<p class="admonition-title">method: <code>addNode (self, node, role)</code></p>
 <p>Add a node to the chart  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2898,11 +2899,11 @@ The width of the Channel  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>generate</code></p>
+<p class="admonition-title">method: <code>generate (self)</code></p>
 <p>Generate the dot file and graph file.  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>setTheme</code></p>
+<p class="admonition-title">method: <code>setTheme (self, theme, base)</code></p>
 <p>Set the theme to be used  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2915,7 +2916,7 @@ The width of the Channel  </li>
 <h3 id="class-job">class: <code>Job</code></h3>
 <p>Job class, defining a job in a process  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, index, proc)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2924,36 +2925,36 @@ The width of the Channel  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>cache</code></p>
+<p class="admonition-title">method: <code>cache (self)</code></p>
 <p>Truly cache the job (by signature)  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>checkOutfiles</code></p>
+<p class="admonition-title">method: <code>checkOutfiles (self, expect)</code></p>
 <p>Check whether output files are generated, if not, add - to rc.  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>done</code></p>
+<p class="admonition-title">method: <code>done (self)</code></p>
 <p>Do some cleanup when job finished  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>export</code></p>
+<p class="admonition-title">method: <code>export (self)</code></p>
 <p>Export the output files  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>init</code></p>
+<p class="admonition-title">method: <code>init (self)</code></p>
 <p>Initiate a job, make directory and prepare input, output and script.  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isExptCached</code></p>
+<p class="admonition-title">method: <code>isExptCached (self)</code></p>
 <p>Prepare to use export files as cached information<br />
 True if succeed, otherwise False  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isTrulyCached</code></p>
+<p class="admonition-title">method: <code>isTrulyCached (self)</code></p>
 <p>Check whether a job is truly cached (by signature)  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>pid</code></p>
+<p class="admonition-title">method: <code>pid (self, val)</code></p>
 <p>Get/Set the job id (pid or the id from queue system)  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2961,7 +2962,7 @@ True if succeed, otherwise False  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>rc</code></p>
+<p class="admonition-title">method: <code>rc (self, val)</code></p>
 <p>Get/Set the return code  </p>
 <ul>
 <li>
@@ -2978,15 +2979,15 @@ A negative rc (including -0) means output files not generated  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>report</code></p>
+<p class="admonition-title">method: <code>report (self)</code></p>
 <p>Report the job information to logger  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>reset</code></p>
+<p class="admonition-title">method: <code>reset (self, retry)</code></p>
 <p>Clear the intermediate files and output files  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>signature</code></p>
+<p class="admonition-title">method: <code>signature (self)</code></p>
 <p>Calculate the signature of the job based on the input/output and the script  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -2994,7 +2995,7 @@ The signature of the job  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>succeed</code></p>
+<p class="admonition-title">method: <code>succeed (self)</code></p>
 <p>Tell if the job is successful by return code, and output file expectations.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3005,7 +3006,7 @@ True if succeed else False  </li>
 <h3 id="class-jobmgr">class: <code>Jobmgr</code></h3>
 <p>Job Manager  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, proc, runner)</code></p>
 <p>Job manager constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3014,7 +3015,7 @@ True if succeed else False  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>allJobsDone</code></p>
+<p class="admonition-title">method: <code>allJobsDone (self)</code></p>
 <p>Tell whether all jobs are done.<br />
 No need to lock as it only runs in one process (the watcher process)  </p>
 <ul>
@@ -3023,7 +3024,7 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>canSubmit</code></p>
+<p class="admonition-title">method: <code>canSubmit (self)</code></p>
 <p>Tell whether we can submit jobs.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3031,18 +3032,18 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>halt</code></p>
+<p class="admonition-title">method: <code>halt (self, halt_anyway)</code></p>
 <p>Halt the pipeline if needed  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>progressbar</code></p>
+<p class="admonition-title">method: <code>progressbar (self, jid, loglevel)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <p>Start to run the jobs  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>runPool</code></p>
+<p class="admonition-title">method: <code>runPool (self, rq, sq)</code></p>
 <p>The pool to run jobs (wait jobs to be done)  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3051,7 +3052,7 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submitPool</code></p>
+<p class="admonition-title">method: <code>submitPool (self, sq)</code></p>
 <p>The pool to submit jobs  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3059,7 +3060,7 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>watchPool</code></p>
+<p class="admonition-title">method: <code>watchPool (self, rq, sq)</code></p>
 <p>The watchdog, checking whether all jobs are done.  </p>
 </div>
 <h2 id="module-pyppllogger">module: pyppl.logger</h2>
@@ -3067,7 +3068,7 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 <h3 id="class-pyppllogformatter">class: <code>PyPPLLogFormatter</code></h3>
 <p>logging formatter for pyppl  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, fmt, theme, secondary)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3077,7 +3078,7 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>format</code></p>
+<p class="admonition-title">method: <code>format (self, record)</code></p>
 <p>Format the record  </p>
 <ul>
 <li>
@@ -3093,16 +3094,16 @@ The formatted record  </p>
 <h3 id="class-pyppllogfilter">class: <code>PyPPLLogFilter</code></h3>
 <p>logging filter by levels (flags)  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, name, lvls, lvldiff)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>filter</code></p>
+<p class="admonition-title">method: <code>filter (self, record)</code></p>
 </div>
 <h3 id="class-pypplstreamhandler">class: <code>PyPPLStreamHandler</code></h3>
 <p>PyPPL stream log handler.<br />
 To implement the progress bar for JOBONE and SUBMIT logs.  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, stream)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3110,7 +3111,7 @@ To implement the progress bar for JOBONE and SUBMIT logs.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>emit</code></p>
+<p class="admonition-title">method: <code>emit (self, record)</code></p>
 <p>Emit the record.  </p>
 </div>
 <h3 id="function-getlogger-levels-theme-logfile-lvldiff-pbar-name">function: <code>getLogger (levels, theme, logfile, lvldiff, pbar, name)</code></h3>
@@ -3134,7 +3135,7 @@ The logger  </p>
 <h3 id="class-templatepyppl">class: <code>TemplatePyPPL</code></h3>
 <p>Built-in template wrapper.  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, source, **envs)</code></p>
 <p>Initiate the engine with source and envs  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3146,7 +3147,7 @@ The logger  </p>
 <h3 id="class-parameters">class: <code>Parameters</code></h3>
 <p>A set of parameters  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__call__</code></p>
+<p class="admonition-title">method: <code>__call__ (self, option, value)</code></p>
 <p>Set options values in <code>self._props</code>.<br />
 Will be deprecated in the future!  </p>
 <ul>
@@ -3163,19 +3164,19 @@ Will be deprecated in the future!  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__eq__</code></p>
+<p class="admonition-title">method: <code>__eq__ (self, other)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getattr__</code></p>
+<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getitem__</code></p>
+<p class="admonition-title">method: <code>__getitem__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__hash__</code></p>
+<p class="admonition-title">method: <code>__hash__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, command, theme)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3184,19 +3185,19 @@ Will be deprecated in the future!  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__ne__</code></p>
+<p class="admonition-title">method: <code>__ne__ (self, other)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__repr__</code></p>
+<p class="admonition-title">method: <code>__repr__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__setattr__</code></p>
+<p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__setitem__</code></p>
+<p class="admonition-title">method: <code>__setitem__ (self, name, value)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>asDict</code></p>
+<p class="admonition-title">method: <code>asDict (self)</code></p>
 <p>Convert the parameters to Box object  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3204,7 +3205,7 @@ The Box object  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>help</code></p>
+<p class="admonition-title">method: <code>help (self, error, printNexit)</code></p>
 <p>Calculate the help page  </p>
 <ul>
 <li>
@@ -3219,7 +3220,7 @@ The help information  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>loadDict</code></p>
+<p class="admonition-title">method: <code>loadDict (self, dictVar, show)</code></p>
 <p>Load parameters from a dict  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3232,7 +3233,7 @@ The help information  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>loadFile</code></p>
+<p class="admonition-title">method: <code>loadFile (self, cfgfile, show)</code></p>
 <p>Load parameters from a json/config file<br />
 If the file name ends with '.json', <code>json.load</code> will be used,<br />
 otherwise, <code>ConfigParser</code> will be used.<br />
@@ -3246,7 +3247,7 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>parse</code></p>
+<p class="admonition-title">method: <code>parse (self, args, arbi)</code></p>
 <p>Parse the arguments.  </p>
 <ul>
 <li>
@@ -3263,16 +3264,16 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 <h3 id="class-parameter">class: <code>Parameter</code></h3>
 <p>The class for a single parameter  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__eq__</code></p>
+<p class="admonition-title">method: <code>__eq__ (self, other)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getattr__</code></p>
+<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__hash__</code></p>
+<p class="admonition-title">method: <code>__hash__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, name, value)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3281,19 +3282,19 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__ne__</code></p>
+<p class="admonition-title">method: <code>__ne__ (self, other)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__repr__</code></p>
+<p class="admonition-title">method: <code>__repr__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__setattr__</code></p>
+<p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__str__</code></p>
+<p class="admonition-title">method: <code>__str__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>setDesc</code></p>
+<p class="admonition-title">method: <code>setDesc (self, d)</code></p>
 <p>Set the description of the parameter  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3301,7 +3302,7 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>setName</code></p>
+<p class="admonition-title">method: <code>setName (self, n)</code></p>
 <p>Set the name of the parameter  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3309,7 +3310,7 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>setRequired</code></p>
+<p class="admonition-title">method: <code>setRequired (self, r)</code></p>
 <p>Set whether this parameter is required  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3317,7 +3318,7 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>setShow</code></p>
+<p class="admonition-title">method: <code>setShow (self, s)</code></p>
 <p>Set whether this parameter should be shown in help information  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3325,7 +3326,7 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>setType</code></p>
+<p class="admonition-title">method: <code>setType (self, t)</code></p>
 <p>Set the type of the parameter  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3334,7 +3335,7 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>setValue</code></p>
+<p class="admonition-title">method: <code>setValue (self, v)</code></p>
 <p>Set the value of the parameter  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3350,7 +3351,7 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 <code>THEMES</code>      : the themes  </li>
 </ul>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, prog, theme)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3359,7 +3360,7 @@ A <code>Box</code>/<code>dict</code> object containing all option names and valu
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>assemble</code></p>
+<p class="admonition-title">method: <code>assemble (self, helps, progname)</code></p>
 <p>Assemble the whole help page.  </p>
 <ul>
 <li>
@@ -3375,7 +3376,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>error</code></p>
+<p class="admonition-title">method: <code>error (self, msg)</code></p>
 <p>Render an error message  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3383,7 +3384,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>optdesc</code></p>
+<p class="admonition-title">method: <code>optdesc (self, msg)</code></p>
 <p>Render the option descriptions  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3391,7 +3392,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>optname</code></p>
+<p class="admonition-title">method: <code>optname (self, msg)</code></p>
 <p>Render the option name  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3399,7 +3400,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>opttype</code></p>
+<p class="admonition-title">method: <code>opttype (self, msg)</code></p>
 <p>Render the option type or placeholder  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3407,7 +3408,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>plain</code></p>
+<p class="admonition-title">method: <code>plain (self, msg)</code></p>
 <p>Render a plain message  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3415,7 +3416,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>prog</code></p>
+<p class="admonition-title">method: <code>prog (self, prog)</code></p>
 <p>Render the program name  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3423,7 +3424,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>title</code></p>
+<p class="admonition-title">method: <code>title (self, msg)</code></p>
 <p>Render an section title  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3431,7 +3432,7 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>warning</code></p>
+<p class="admonition-title">method: <code>warning (self, msg)</code></p>
 <p>Render an warning message  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3441,13 +3442,13 @@ lines (<code>list</code>) of the help information.  </p>
 <h3 id="class-commands">class: <code>Commands</code></h3>
 <p>Support sub-command for command line argument parse.  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getattr__</code></p>
+<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getitem__</code></p>
+<p class="admonition-title">method: <code>__getitem__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, theme)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3455,10 +3456,10 @@ lines (<code>list</code>) of the help information.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__setattr__</code></p>
+<p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>help</code></p>
+<p class="admonition-title">method: <code>help (self, error, printNexit)</code></p>
 <p>Construct the help page  </p>
 <ul>
 <li>
@@ -3473,7 +3474,7 @@ The help information if <code>printNexit</code> is <code>False</code>  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>parse</code></p>
+<p class="admonition-title">method: <code>parse (self, args, arbi)</code></p>
 <p>Parse the arguments.  </p>
 <ul>
 <li>
@@ -3492,7 +3493,7 @@ A <code>tuple</code> with first element the subcommand and second the parameters
 <h3 id="class-procnode">class: <code>ProcNode</code></h3>
 <p>The node for processes to manage relations between each other  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, proc)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3500,10 +3501,10 @@ A <code>tuple</code> with first element the subcommand and second the parameters
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__repr__</code></p>
+<p class="admonition-title">method: <code>__repr__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>sameIdTag</code></p>
+<p class="admonition-title">method: <code>sameIdTag (self, proc)</code></p>
 <p>Check if the process has the same id and tag with me.  </p>
 <ul>
 <li>
@@ -3521,7 +3522,7 @@ A <code>tuple</code> with first element the subcommand and second the parameters
 <h3 id="class-helper">class: <code>Helper</code></h3>
 <p>A helper class for runners  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, script, cmds)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3530,19 +3531,19 @@ A <code>tuple</code> with first element the subcommand and second the parameters
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>alive</code></p>
+<p class="admonition-title">method: <code>alive (self)</code></p>
 <p>Tell if the job is alive  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>kill</code></p>
+<p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Kill the job  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <p>Run the job, wait for the job to complete  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submit</code></p>
+<p class="admonition-title">method: <code>submit (self)</code></p>
 <p>Submit the job  </p>
 </div>
 <h2 id="module-pypplrunnersrunner">module: pyppl.runners.runner</h2>
@@ -3550,7 +3551,7 @@ A <code>tuple</code> with first element the subcommand and second the parameters
 <h3 id="class-runner">class: <code>Runner</code></h3>
 <p>The base runner class  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3558,14 +3559,14 @@ A <code>tuple</code> with first element the subcommand and second the parameters
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>finish</code></p>
+<p class="admonition-title">method: <code>finish (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>getpid</code></p>
+<p class="admonition-title">method: <code>getpid (self)</code></p>
 <p>Get the job id  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isRunning</code></p>
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
 <p>Try to tell whether the job is still running.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3573,14 +3574,14 @@ A <code>tuple</code> with first element the subcommand and second the parameters
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>kill</code></p>
+<p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Try to kill the running jobs if I am exiting  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>retry</code></p>
+<p class="admonition-title">method: <code>retry (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <ul>
 <li><strong>returns:</strong><br />
 True: success/fail<br />
@@ -3588,7 +3589,7 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submit</code></p>
+<p class="admonition-title">method: <code>submit (self)</code></p>
 <p>Try to submit the job  </p>
 </div>
 <h2 id="module-pypplrunnersrunner_dry">module: pyppl.runners.runner_dry</h2>
@@ -3596,7 +3597,7 @@ False: needs retry  </li>
 <h3 id="class-runner_1">class: <code>Runner</code></h3>
 <p>The base runner class  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3604,14 +3605,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>finish</code></p>
+<p class="admonition-title">method: <code>finish (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>getpid</code></p>
+<p class="admonition-title">method: <code>getpid (self)</code></p>
 <p>Get the job id  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isRunning</code></p>
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
 <p>Try to tell whether the job is still running.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3619,14 +3620,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>kill</code></p>
+<p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Try to kill the running jobs if I am exiting  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>retry</code></p>
+<p class="admonition-title">method: <code>retry (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <ul>
 <li><strong>returns:</strong><br />
 True: success/fail<br />
@@ -3634,13 +3635,13 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submit</code></p>
+<p class="admonition-title">method: <code>submit (self)</code></p>
 <p>Try to submit the job  </p>
 </div>
 <h3 id="class-runnerdry">class: <code>RunnerDry</code></h3>
 <p>The dry runner  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3648,7 +3649,7 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>finish</code></p>
+<p class="admonition-title">method: <code>finish (self)</code></p>
 <p>Do some cleanup work when jobs finish  </p>
 </div>
 <h2 id="module-pypplrunnersrunner_local">module: pyppl.runners.runner_local</h2>
@@ -3661,7 +3662,7 @@ Examples:  </p>
 <h3 id="class-runner_2">class: <code>Runner</code></h3>
 <p>The base runner class  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3669,14 +3670,14 @@ Examples:  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>finish</code></p>
+<p class="admonition-title">method: <code>finish (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>getpid</code></p>
+<p class="admonition-title">method: <code>getpid (self)</code></p>
 <p>Get the job id  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isRunning</code></p>
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
 <p>Try to tell whether the job is still running.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3684,14 +3685,14 @@ Examples:  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>kill</code></p>
+<p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Try to kill the running jobs if I am exiting  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>retry</code></p>
+<p class="admonition-title">method: <code>retry (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <ul>
 <li><strong>returns:</strong><br />
 True: success/fail<br />
@@ -3699,7 +3700,7 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submit</code></p>
+<p class="admonition-title">method: <code>submit (self)</code></p>
 <p>Try to submit the job  </p>
 </div>
 <h3 id="class-runnerlocal">class: <code>RunnerLocal</code></h3>
@@ -3710,13 +3711,13 @@ False: needs retry  </li>
 <code>config</code>: The properties of the process  </li>
 </ul>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 </div>
 <h2 id="module-pypplrunnersrunner_sge">module: pyppl.runners.runner_sge</h2>
 <h3 id="class-runner_3">class: <code>Runner</code></h3>
 <p>The base runner class  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3724,14 +3725,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>finish</code></p>
+<p class="admonition-title">method: <code>finish (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>getpid</code></p>
+<p class="admonition-title">method: <code>getpid (self)</code></p>
 <p>Get the job id  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isRunning</code></p>
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
 <p>Try to tell whether the job is still running.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3739,14 +3740,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>kill</code></p>
+<p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Try to kill the running jobs if I am exiting  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>retry</code></p>
+<p class="admonition-title">method: <code>retry (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <ul>
 <li><strong>returns:</strong><br />
 True: success/fail<br />
@@ -3754,13 +3755,13 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submit</code></p>
+<p class="admonition-title">method: <code>submit (self)</code></p>
 <p>Try to submit the job  </p>
 </div>
 <h3 id="class-runnersge">class: <code>RunnerSge</code></h3>
 <p>The sge runner  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3772,7 +3773,7 @@ False: needs retry  </li>
 <h3 id="class-runner_4">class: <code>Runner</code></h3>
 <p>The base runner class  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3780,14 +3781,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>finish</code></p>
+<p class="admonition-title">method: <code>finish (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>getpid</code></p>
+<p class="admonition-title">method: <code>getpid (self)</code></p>
 <p>Get the job id  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isRunning</code></p>
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
 <p>Try to tell whether the job is still running.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3795,14 +3796,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>kill</code></p>
+<p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Try to kill the running jobs if I am exiting  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>retry</code></p>
+<p class="admonition-title">method: <code>retry (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <ul>
 <li><strong>returns:</strong><br />
 True: success/fail<br />
@@ -3810,13 +3811,13 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submit</code></p>
+<p class="admonition-title">method: <code>submit (self)</code></p>
 <p>Try to submit the job  </p>
 </div>
 <h3 id="class-runnerslurm">class: <code>RunnerSlurm</code></h3>
 <p>The slurm runner  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3828,7 +3829,7 @@ False: needs retry  </li>
 <h3 id="class-runner_5">class: <code>Runner</code></h3>
 <p>The base runner class  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3836,14 +3837,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>finish</code></p>
+<p class="admonition-title">method: <code>finish (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>getpid</code></p>
+<p class="admonition-title">method: <code>getpid (self)</code></p>
 <p>Get the job id  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>isRunning</code></p>
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
 <p>Try to tell whether the job is still running.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3851,14 +3852,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>kill</code></p>
+<p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Try to kill the running jobs if I am exiting  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>retry</code></p>
+<p class="admonition-title">method: <code>retry (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self)</code></p>
 <ul>
 <li><strong>returns:</strong><br />
 True: success/fail<br />
@@ -3866,7 +3867,7 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>submit</code></p>
+<p class="admonition-title">method: <code>submit (self)</code></p>
 <p>Try to submit the job  </p>
 </div>
 <h3 id="class-runnerssh">class: <code>RunnerSsh</code></h3>
@@ -3877,7 +3878,7 @@ False: needs retry  </li>
 <li>Don't touch unless you know what's going on!  </li>
 </ul>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3885,14 +3886,14 @@ False: needs retry  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>isServerAlive</code></p>
+<p class="admonition-title">staticmethod: <code>isServerAlive (server, key)</code></p>
 </div>
 <h2 id="module-pyppltemplatestemplate">module: pyppl.templates.template</h2>
 <h2 id="module-pyppltemplatestemplate_jinja2">module: pyppl.templates.template_jinja2</h2>
 <h3 id="class-templatejinja2">class: <code>TemplateJinja2</code></h3>
 <p>Jinja2 template wrapper  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, source, **envs)</code></p>
 <p>Initiate the engine with source and envs  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3917,16 +3918,16 @@ Functions added:<br />
 <h3 id="class-templatepypplline">class: <code>TemplatePyPPLLine</code></h3>
 <p>Line of compiled code  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, line, src, indent)</code></p>
 <p>Constructor of line  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__str__</code></p>
+<p class="admonition-title">method: <code>__str__ (self)</code></p>
 </div>
 <h3 id="class-templatepyppl_1">class: <code>TemplatePyPPL</code></h3>
 <p>Built-in template wrapper.  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, source, **envs)</code></p>
 <p>Initiate the engine with source and envs  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3959,7 +3960,7 @@ text = templite.render({<br />
 'topics': ['Python', 'Geometry', 'Juggling'],<br />
 })  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, text, *contexts)</code></p>
 <p>Construct a Templite with the given <code>text</code>.<br />
 <code>contexts</code> are dictionaries of values to use for future renderings.<br />
 These are good for filters and global values.  </p>
@@ -3970,7 +3971,7 @@ These are good for filters and global values.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__str__</code></p>
+<p class="admonition-title">method: <code>__str__ (self)</code></p>
 <p>Stringize the engine.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -3978,7 +3979,7 @@ The string of the stringized engine.  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>flushOutput</code></p>
+<p class="admonition-title">method: <code>flushOutput (self)</code></p>
 <p>Force <code>self.buffered</code> to the code builder.  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3986,7 +3987,7 @@ The string of the stringized engine.  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>render</code></p>
+<p class="admonition-title">method: <code>render (self, context)</code></p>
 <p>Render this template by applying it to <code>context</code>.  </p>
 <ul>
 <li>
@@ -4002,7 +4003,7 @@ The rendered string  </p>
 <h3 id="class-templatepypplcodebuilder">class: <code>TemplatePyPPLCodeBuilder</code></h3>
 <p>Build source code conveniently.  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, envs, indent)</code></p>
 <p>Constructor of code builder  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4010,7 +4011,7 @@ indent: The initial indent level  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__str__</code></p>
+<p class="admonition-title">method: <code>__str__ (self)</code></p>
 <p>Concatnate of the codes  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -4018,7 +4019,7 @@ The concatnated string  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>addLine</code></p>
+<p class="admonition-title">method: <code>addLine (self, line, src)</code></p>
 <p>Add a line of source to the code.<br />
 Indentation and newline will be added for you, don't provide them.  </p>
 <ul>
@@ -4027,7 +4028,7 @@ line: The line to add  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>addSection</code></p>
+<p class="admonition-title">method: <code>addSection (self)</code></p>
 <p>Add a section, a sub-CodeBuilder.  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -4035,19 +4036,19 @@ The section added.  </li>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>dedent</code></p>
+<p class="admonition-title">method: <code>dedent (self)</code></p>
 <p>Decrease the current indent for following lines.  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>getGlobals</code></p>
+<p class="admonition-title">method: <code>getGlobals (self)</code></p>
 <p>Execute the code, and return a dict of globals it defines.  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>indent</code></p>
+<p class="admonition-title">method: <code>indent (self)</code></p>
 <p>Increase the current indent for following lines.  </p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>lineByNo</code></p>
+<p class="admonition-title">method: <code>lineByNo (self, lineno)</code></p>
 <p>Get the line by line number  </p>
 <ul>
 <li>
@@ -4246,13 +4247,13 @@ The converted list  </p>
 <h3 id="class-box">class: <code>Box</code></h3>
 <p>Allow dot operation for OrderedDict  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__getattr__</code></p>
+<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__setattr__</code></p>
+<p class="admonition-title">method: <code>__setattr__ (self, name, val)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>fromkeys</code></p>
+<p class="admonition-title">method: <code>fromkeys (cls, iterable, value)</code></p>
 <p>OD.fromkeys(S[, v]) -&gt; New ordered dictionary with keys from S.<br />
 If not specified, the value defaults to None.  </p>
 </div>
@@ -4278,7 +4279,7 @@ The <code>Command</code> instance  </p>
 <h3 id="class-cmd">class: <code>Cmd</code></h3>
 <p>A command (subprocess) wapper  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, cmd, raiseExc, timeout, **kwargs)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4288,10 +4289,10 @@ The <code>Command</code> instance  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__repr__</code></p>
+<p class="admonition-title">method: <code>__repr__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>pipe</code></p>
+<p class="admonition-title">method: <code>pipe (self, cmd, **kwargs)</code></p>
 <p>Pipe another command  </p>
 <ul>
 <li>
@@ -4313,7 +4314,7 @@ The <code>Command</code> instance  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self, bg)</code></p>
 <p>Wait for the command to run  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4347,7 +4348,7 @@ The merged results from each job.  </p>
 <h3 id="class-parallel">class: <code>Parallel</code></h3>
 <p>A parallel runner  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, nthread, backend, raiseExc)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4357,7 +4358,7 @@ The merged results from each job.  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self, func, args)</code></p>
 <p>Run parallel jobs  </p>
 <ul>
 <li>
@@ -4381,7 +4382,7 @@ From https://github.com/kennethreitz/delegator.py/blob/master/delegator.py  </p>
 <h3 id="class-cmd_1">class: <code>Cmd</code></h3>
 <p>A command (subprocess) wapper  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, cmd, raiseExc, timeout, **kwargs)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4391,10 +4392,10 @@ From https://github.com/kennethreitz/delegator.py/blob/master/delegator.py  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__repr__</code></p>
+<p class="admonition-title">method: <code>__repr__ (self)</code></p>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>pipe</code></p>
+<p class="admonition-title">method: <code>pipe (self, cmd, **kwargs)</code></p>
 <p>Pipe another command  </p>
 <ul>
 <li>
@@ -4416,7 +4417,7 @@ From https://github.com/kennethreitz/delegator.py/blob/master/delegator.py  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>run</code></p>
+<p class="admonition-title">method: <code>run (self, bg)</code></p>
 <p>Wait for the command to run  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4508,7 +4509,7 @@ From https://github.com/kennethreitz/delegator.py/blob/master/delegator.py  </p>
 <code>FILES_SAME_REAL2</code>     : File1 links to file2, which a regular file  </p>
 <p><code>LOCK</code>: A global lock ensures the locks are locked at the same time  </p>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>__init__</code></p>
+<p class="admonition-title">method: <code>__init__ (self, file1, file2, tmpdir)</code></p>
 <p>Constructor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4518,7 +4519,7 @@ From https://github.com/kennethreitz/delegator.py/blob/master/delegator.py  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>basename</code></p>
+<p class="admonition-title">staticmethod: <code>basename (filepath)</code></p>
 <p>Get the basename of a file<br />
 If it is a directory like '/a/b/c/', return <code>c</code>  </p>
 <ul>
@@ -4533,7 +4534,7 @@ The basename  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>chmodX</code></p>
+<p class="admonition-title">method: <code>chmodX (self)</code></p>
 <p>Convert file1 to executable or add extract shebang to cmd line  </p>
 <ul>
 <li><strong>returns:</strong><br />
@@ -4541,7 +4542,7 @@ A list with or without the path of the interpreter as the first element and the 
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>copy</code></p>
+<p class="admonition-title">method: <code>copy (self, overwrite, callback)</code></p>
 <p>Copy file1 to file2 thread-safely  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4558,7 +4559,7 @@ A list with or without the path of the interpreter as the first element and the 
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>exists</code></p>
+<p class="admonition-title">method: <code>exists (self, callback)</code></p>
 <p>Tell if file1 exists thread-safely  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4574,7 +4575,7 @@ A list with or without the path of the interpreter as the first element and the 
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>filesig</code></p>
+<p class="admonition-title">method: <code>filesig (self, dirsig)</code></p>
 <p>Generate a signature for a file  </p>
 <ul>
 <li>
@@ -4588,7 +4589,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">staticmethod: <code>flush</code></p>
+<p class="admonition-title">staticmethod: <code>flush (fd, lastmsg, end)</code></p>
 <p>Flush a file descriptor  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4598,7 +4599,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>gz</code></p>
+<p class="admonition-title">method: <code>gz (self, overwrite, callback)</code></p>
 <p>Gzip file1 (tar-gzip if file1 is a directory) to file2 in a thread-safe way  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4615,7 +4616,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>link</code></p>
+<p class="admonition-title">method: <code>link (self, overwrite, callback)</code></p>
 <p>Link file1 to file2 thread-safely  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4632,7 +4633,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>move</code></p>
+<p class="admonition-title">method: <code>move (self, overwrite, callback)</code></p>
 <p>Move file1 to file2 thread-safely  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4649,7 +4650,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>moveWithLink</code></p>
+<p class="admonition-title">method: <code>moveWithLink (self, overwrite, callback)</code></p>
 <p>Move file1 to file2 and link file2 to file1 in a thread-safe way  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4666,7 +4667,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>remove</code></p>
+<p class="admonition-title">method: <code>remove (self, callback)</code></p>
 <p>Remove file1 thread-safely  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4682,7 +4683,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>samefile</code></p>
+<p class="admonition-title">method: <code>samefile (self, callback)</code></p>
 <p>Tell if file1 and file2 are the same file in a thread-safe way  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -4698,7 +4699,7 @@ The signature  </p>
 </ul>
 </div>
 <div class="admonition hint">
-<p class="admonition-title">method: <code>ungz</code></p>
+<p class="admonition-title">method: <code>ungz (self, overwrite, callback)</code></p>
 <p>Ungzip file1 (tar-ungzip if file1 tar-gzipped to file2 in a thread-safe way  </p>
 <ul>
 <li><strong>params:</strong><br />
