@@ -811,12 +811,12 @@
 <p>It is a <code>dict</code> used to set some common arguments shared within the process (different jobs). For example, all jobs use the same program: <code>bedtools</code>. but to make the process portable and shareable, you may want others can give a different path of <code>bedtools</code> as well. Then you can use <code>pXXX.args</code>:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span> <span class="o">=</span> <span class="n">Proc</span><span class="p">()</span>
 <span class="n">pXXX</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile1:file, infile2:file&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;file1.bed&quot;</span><span class="p">,</span> <span class="s2">&quot;file2.bed&quot;</span><span class="p">)]}</span>
-<span class="n">pXXX</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile1 | fn}}.out&quot;</span>
+<span class="n">pXXX</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile1 | fn}}.out&quot;</span>
 <span class="n">pXXX</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bedtools&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/bedtools&quot;</span><span class="p">}</span>
 <span class="c1"># You can also do:</span>
 <span class="c1"># pXXX.args.bedtools = &quot;/path/to/bedtools&quot;</span>
 <span class="n">pXXX</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">{{args.bedtools}} intersect -a {{in.infile1}} -b {{in.infile2}} &gt; {{out.outfile}}</span>
+<span class="s2">{{args.bedtools}} intersect -a {{i.infile1}} -b {{i.infile2}} &gt; {{o.outfile}}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 That's <strong>NOT</strong> recommended that you put it in the input channel:
@@ -864,8 +864,8 @@ To set prior processes not only let the process use the output channel as input 
 <p>The processes <strong>NOT</strong> initialized until it's ready to run. So you may not be able to modify some of the values until it is initialized. For example, you may want to change the output channel before it passes to the its dependent process:
 <div class="highlight"><pre><span></span><span class="n">pSingle</span> <span class="o">=</span> <span class="n">Proc</span> <span class="p">()</span>
 <span class="n">pSingle</span><span class="o">.</span><span class="n">input</span>    <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;file1.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;file2.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;file3.txt&quot;</span><span class="p">]}</span>
-<span class="n">pSingle</span><span class="o">.</span><span class="n">output</span>   <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.sorted&quot;</span>
-<span class="n">pSingle</span><span class="o">.</span><span class="n">script</span>   <span class="o">=</span> <span class="s2">&quot;# Sort {{in. infile}} and save to {{out.outfile}}.sorted&quot;</span>
+<span class="n">pSingle</span><span class="o">.</span><span class="n">output</span>   <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.sorted&quot;</span>
+<span class="n">pSingle</span><span class="o">.</span><span class="n">script</span>   <span class="o">=</span> <span class="s2">&quot;# Sort {{i. infile}} and save to {{o.outfile}}.sorted&quot;</span>
 <span class="c1"># pSingle.channel == [(&quot;file1.sorted&quot;,), (&quot;file2.sorted&quot;,), (&quot;file3.sorted&quot;,)]</span>
 <span class="c1"># BUT NOT NOW!! the output channel is only generated after the process finishes</span>
 
@@ -873,8 +873,8 @@ To set prior processes not only let the process use the output channel as input 
 <span class="n">pCombine</span><span class="o">.</span><span class="n">depends</span> <span class="o">=</span> <span class="n">pSingle</span>
 <span class="n">pCombine</span><span class="o">.</span><span class="n">input</span>   <span class="o">=</span> <span class="s2">&quot;indir:file&quot;</span>   
 <span class="c1"># the directory contains &quot;file1.sorted&quot;, &quot;file2.sorted&quot;, &quot;file3.sorted&quot;</span>
-<span class="n">pCombine</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:{{in.indir | fn}}.combined&quot;</span>
-<span class="n">pCombine</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;# combine files to {{out.outfile}}.combined&quot;</span>
+<span class="n">pCombine</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:{{i.indir | fn}}.combined&quot;</span>
+<span class="n">pCombine</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;# combine files to {{o.outfile}}.combined&quot;</span>
 
 <span class="c1"># To use the directory of &quot;file1.sorted&quot;, &quot;file2.sorted&quot;, &quot;file3.sorted&quot; as the input channel for pCombine</span>
 <span class="c1"># You can use callback</span>
@@ -890,11 +890,11 @@ You can also use a callback in <code>pCombine.input</code> to modify the channel
 For example:
 <div class="highlight"><pre><span></span><span class="c1"># generate bam files</span>
 <span class="c1"># ...</span>
-<span class="n">pBam</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;bamfile:file:{{in.infile | fn}}.bam&quot;</span>
+<span class="n">pBam</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;bamfile:file:{{i.infile | fn}}.bam&quot;</span>
 
 <span class="c1"># generate/download reference file, and index it</span>
 <span class="c1"># ...</span>
-<span class="n">pRef</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;reffile:file:{{in.in}}.fa&quot;</span>
+<span class="n">pRef</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;reffile:file:{{i.in}}.fa&quot;</span>
 
 <span class="c1"># call variance</span>
 <span class="c1"># ...</span>

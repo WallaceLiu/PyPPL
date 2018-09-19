@@ -689,7 +689,7 @@
                   <h1>Introduction</h1>
                 
                 <h2 id="pyppl-a-python-pipeline-framework"><a href="https://github.com/pwwang/pyppl/">PyPPL</a> - A <a href="#">Py</a>thon <a href="#">P</a>i<a href="#">P</a>e<a href="#">L</a>ine framework</h2>
-<p><img alt="Pypi" src="https://img.shields.io/pypi/v/pyppl.svg?style=flat-square" /> <img alt="Github" src="https://img.shields.io/github/tag/pwwang/PyPPL.svg?style=flat-square" /> <img alt="PythonVers" src="https://img.shields.io/pypi/pyversions/PyPPL.svg?style=flat-square" /> <img alt="Travis building" src="https://img.shields.io/travis/pwwang/PyPPL.svg?style=flat-square" />  <img alt="Codacy" src="https://api.codacy.com/project/badge/Grade/a04aac445f384a8dbe47da19c779763f" /> <img alt="Codacy coverage" src="https://api.codacy.com/project/badge/Coverage/a04aac445f384a8dbe47da19c779763f" /></p>
+<p><img alt="Pypi" src="https://img.shields.io/pypi/v/pyppl.svg?style=flat-square" /> <img alt="Github" src="https://img.shields.io/github/tag/pwwang/PyPPL.svg?style=flat-square" /> <img alt="PythonVers" src="https://img.shields.io/pypi/pyversions/PyPPL.svg?style=flat-square" /> <img alt="Travis building" src="https://img.shields.io/travis/pwwang/PyPPL.svg?style=flat-square" />  <img alt="Codacy" src="https://img.shields.io/codacy/grade/a04aac445f384a8dbe47da19c779763f.svg?style=flat-square" /> <img alt="Codacy coverage" src="https://img.shields.io/codacy/coverage/a04aac445f384a8dbe47da19c779763f.svg?style=flat-square" /></p>
 <p><a href="https://pwwang.github.io/PyPPL/">Documentation</a> | <a href="https://pwwang.github.io/PyPPL/api/">API</a> | <a href="https://pwwang.github.io/PyPPL/change-log/">Change log</a> | <a href="https://pwwang.github.io/PyPPL/faq/">FAQ</a></p>
 <!-- toc -->
 
@@ -698,7 +698,7 @@
 <li><a href="https://pwwang.github.io/PyPPL/command-line-argument-parser/">Easy-to-use command line parser.</a></li>
 <li><a href="https://pwwang.github.io/PyPPL/configure-your-logs/">Fancy logs.</a></li>
 <li><a href="https://pwwang.github.io/PyPPL/caching/">Process caching.</a></li>
-<li><a href="https://pwwang.github.io/PyPPL/placeholders/">Script templating (using either builtin engine or Jinja2).</a></li>
+<li><a href="https://pwwang.github.io/PyPPL/placeholders/">Script templating</a> (Either <a href="https://github.com/pwwang/liquid.py">liquid.py</a> or <a href="http://jinja.pocoo.org/">Jinja2</a>)</li>
 <li><a href="https://pwwang.github.io/PyPPL/runners/">Runner customization</a>.</li>
 <li><a href="https://pwwang.github.io/PyPPL/error-handling/">Error handling for processes.</a></li>
 <li><a href="https://pwwang.github.io/PyPPL/runners/">Easy-switching running profile.</a></li>
@@ -709,7 +709,7 @@
 <h3 id="requirements">Requirements</h3>
 <ul>
 <li>OS: Linux or OSX</li>
-<li>Python packages: <a href="https://github.com/benjaminp/six">six</a>, <a href="https://github.com/benediktschmitt/py-filelock">filelock</a>, <a href="https://pypi.org/project/futures/">futures</a> (suggested: <a href="https://github.com/xflr6/graphviz">graphviz</a>, <a href="https://github.com/yaml/pyyaml">pyyaml</a> and <a href="https://github.com/pwwang/testly">python-testly</a>).</li>
+<li>Python packages: <a href="https://github.com/benjaminp/six">six</a>, <a href="https://github.com/benediktschmitt/py-filelock">filelock</a>, <a href="https://pypi.org/project/futures/">futures</a> and <a href="https://github.com/pwwang/liquid.py">liquid.py</a> (suggested: <a href="https://github.com/xflr6/graphviz">graphviz</a>, <a href="https://github.com/yaml/pyyaml">pyyaml</a> and <a href="https://github.com/pwwang/testly">python-testly</a>).</li>
 </ul>
 <h3 id="installation">Installation</h3>
 <div class="highlight"><pre><span></span><span class="c1"># install latest version</span>
@@ -744,11 +744,11 @@ Sort 5 files simultaneously:
 
 <span class="mf">2.</span> <span class="n">pSort</span>         <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Sort files.&#39;</span><span class="p">)</span>
 <span class="mf">3.</span> <span class="n">pSort</span><span class="o">.</span><span class="n">input</span>   <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="n">Channel</span><span class="o">.</span><span class="n">fromPattern</span><span class="p">(</span><span class="s2">&quot;./data/*.txt&quot;</span><span class="p">)}</span>
-<span class="mf">4.</span> <span class="n">pSort</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.sorted&quot;</span>
+<span class="mf">4.</span> <span class="n">pSort</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.sorted&quot;</span>
 <span class="mf">5.</span> <span class="n">pSort</span><span class="o">.</span><span class="n">forks</span>   <span class="o">=</span> <span class="mi">5</span>
 <span class="mf">6.</span> <span class="n">pSort</span><span class="o">.</span><span class="n">exdir</span>   <span class="o">=</span> <span class="s1">&#39;./export&#39;</span>
 <span class="mf">7.</span> <span class="n">pSort</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">  sort -k1r {{in.infile}} &gt; {{out.outfile}} </span>
+<span class="s2">  sort -k1r {{i.infile}} &gt; {{o.outfile}} </span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="mf">8.</span> <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pSort</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -779,21 +779,21 @@ Sort 5 files and then add line number to each line.
 
 <span class="n">pSort</span>        <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Sort files.&#39;</span><span class="p">)</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">input</span>  <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="n">Channel</span><span class="o">.</span><span class="n">fromPattern</span><span class="p">(</span><span class="s2">&quot;./data/*.txt&quot;</span><span class="p">)}</span>
-<span class="n">pSort</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.sorted&quot;</span>
+<span class="n">pSort</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.sorted&quot;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">forks</span>  <span class="o">=</span> <span class="mi">5</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">  sort -k1r {{in.infile}} &gt; {{out.outfile}} </span>
+<span class="s2">  sort -k1r {{i.infile}} &gt; {{o.outfile}} </span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="n">pAddPrefix</span>         <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Add line number to each line.&#39;</span><span class="p">)</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">depends</span> <span class="o">=</span> <span class="n">pSort</span>
 <span class="c1"># automatically inferred from pSort.output</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">input</span>   <span class="o">=</span> <span class="s2">&quot;infile:file&quot;</span>  
-<span class="n">pAddPrefix</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.ln&quot;</span>
+<span class="n">pAddPrefix</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.ln&quot;</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">exdir</span>   <span class="o">=</span> <span class="s1">&#39;./export&#39;</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">forks</span>   <span class="o">=</span> <span class="mi">5</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">paste -d. &lt;(seq 1 $(wc -l {{in.infile}} | cut -f1 -d&#39; &#39;)) {{in.infile}} &gt; {{out.outfile}}</span>
+<span class="s2">paste -d. &lt;(seq 1 $(wc -l {{i.infile}} | cut -f1 -d&#39; &#39;)) {{i.infile}} &gt; {{o.outfile}}</span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pSort</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -810,19 +810,19 @@ Sort 5 files, add line numbers, and merge them into one file.
 
 <span class="n">pSort</span>        <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Sort files.&#39;</span><span class="p">)</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">input</span>  <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="n">Channel</span><span class="o">.</span><span class="n">fromPattern</span><span class="p">(</span><span class="s2">&quot;./data/*.txt&quot;</span><span class="p">)}</span>
-<span class="n">pSort</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.sorted&quot;</span>
+<span class="n">pSort</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.sorted&quot;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">forks</span>  <span class="o">=</span> <span class="mi">5</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">  sort -k1r {{in.infile}} &gt; {{out.outfile}} </span>
+<span class="s2">  sort -k1r {{i.infile}} &gt; {{o.outfile}} </span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="n">pAddPrefix</span>         <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Add line number to each line.&#39;</span><span class="p">)</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">depends</span> <span class="o">=</span> <span class="n">pSort</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">input</span>   <span class="o">=</span> <span class="s2">&quot;infile:file&quot;</span>  <span class="c1"># automatically inferred from pSort.output</span>
-<span class="n">pAddPrefix</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.ln&quot;</span>
+<span class="n">pAddPrefix</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.ln&quot;</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">forks</span>   <span class="o">=</span> <span class="mi">5</span>
 <span class="n">pAddPrefix</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">paste -d. &lt;(seq 1 $(wc -l {{in.infile}} | cut -f1 -d&#39; &#39;)) {{in.infile}} &gt; {{out.outfile}}</span>
+<span class="s2">paste -d. &lt;(seq 1 $(wc -l {{i.infile}} | cut -f1 -d&#39; &#39;)) {{i.infile}} &gt; {{o.outfile}}</span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="n">pMergeFiles</span>         <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Merge files, each as a column.&#39;</span><span class="p">)</span>
@@ -833,7 +833,7 @@ Sort 5 files, add line numbers, and merge them into one file.
 <span class="n">pMergeFiles</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:mergedfile.txt&quot;</span>
 <span class="n">pMergeFiles</span><span class="o">.</span><span class="n">exdir</span>   <span class="o">=</span> <span class="s2">&quot;./export&quot;</span>
 <span class="n">pMergeFiles</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">paste {{in.infiles | asquote}} &gt; {{out.outfile}}</span>
+<span class="s2">paste {{i.infiles | asquote}} &gt; {{o.outfile}}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pSort</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -857,9 +857,9 @@ Plot heatmap using R.
 <span class="c1"># in this case: #!/usr/bin/env Rscript</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">lang</span>   <span class="o">=</span> <span class="s1">&#39;Rscript&#39;</span> 
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">set.seed({{in.seed}})</span>
+<span class="s2">set.seed({{i.seed}})</span>
 <span class="s2">mat = matrix(rnorm(100), ncol=10)</span>
-<span class="s2">png(filename = &quot;{{out.outfile}}&quot;)</span>
+<span class="s2">png(filename = &quot;{{o.outfile}}&quot;)</span>
 <span class="s2">heatmap(mat)</span>
 <span class="s2">dev.off()</span>
 <span class="s2">&quot;&quot;&quot;</span>
@@ -875,16 +875,16 @@ If the jobs are sharing the same set of configurations (in this case, the number
 
 <span class="n">pHeatmap</span>           <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Draw heatmap.&#39;</span><span class="p">)</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">input</span>     <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]}</span>
-<span class="n">pHeatmap</span><span class="o">.</span><span class="n">output</span>    <span class="o">=</span> <span class="s2">&quot;outfile:file:heatmap{{in.seed}}.png&quot;</span>
+<span class="n">pHeatmap</span><span class="o">.</span><span class="n">output</span>    <span class="o">=</span> <span class="s2">&quot;outfile:file:heatmap{{i.seed}}.png&quot;</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">exdir</span>     <span class="o">=</span> <span class="s2">&quot;./export&quot;</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">forks</span>     <span class="o">=</span> <span class="mi">3</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">ncol</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">nrow</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">lang</span>      <span class="o">=</span> <span class="s1">&#39;Rscript&#39;</span> <span class="c1"># or /path/to/Rscript if it&#39;s not in $PATH</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">set.seed({{in.seed}})</span>
-<span class="s2">mat = matrix(rnorm({{args.ncol, args.nrow | lambda x, y: x*y}}), ncol={{args.ncol}})</span>
-<span class="s2">png(filename = &quot;{{out.outfile}}&quot;, width=150, height=150)</span>
+<span class="s2">set.seed({{i.seed}})</span>
+<span class="s2">mat = matrix(rnorm({{args.ncol * args.nrow}}), ncol={{args.ncol}})</span>
+<span class="s2">png(filename = &quot;{{o.outfile}}&quot;, width=150, height=150)</span>
 <span class="s2">heatmap(mat)</span>
 <span class="s2">dev.off()</span>
 <span class="s2">&quot;&quot;&quot;</span>
@@ -923,11 +923,11 @@ If the jobs are sharing the same set of configurations (in this case, the number
 
 <span class="n">pSort</span>         <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Sort files.&#39;</span><span class="p">)</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">input</span>   <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="n">Channel</span><span class="o">.</span><span class="n">fromPattern</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;/*.txt&#39;</span><span class="p">)}</span>
-<span class="n">pSort</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.sorted&quot;</span>
+<span class="n">pSort</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.sorted&quot;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">forks</span>   <span class="o">=</span> <span class="mi">5</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">exdir</span>   <span class="o">=</span> <span class="s1">&#39;./export&#39;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">  sort -k1r {{in.infile}} &gt; {{out.outfile}} </span>
+<span class="s2">  sort -k1r {{i.infile}} &gt; {{o.outfile}} </span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pSort</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -951,7 +951,7 @@ Provide value to <code>-datadir</code>:<br />
 
 <span class="n">pSort</span>         <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Sort files.&#39;</span><span class="p">)</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">input</span>   <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="n">Channel</span><span class="o">.</span><span class="n">fromPattern</span><span class="p">(</span><span class="s2">&quot;./data/*.txt&quot;</span><span class="p">)}</span>
-<span class="n">pSort</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{in.infile | fn}}.sorted&quot;</span>
+<span class="n">pSort</span><span class="o">.</span><span class="n">output</span>  <span class="o">=</span> <span class="s2">&quot;outfile:file:{{i.infile | fn}}.sorted&quot;</span>
 <span class="c1"># specify the runner</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">runner</span>  <span class="o">=</span> <span class="s1">&#39;sge&#39;</span>
 <span class="c1"># specify the runner options</span>
@@ -961,7 +961,7 @@ Provide value to <code>-datadir</code>:<br />
 <span class="n">pSort</span><span class="o">.</span><span class="n">forks</span>   <span class="o">=</span> <span class="mi">5</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">exdir</span>   <span class="o">=</span> <span class="s1">&#39;./export&#39;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">script</span>  <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">  sort -k1r {{in.infile}} &gt; {{out.outfile}} </span>
+<span class="s2">  sort -k1r {{i.infile}} &gt; {{o.outfile}} </span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pSort</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -982,14 +982,14 @@ Provide value to <code>-datadir</code>:<br />
 <span class="n">pSort</span>          <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Sort files.&#39;</span><span class="p">)</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">input</span>    <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="n">Channel</span><span class="o">.</span><span class="n">fromPattern</span><span class="p">(</span><span class="s2">&quot;./data/*.txt&quot;</span><span class="p">)}</span>
 <span class="c1"># Notice the different between builtin template engine and Jinja2</span>
-<span class="n">pSort</span><span class="o">.</span><span class="n">output</span>   <span class="o">=</span> <span class="s2">&quot;outfile:file:{{ fn(in.infile) }}.sorted&quot;</span>
-<span class="c1"># pSort.output = &quot;outfile:file:{{in.infile | fn}}.sorted&quot;</span>
+<span class="n">pSort</span><span class="o">.</span><span class="n">output</span>   <span class="o">=</span> <span class="s2">&quot;outfile:file:{{ fn(i.infile) }}.sorted&quot;</span>
+<span class="c1"># pSort.output = &quot;outfile:file:{{i.infile | fn}}.sorted&quot;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">forks</span>    <span class="o">=</span> <span class="mi">5</span>
 <span class="c1"># You have to have Jinja2 installed (pip install Jinja2)</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">template</span> <span class="o">=</span> <span class="s1">&#39;Jinja2&#39;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">exdir</span>    <span class="o">=</span> <span class="s1">&#39;./export&#39;</span>
 <span class="n">pSort</span><span class="o">.</span><span class="n">script</span>   <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">  sort -k1r {{in.infile}} &gt; {{out.outfile}} </span>
+<span class="s2">  sort -k1r {{i.infile}} &gt; {{o.outfile}} </span>
 <span class="s2">&quot;&quot;&quot;</span> 
 
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pSort</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -1001,7 +1001,7 @@ You can directly go to <code>&lt;workdir&gt;/&lt;job.index&gt;/job.script</code>
 
 <span class="n">pHeatmap</span>           <span class="o">=</span> <span class="n">Proc</span><span class="p">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;Draw heatmap.&#39;</span><span class="p">)</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">input</span>     <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]}</span>
-<span class="n">pHeatmap</span><span class="o">.</span><span class="n">output</span>    <span class="o">=</span> <span class="s2">&quot;outfile:file:heatmap{{in.seed}}.png&quot;</span>
+<span class="n">pHeatmap</span><span class="o">.</span><span class="n">output</span>    <span class="o">=</span> <span class="s2">&quot;outfile:file:heatmap{{i.seed}}.png&quot;</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">exdir</span>     <span class="o">=</span> <span class="s2">&quot;./export&quot;</span>
 <span class="c1"># Don&#39;t cache jobs for debugging</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">cache</span>     <span class="o">=</span> <span class="bp">False</span>
@@ -1011,12 +1011,12 @@ You can directly go to <code>&lt;workdir&gt;/&lt;job.index&gt;/job.script</code>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">nrow</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">lang</span>      <span class="o">=</span> <span class="s1">&#39;Rscript&#39;</span> <span class="c1"># or /path/to/Rscript if it&#39;s not in $PATH</span>
 <span class="n">pHeatmap</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">set.seed({{in.seed}})</span>
-<span class="s2">mat = matrix(rnorm({{args.ncol, args.nrow | lambda x, y: x*y}}), ncol={{args.ncol}})</span>
-<span class="s2">png(filename = &quot;{{out.outfile}}&quot;, width=150, height=150)</span>
+<span class="s2">set.seed({{i.seed}})</span>
+<span class="s2">mat = matrix(rnorm({{args.ncol * args.nrow}}), ncol={{args.ncol}})</span>
+<span class="s2">png(filename = &quot;{{o.outfile}}&quot;, width=150, height=150)</span>
 
 <span class="s2"># have to be on stderr</span>
-<span class="s2">cat(&quot;pyppl.log.debug:Plotting heatmap #{{job.index | lambda x: int(x) + 1}} ...&quot;, file = stderr())</span>
+<span class="s2">cat(&quot;pyppl.log.debug:Plotting heatmap #{{job.index | @plus: 1}} ...&quot;, file = stderr())</span>
 
 <span class="s2">heatmap(mat)</span>
 <span class="s2">dev.off()</span>

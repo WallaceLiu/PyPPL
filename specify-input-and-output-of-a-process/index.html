@@ -615,13 +615,13 @@ But you cannot do:
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When a job is being prepared, the input files (type: <code>file</code>, <code>path</code>, <code>dir</code> or <code>folder</code>) will be linked to <code>&lt;indir&gt;</code>. In the template, for example, you may use <code>{{in.infile}}</code> to get its path. However, it may have different paths:  </p>
+<p>When a job is being prepared, the input files (type: <code>file</code>, <code>path</code>, <code>dir</code> or <code>folder</code>) will be linked to <code>&lt;indir&gt;</code>. In the template, for example, you may use <code>{{i.infile}}</code> to get its path. However, it may have different paths:  </p>
 <ul>
 <li>The original path</li>
 <li>The path from <code>&lt;indir&gt;</code> </li>
 <li>The realpath (if the original file specified to the job is a symbolic link, it will be different from the original path)</li>
 </ul>
-<p>Then you are able to swith the value of <code>{{in.infile}}</code> using the setting <code>p.infile</code>:  </p>
+<p>Then you are able to swith the value of <code>{{i.infile}}</code> using the setting <code>p.infile</code>:  </p>
 <ul>
 <li><code>"indir"</code> (default): The path from <code>&lt;indir&gt;</code></li>
 <li><code>"origin"</code>: The original path</li>
@@ -629,9 +629,9 @@ But you cannot do:
 </ul>
 <p>You may also use them directly by:</p>
 <ul>
-<li><code>{{in.IN_infile}}</code>: The path from <code>&lt;indir&gt;</code></li>
-<li><code>{{in.OR_infile}}</code>: The original path</li>
-<li><code>{{in.RE_infile}}</code>: The realpath</li>
+<li><code>{{i.IN_infile}}</code>: The path from <code>&lt;indir&gt;</code></li>
+<li><code>{{i.OR_infile}}</code>: The original path</li>
+<li><code>{{i.RE_infile}}</code>: The realpath</li>
 </ul>
 </div>
 <p>Use <code>sys.argv</code> (see details for <a href="./channels/#initialize-a-channel"><code>Channel.fromArgv</code></a>):
@@ -639,17 +639,17 @@ But you cannot do:
 <span class="n">p3</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="s2">&quot;in1&quot;</span>
 <span class="c1"># same as p3.input = {&quot;in1&quot;: channel.fromArgv ()}</span>
 <span class="c1"># Run the program: &gt; python test.py 1 2 3</span>
-<span class="c1"># Then in job#0: {{in.in1}} -&gt; 1</span>
-<span class="c1"># Then in job#1: {{in.in1}} -&gt; 2</span>
-<span class="c1"># Then in job#2: {{in.in1}} -&gt; 3</span>
+<span class="c1"># Then in job#0: {{i.in1}} -&gt; 1</span>
+<span class="c1"># Then in job#1: {{i.in1}} -&gt; 2</span>
+<span class="c1"># Then in job#2: {{i.in1}} -&gt; 3</span>
 
 <span class="n">p4</span> <span class="o">=</span> <span class="n">Proc</span><span class="p">()</span>
 <span class="n">p4</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="s2">&quot;in1, in2&quot;</span>
 <span class="c1"># same as p4.input = {&quot;in1, in2&quot;: channel.fromArgv ()}</span>
 <span class="c1"># Run the program: python test.py 1,a 2,b 3,c</span>
-<span class="c1"># Job#0: {{in.in1}} -&gt; 1, {{in.in2}} -&gt; a</span>
-<span class="c1"># Job#1: {{in.in1}} -&gt; 2, {{in.in2}} -&gt; b</span>
-<span class="c1"># Job#2: {{in.in1}} -&gt; 3, {{in.in2}} -&gt; c</span>
+<span class="c1"># Job#0: {{i.in1}} -&gt; 1, {{i.in2}} -&gt; a</span>
+<span class="c1"># Job#1: {{i.in1}} -&gt; 2, {{i.in2}} -&gt; b</span>
+<span class="c1"># Job#2: {{i.in1}} -&gt; 3, {{i.in2}} -&gt; c</span>
 </pre></div></p>
 <h4 id="specify-files-as-input">Specify files as input</h4>
 <ul>
@@ -660,15 +660,15 @@ But you cannot do:
   Then <code>PyPPL</code> will create symbolic links in <code>&lt;workdir&gt;/&lt;job.index&gt;/input/</code>. </li>
 </ul>
 <blockquote>
-<p><strong>Note</strong> The <code>{{in.infile}}</code>
+<p><strong>Note</strong> The <code>{{i.infile}}</code>
    will return the path of the link in <code>&lt;indir&gt;</code> pointing to the actual input file. If you want to get the path of the actual path, you may use: 
-  <div class="highlight"><pre><span></span>{{ in.infile | readlink }} or {{ in._infile }}
+  <div class="highlight"><pre><span></span>{{ i.infile | readlink }} or {{ i._infile }}
 </pre></div>
 - Use a list of files:
   Similar as a single file, but you have to specify it as <code>files</code>:
   <div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;infiles:files&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">channel</span><span class="o">.</span><span class="n">fromPattern</span><span class="p">(</span><span class="s2">&quot;./*.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()]}</span>
 </pre></div>
-  Then remember <code>{{in.infiles}}</code> is a list, so is <code>{{in._infiles}}</code>
+  Then remember <code>{{i.infiles}}</code> is a list, so is <code>{{i._infiles}}</code>
 - Rename input file links
   When there are input files (different files) with the same basename, later ones will be renamed in <code>&lt;indir&gt;</code>. For example:
   <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">{</span>
@@ -676,7 +676,7 @@ But you cannot do:
   <span class="s2">&quot;infile2:file&quot;</span><span class="p">:</span> <span class="s2">&quot;/path2/to/theSameBasename.txt&quot;</span>
 <span class="p">}</span>
 </pre></div>
-  Remember both files will have symblic links created in <code>&lt;indir&gt;</code>. To avoid <code>infile2</code> being overwritten, the basename of the link will be <code>theSameBasename[1].txt</code>. If you are using built-in template functions to get the filename (<code>{{in.file2 | fn}}</code>), we can still get <code>theSameBasename.txt</code> instead of <code>theSameBasename[1].txt</code>. <code>bn</code>, <code>basename</code>, <code>prefix</code> act similarly.</p>
+  Remember both files will have symblic links created in <code>&lt;indir&gt;</code>. To avoid <code>infile2</code> being overwritten, the basename of the link will be <code>theSameBasename[1].txt</code>. If you are using built-in template functions to get the filename (<code>{{i.file2 | fn}}</code>), we can still get <code>theSameBasename.txt</code> instead of <code>theSameBasename[1].txt</code>. <code>bn</code>, <code>basename</code>, <code>prefix</code> act similarly.</p>
 </blockquote>
 <h4 id="use-callback-to-modify-the-input-channel">Use callback to modify the input channel</h4>
 <p>You can modify the input channel of a process by a callback. For example:
@@ -702,7 +702,7 @@ You can check more examples in some channel methods: <a href="./channels/#expand
 <h3 id="specify-output-of-a-process">Specify output of a process</h3>
 <p>Different from input, instead of channels, you have to tell <code>PyPPL</code> how to compute the output channel. The output can be a <code>list</code>, <code>str</code> or <code>OrderedDict</code> (<strong>but not a <code>dict</code>, as the order of keys has to be kept</strong>). If it's <code>str</code>, a comma (<code>,</code>) is used to separate different keys:
 <div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">input</span>  <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;invar&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;infile:file&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/a/b/c.txt&quot;</span><span class="p">]}</span>
-<span class="n">p</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outvar:var:{{in.invar}}2, outfile:file:{{in.infile | bn}}2, outdir:dir:{{in.indir | fn}}-dir&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;outvar:var:{{i.invar}}2, outfile:file:{{i.infile | bn}}2, outdir:dir:{{i.indir | fn}}-dir&quot;</span>
 <span class="c1"># The type &#39;var&#39; is omitted in the first element.</span>
 <span class="c1"># The output channel (pXXX.channel) will be:</span>
 <span class="c1"># [(&quot;12&quot;, &quot;c.txt2&quot;, &quot;c-dir&quot;)]</span>
@@ -731,15 +731,15 @@ The output keys are automatically attached to the output channel, so you may use
 <td>-</td>
 <td>Use the value directly</td>
 <td><code>{"in:var": [1]}</code></td>
-<td><code>{{in.in}} -&gt; 1</code></td>
+<td><code>{{i.in}} -&gt; 1</code></td>
 </tr>
 <tr>
 <td>Input</td>
 <td><code>file</code></td>
 <td><code>path</code><br /><code>dir</code><br /><code>folder</code></td>
-<td>Create link in <code>&lt;indir&gt;</code> and assign the original path to <code>in._in</code></td>
+<td>Create link in <code>&lt;indir&gt;</code> and assign the original path to <code>i._in</code></td>
 <td><code>{"in:file": ["/path/to/file"]}</code></td>
-<td><code>{{in.in}} -&gt; &lt;indir&gt;/file</code><br /><code>{{in._in}} -&gt; /path/to/file</code></td>
+<td><code>{{i.in}} -&gt; &lt;indir&gt;/file</code><br /><code>{{i._in}} -&gt; /path/to/file</code></td>
 </tr>
 <tr>
 <td>Input</td>
@@ -747,7 +747,7 @@ The output keys are automatically attached to the output channel, so you may use
 <td><code>paths</code><br /><code>dirs</code><br /><code>folders</code></td>
 <td>Same as <code>file</code> but do for multiple files</td>
 <td><code>{</code><br /><code>"in:files":</code><br /><code>(["/path/to/file1",</code><br /><code>"/path/to/file2"],)</code><br /><code>}</code></td>
-<td><code>{{in.in</code>&#124;<code>asquote}} -&gt; "&lt;indir&gt;/file1" "&lt;indir&gt;/file2"</code><br /><code>{{in._in</code>&#124;<code>asquote}} -&gt; "/path/to/file1" "/path/to/file2"</code></td>
+<td><code>{{i.in</code>&#124;<code>asquote}} -&gt; "&lt;indir&gt;/file1" "&lt;indir&gt;/file2"</code><br /><code>{{i._in</code>&#124;<code>asquote}} -&gt; "/path/to/file1" "/path/to/file2"</code></td>
 </tr>
 <tr>
 <td>Output</td>
@@ -755,39 +755,39 @@ The output keys are automatically attached to the output channel, so you may use
 <td>-</td>
 <td>Specify direct value</td>
 <td><code>"out:var:{{job.index}}"</code></td>
-<td><code>{{out.out}} -&gt; &lt;job.index&gt;</code></td>
+<td><code>{{o.out}} -&gt; &lt;job.index&gt;</code></td>
 </tr>
 <tr>
 <td>Output</td>
 <td><code>file</code></td>
 <td><code>path</code></td>
 <td>Just specify the basename, output file will be generated in <code>job.outdir</code></td>
-<td><code>"out:file:{{in.infile</code>&#124;<code>fn}}.out"</code></td>
-<td><code>{{out.out}} == &lt;outdir&gt;/&lt;filename of infile&gt;.out</code></td>
+<td><code>"out:file:{{i.infile</code>&#124;<code>fn}}.out"</code></td>
+<td><code>{{o.out}} == &lt;outdir&gt;/&lt;filename of infile&gt;.out</code></td>
 </tr>
 <tr>
 <td>Output</td>
 <td><code>dir</code></td>
 <td><code>folder</code></td>
 <td>Do the same thing as <code>file</code> but will create the directory</td>
-<td><code>"out:dir:{{in.infile</code>&#124;<code>fn}}-outdir"</code></td>
-<td><code>{{out.out}} == &lt;outdir&gt;/&lt;filename of infile&gt;-outdir</code> <br />(automatically created)</td>
+<td><code>"out:dir:{{i.infile</code>&#124;<code>fn}}-outdir"</code></td>
+<td><code>{{o.out}} == &lt;outdir&gt;/&lt;filename of infile&gt;-outdir</code> <br />(automatically created)</td>
 </tr>
 <tr>
 <td>Output</td>
 <td><code>stdout</code></td>
 <td>-</td>
 <td>Link <code>job.stdout</code> file to <code>&lt;outdir&gt;</code></td>
-<td><code>out:stdout:{{in.infile</code>&#124;<code>fn}}.out</code></td>
-<td><code>{{out.out}} == &lt;outdir&gt;/&lt;filename of infile&gt;.out</code></td>
+<td><code>out:stdout:{{i.infile</code>&#124;<code>fn}}.out</code></td>
+<td><code>{{o.out}} == &lt;outdir&gt;/&lt;filename of infile&gt;.out</code></td>
 </tr>
 <tr>
 <td>Output</td>
 <td><code>stderr</code></td>
 <td>-</td>
 <td>Link <code>job.stderr</code> file to <code>&lt;outdir&gt;</code></td>
-<td><code>err:stderr:{{in.infile</code>&#124;<code>fn}}.err</code></td>
-<td><code>{{out.err}} == &lt;outdir&gt;/&lt;filename of infile&gt;.err</code></td>
+<td><code>err:stderr:{{i.infile</code>&#124;<code>fn}}.err</code></td>
+<td><code>{{o.err}} == &lt;outdir&gt;/&lt;filename of infile&gt;.err</code></td>
 </tr>
 </tbody>
 </table>

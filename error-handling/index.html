@@ -518,7 +518,7 @@ When a job finishes, it should generate a <code>job.rc</code> file containing th
 <p>You can use commands to check whether you have expected output. For example:
 <div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Proc</span> <span class="p">()</span>
 <span class="n">p</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
-<span class="n">p</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;echo {{in.input}}&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;echo {{i.input}}&quot;</span>
 <span class="c1"># check the stdout</span>
 <span class="n">p</span><span class="o">.</span><span class="n">expect</span> <span class="o">=</span> <span class="s2">&quot;grep 1 {{job.outfile}}&quot;</span>
 </pre></div></p>
