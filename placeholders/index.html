@@ -577,7 +577,7 @@
                   <h1>Templating</h1>
                 
                 <h2 id="templating">Templating</h2>
-<p><code>PyPPL</code> uses <a href="https://github.com/pwwang/liquid.py">liquid.py</a> as default template engine. It also supports <a href="http://jinja.pocoo.org/">Jinja2</a> if you have it installed and specify <code>"Jinja2"</code> to <code>pXXX.template</code>.</p>
+<p><code>PyPPL</code> uses <a href="https://github.com/pwwang/liquidpy">liquidpy</a> as default template engine. It also supports <a href="http://jinja.pocoo.org/">Jinja2</a> if you have it installed and specify <code>"Jinja2"</code> to <code>pXXX.template</code>.</p>
 <h3 id="common-data-avaible-for-rendering">Common data avaible for rendering</h3>
 <p>When rendering a template, following data are fed to the render function. So that you can use those values in the template. Some attribute values of a process are shared for all templates that are applied:</p>
 <ul>
@@ -781,7 +781,7 @@ For built-in template engine, you may use pipe, for example: <code>{{i.file | ba
 <li><code>repr</code>: Alias of python <code>repr</code> built-in function.</li>
 </ul>
 <h3 id="use-liquid">Use <code>Liquid</code>:</h3>
-<p>For usage of <code>Jinja2</code>, you may refer to its <a href="https://github.com/pwwang/liquid.py">official documentation</a>.</p>
+<p>For usage of <code>Jinja2</code>, you may refer to its <a href="https://github.com/pwwang/liquidpy">official documentation</a>.</p>
 <h3 id="use-jinja2">Use Jinja2</h3>
 <p>All the data and environment definition mentioned above are all applicable when you use <code>Jinja2</code> as your template engine.<br />
 For usage of <code>Jinja2</code>, you may refer to its <a href="http://jinja.pocoo.org/">official documentation</a>.</p>
