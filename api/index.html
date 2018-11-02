@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
     
     
       
@@ -71,7 +71,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../#module-pyppl" tabindex="1" class="md-skip">
+      <a href="#module-pyppl" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -789,6 +789,7 @@
                   <h1>API</h1>
                 
                 <h2 id="module-pyppl">module: pyppl</h2>
+<p>The main module of PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>PyPPL</code></p>
 <p>The PyPPL class  </p>
@@ -827,11 +828,11 @@
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">staticmethod: <code>registerRunner (runner)</code></p>
+<p class="admonition-title">staticmethod: <code>registerRunner (r)</code></p>
 <p>Register a runner  </p>
 <ul>
 <li><strong>params:</strong><br />
-<code>runner</code>: The runner to be registered.  </li>
+<code>r</code>: The runner to be registered.  </li>
 </ul>
 </div>
 <div class="admonition abstract">
@@ -938,9 +939,9 @@ It recognizes alias as well.  </p>
 </li>
 <li>
 <p><strong>config:</strong><br />
-    id, input, output, ppldir, forks, cache, cclean, rc, echo, runner, script, depends, tag, desc, dirsig<br />
+    id, input, output, ppldir, forks, cache, acache, rc, echo, runner, script, depends, tag, desc, dirsig<br />
     exdir, exhow, exow, errhow, errntry, lang, beforeCmd, afterCmd, workdir, args, aggr<br />
-    callfront, callback, expect, expart, template, tplenvs, resume, nthread  </p>
+    callfront, callback, expect, expart, template, tplenvs, resume, nsub  </p>
 </li>
 <li>
 <p><strong>props</strong><br />
@@ -972,16 +973,6 @@ It recognizes alias as well.  </p>
 <p><strong>returns:</strong><br />
     The new process  </p>
 </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>log (self, msg, level, key)</code></p>
-<p>The log function with aggregation name, process id and tag integrated.  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>msg</code>:   The message to log<br />
-<code>level</code>: The log level<br />
-<code>key</code>:   The type of messages  </li>
 </ul>
 </div>
 <div class="admonition abstract">
@@ -1694,6 +1685,7 @@ Try to keep the order  </p>
 </div>
 </div>
 <h2 id="module-pypplflowchart">module: pyppl.flowchart</h2>
+<p>flowchart module for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Flowchart</code></p>
 <p>Draw flowchart for pipelines  </p>
@@ -1743,41 +1735,23 @@ Try to keep the order  </p>
 </div>
 </div>
 <h2 id="module-pyppljob">module: pyppl.job</h2>
-<p>Job module for pyppl  </p>
+<p>job module for PyPPL  </p>
 <div class="admonition example">
-<p class="admonition-title">class: <code>Box</code></p>
-<p>Allow dot operation for OrderedDict  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
+<p class="admonition-title">class: <code>string_types</code></p>
 </div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__setattr__ (self, name, val)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>fromkeys (cls, iterable, value)</code></p>
-</div>
-</div>
-<p>OD.fromkeys(S[, v]) -&gt; New ordered dictionary with keys from S.<br />
-        If not specified, the value defaults to None.  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Job</code></p>
-<p>Job class, defining a job in a process  </p>
+<p>PyPPL Job  </p>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, index, proc)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>index</code>:   The index of the job in a process<br />
-<code>proc</code>:    The process  </li>
-</ul>
+<p class="admonition-title">method: <code>__init__ (self, index, config)</code></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>build (self)</code></p>
+<p>Initiate a job, make directory and prepare input, output and script.  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>cache (self)</code></p>
 <p>Truly cache the job (by signature)  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>checkOutfiles (self, expect)</code></p>
-<p>Check whether output files are generated, if not, add - to rc.  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>done (self)</code></p>
@@ -1786,10 +1760,6 @@ Try to keep the order  </p>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>export (self)</code></p>
 <p>Export the output files  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>init (self)</code></p>
-<p>Initiate a job, make directory and prepare input, output and script.  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>isExptCached (self)</code></p>
@@ -1801,37 +1771,28 @@ True if succeed, otherwise False  </p>
 <p>Check whether a job is truly cached (by signature)  </p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>pid (self, val)</code></p>
-<p>Get/Set the job id (pid or the id from queue system)  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>val</code>: The id to be set  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>rc (self, val)</code></p>
-<p>Get/Set the return code  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>val</code>: The return code to be set. If it is None, return the return code. Default: <code>None</code><br />
-    If val == -1000: the return code will be negative of current one. 0 will be '-0'  </p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-    The return code if <code>val</code> is <code>None</code><br />
-    If rcfile does not exist or is empty, return 9999, otherwise return -rc<br />
-    A negative rc (including -0) means output files not generated  </p>
-</li>
-</ul>
+<p class="admonition-title">method: <code>kill (self)</code></p>
+<p>Kill the job  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>report (self)</code></p>
 <p>Report the job information to logger  </p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>reset (self, retry)</code></p>
+<p class="admonition-title">method: <code>reset (self)</code></p>
 <p>Clear the intermediate files and output files  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>retry (self)</code></p>
+<p>If the job is available to retry  </p>
+<ul>
+<li><strong>return:</strong><br />
+<code>True</code> if it is else <code>False</code>  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>run (self)</code></p>
+<p>Wait for the job to run  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>signature (self)</code></p>
@@ -1842,55 +1803,88 @@ True if succeed, otherwise False  </p>
 </ul>
 </div>
 <div class="admonition abstract">
+<p class="admonition-title">method: <code>submit (self)</code></p>
+<p>Submit the job  </p>
+</div>
+<div class="admonition abstract">
 <p class="admonition-title">method: <code>succeed (self)</code></p>
-<p>Tell if the job is successful by return code, and output file expectations.  </p>
+<p>Tell if a job succeeds.<br />
+Check whether output files generated, expectation met and return code met.  </p>
 <ul>
-<li><strong>returns:</strong><br />
-    True if succeed else False  </li>
+<li><strong>return:</strong><br />
+<code>True</code> if succeed else <code>False</code>  </li>
 </ul>
 </div>
 </div>
 <h2 id="module-pyppljobmgr">module: pyppl.jobmgr</h2>
+<p>jobmgr module for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Jobmgr</code></p>
-<p>Job Manager  </p>
+<p>A job manager for PyPPL  </p>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, proc, runner)</code></p>
-<p>Job manager constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>proc</code>     : The process<br />
-<code>runner</code>   : The runner class  </li>
-</ul>
+<p class="admonition-title">method: <code>__init__ (self, jobs, config)</code></p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>allJobsDone (self)</code></p>
-<p>Tell whether all jobs are done.<br />
-No need to lock as it only runs in one process (the watcher process)  </p>
+<p>Tell if all jobs are done.  </p>
 <ul>
-<li><strong>returns:</strong><br />
-<code>True</code> if all jobs are done else <code>False</code>  </li>
+<li><strong>return:</strong><br />
+<code>True</code> if they are else <code>False</code>  </li>
 </ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>buildJob (self, i)</code></p>
+<p>Build job  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>i</code>: The job index  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>buildWorker (self)</code></p>
+<p>The build and submit worker  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>canSubmit (self)</code></p>
-<p>Tell whether we can submit jobs.  </p>
+<p>Tell if jobs can be submitted.  </p>
 <ul>
-<li><strong>returns:</strong><br />
-<code>True</code> if we can, otherwise <code>False</code>  </li>
+<li><strong>return:</strong><br />
+<code>True</code> if they can else <code>False</code>  </li>
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>halt (self, halt_anyway)</code></p>
-<p>Halt the pipeline if needed  </p>
+<p class="admonition-title">method: <code>cleanup (self, ex)</code></p>
+<p>Cleanup the pipeline when<br />
+- Ctrl-c hit<br />
+- error encountered and <code>proc.errhow</code> = 'terminate'  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>ex</code>: The exception raised by workers  </li>
+</ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>progressbar (self, jid, loglevel)</code></p>
+<p class="admonition-title">method: <code>killJob (self, i)</code></p>
+<p>Kill job  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>i</code>: The job index  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>killWorker (self, rq)</code></p>
+<p>The worker to kill the jobs.  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>rq</code>: The queue that has running jobs.  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>progressbar (self, jobidx)</code></p>
 <p>Generate progressbar.  </p>
 <ul>
 <li>
 <p><strong>params:</strong><br />
-<code>jid</code>: The job index.<br />
+<code>jobidx</code>: The job index.<br />
 <code>loglevel</code>: The log level in PyPPL log system  </p>
 </li>
 <li>
@@ -1900,29 +1894,115 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 </ul>
 </div>
 <div class="admonition abstract">
+<p class="admonition-title">method: <code>runJob (self, i)</code></p>
+<p>Wait for the job to run  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>i</code>: The job index  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>runWorker (self)</code></p>
+<p>The job running worker  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>submitJob (self, i)</code></p>
+<p>Submit job  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>i</code>: The job index  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>worker (self, index)</code></p>
+<p>Worker for threads, use first <code>nsub</code> workers to build and submit jobs,<br />
+and the rest of them to run (wait for) the jobs.  </p>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>JobBuildingException</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>JobSubmissionException</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>JobFailException</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>Job</code></p>
+<p>PyPPL Job  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, index, config)</code></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>build (self)</code></p>
+<p>Initiate a job, make directory and prepare input, output and script.  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>cache (self)</code></p>
+<p>Truly cache the job (by signature)  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>done (self)</code></p>
+<p>Do some cleanup when job finished  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>export (self)</code></p>
+<p>Export the output files  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>isExptCached (self)</code></p>
+<p>Prepare to use export files as cached information<br />
+True if succeed, otherwise False  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>isTrulyCached (self)</code></p>
+<p>Check whether a job is truly cached (by signature)  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>kill (self)</code></p>
+<p>Kill the job  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>report (self)</code></p>
+<p>Report the job information to logger  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>reset (self)</code></p>
+<p>Clear the intermediate files and output files  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>retry (self)</code></p>
+<p>If the job is available to retry  </p>
+<ul>
+<li><strong>return:</strong><br />
+<code>True</code> if it is else <code>False</code>  </li>
+</ul>
+</div>
+<div class="admonition abstract">
 <p class="admonition-title">method: <code>run (self)</code></p>
-<p>Start to run the jobs  </p>
+<p>Wait for the job to run  </p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>runPool (self, rq, sq)</code></p>
-<p>The pool to run jobs (wait jobs to be done)  </p>
+<p class="admonition-title">method: <code>signature (self)</code></p>
+<p>Calculate the signature of the job based on the input/output and the script  </p>
 <ul>
-<li><strong>params:</strong><br />
-<code>rq</code>: The run queue<br />
-<code>sq</code>: The submit queue  </li>
+<li><strong>returns:</strong><br />
+    The signature of the job  </li>
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>submitPool (self, sq)</code></p>
-<p>The pool to submit jobs  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>sq</code>: The submit queue  </li>
-</ul>
+<p class="admonition-title">method: <code>submit (self)</code></p>
+<p>Submit the job  </p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>watchPool (self, rq, sq)</code></p>
-<p>The watchdog, checking whether all jobs are done.  </p>
+<p class="admonition-title">method: <code>succeed (self)</code></p>
+<p>Tell if a job succeeds.<br />
+Check whether output files generated, expectation met and return code met.  </p>
+<ul>
+<li><strong>return:</strong><br />
+<code>True</code> if succeed else <code>False</code>  </li>
+</ul>
 </div>
 </div>
 <h2 id="module-pyppllogger">module: pyppl.logger</h2>
@@ -1955,6 +2035,12 @@ No need to lock as it only runs in one process (the watcher process)  </p>
 </ul>
 </div>
 </div>
+<div class="admonition example">
+<p class="admonition-title">function: <code>pycopy</code></p>
+</div>
+<p>Shallow copy operation on arbitrary Python objects.  </p>
+<pre><code>See the module's __doc__ string for more info.
+</code></pre>
 <div class="admonition example">
 <p class="admonition-title">class: <code>PyPPLLogFilter</code></p>
 <p>logging filter by levels (flags)  </p>
@@ -2021,6 +2107,7 @@ To implement the progress bar for JOBONE and SUBMIT logs.  </p>
 </ul>
 </div>
 <h2 id="module-pypplparameters">module: pyppl.parameters</h2>
+<p>parameters module for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Parameters</code></p>
 <p>A set of parameters  </p>
@@ -2352,8 +2439,175 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </ul>
 </div>
 </div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>string_types</code></p>
+</div>
+<p>Type basestring cannot be instantiated; it is the base for str and unicode.<br />
+    !!! abstract "method: <code>__new__ ()</code>"
+T.<strong>new</strong>(S, ...) -&gt; a new object with type S, a subtype of T  </p>
 <h2 id="module-pypplproctree">module: pyppl.proctree</h2>
 <p>Manage process relations  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>ProcTree</code></p>
+<p>A tree of processes.  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self)</code></p>
+<p>Constructor, set the status of all <code>ProcNode</code>s  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">staticmethod: <code>check (proc)</code></p>
+<p>Check whether a process with the same id and tag exists  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>proc</code>: The <code>Proc</code> instance  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>checkPath (self, proc)</code></p>
+<p>Check whether paths of a process can start from a start process  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>proc</code>: The process  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+<code>True</code> if all paths can pass<br />
+    The failed path otherwise  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>getAllPaths (self)</code></p>
+<p>Get all paths of the pipeline  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>getEnds (self)</code></p>
+<p>Get the end processes  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    The end processes  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">staticmethod: <code>getNext (proc)</code></p>
+<p>Get next processes of process  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>proc</code>: The <code>Proc</code> instance  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The processes depend on this process  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">staticmethod: <code>getNextStr (proc)</code></p>
+<p>Get the names of processes depend on a process  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>proc</code>: The <code>Proc</code> instance  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The names  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>getNextToRun (cls)</code></p>
+<p>Get the process to run next  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    The process next to run  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>getPaths (self, proc, proc0)</code></p>
+<p>Infer the path to a process  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>proc</code>: The process<br />
+<code>proc0</code>: The original process, because this function runs recursively.  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    <div class="highlight"><pre><span></span>p1 -&gt; p2 -&gt; p3  
+      p4  _/  
+Paths for p3: [[p4], [p2, p1]]  
+</pre></div></p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>getPathsToStarts (self, proc)</code></p>
+<p>Filter the paths with start processes  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>proc</code>: The process  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The filtered path  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">staticmethod: <code>getPrevStr (proc)</code></p>
+<p>Get the names of processes a process depends on  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>proc</code>: The <code>Proc</code> instance  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The names  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>getStarts (self)</code></p>
+<p>Get the start processes  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    The start processes  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">staticmethod: <code>register (proc)</code></p>
+<p>Register the process  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>proc</code>: The <code>Proc</code> instance  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">staticmethod: <code>reset ()</code></p>
+<p>Reset the status of all <code>ProcNode</code>s  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>setStarts (cls, starts)</code></p>
+<p>Set the start processes  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>starts</code>: The start processes  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>unranProcs (self)</code></p>
+<p>Get the unran processes.  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    The processes haven't run.  </li>
+</ul>
+</div>
+</div>
 <div class="admonition example">
 <p class="admonition-title">class: <code>ProcNode</code></p>
 <p>The node for processes to manage relations between each other  </p>
@@ -2425,13 +2679,6 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>finish (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>getpid (self)</code></p>
-<p>Get the job id  </p>
-</div>
-<div class="admonition abstract">
 <p class="admonition-title">method: <code>isRunning (self)</code></p>
 <p>Try to tell whether the job is still running.  </p>
 <ul>
@@ -2442,9 +2689,6 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>kill (self)</code></p>
 <p>Try to kill the running jobs if I am exiting  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>retry (self)</code></p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>run (self)</code></p>
@@ -2460,323 +2704,113 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </div>
 </div>
 <h2 id="module-pypplrunnersrunner_dry">module: pyppl.runners.runner_dry</h2>
-<p>Dry runner  </p>
+<p>Dry runner for PyPPL  </p>
 <div class="admonition example">
-<p class="admonition-title">class: <code>Runner</code></p>
-<p>The base runner class  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
+<p class="admonition-title">class: <code>Proc</code></p>
+<p>The Proc class defining a process  </p>
 <ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>finish (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>getpid (self)</code></p>
-<p>Get the job id  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>isRunning (self)</code></p>
-<p>Try to tell whether the job is still running.  </p>
-<ul>
-<li><strong>returns:</strong><br />
-<code>True</code> if yes, otherwise <code>False</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>kill (self)</code></p>
-<p>Try to kill the running jobs if I am exiting  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>retry (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>run (self)</code></p>
-<ul>
-<li><strong>returns:</strong><br />
-    True: success/fail<br />
-    False: needs retry  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>submit (self)</code></p>
-<p>Try to submit the job  </p>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>RunnerDry</code></p>
-<p>The dry runner  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>finish (self)</code></p>
-<p>Do some cleanup work when jobs finish  </p>
-</div>
-</div>
-<h2 id="module-pypplrunnersrunner_local">module: pyppl.runners.runner_local</h2>
-<p>A runner wrapper for a single script<br />
-Author: pwwang@pwwang.com<br />
-Examples:  </p>
-<pre><code>- **see runner.unittest.py**
-</code></pre>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Runner</code></p>
-<p>The base runner class  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>finish (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>getpid (self)</code></p>
-<p>Get the job id  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>isRunning (self)</code></p>
-<p>Try to tell whether the job is still running.  </p>
-<ul>
-<li><strong>returns:</strong><br />
-<code>True</code> if yes, otherwise <code>False</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>kill (self)</code></p>
-<p>Try to kill the running jobs if I am exiting  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>retry (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>run (self)</code></p>
-<ul>
-<li><strong>returns:</strong><br />
-    True: success/fail<br />
-    False: needs retry  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>submit (self)</code></p>
-<p>Try to submit the job  </p>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>RunnerLocal</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object<br />
-<code>config</code>: The properties of the process  </li>
-</ul>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-</div>
-</div>
-<h2 id="module-pypplrunnersrunner_sge">module: pyppl.runners.runner_sge</h2>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Runner</code></p>
-<p>The base runner class  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>finish (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>getpid (self)</code></p>
-<p>Get the job id  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>isRunning (self)</code></p>
-<p>Try to tell whether the job is still running.  </p>
-<ul>
-<li><strong>returns:</strong><br />
-<code>True</code> if yes, otherwise <code>False</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>kill (self)</code></p>
-<p>Try to kill the running jobs if I am exiting  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>retry (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>run (self)</code></p>
-<ul>
-<li><strong>returns:</strong><br />
-    True: success/fail<br />
-    False: needs retry  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>submit (self)</code></p>
-<p>Try to submit the job  </p>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>RunnerSge</code></p>
-<p>The sge runner  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object<br />
-<code>config</code>: The properties of the process  </li>
-</ul>
-</div>
-</div>
-<h2 id="module-pypplrunnersrunner_slurm">module: pyppl.runners.runner_slurm</h2>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Runner</code></p>
-<p>The base runner class  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>finish (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>getpid (self)</code></p>
-<p>Get the job id  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>isRunning (self)</code></p>
-<p>Try to tell whether the job is still running.  </p>
-<ul>
-<li><strong>returns:</strong><br />
-<code>True</code> if yes, otherwise <code>False</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>kill (self)</code></p>
-<p>Try to kill the running jobs if I am exiting  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>retry (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>run (self)</code></p>
-<ul>
-<li><strong>returns:</strong><br />
-    True: success/fail<br />
-    False: needs retry  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>submit (self)</code></p>
-<p>Try to submit the job  </p>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>RunnerSlurm</code></p>
-<p>The slurm runner  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object<br />
-<code>config</code>: The properties of the process  </li>
-</ul>
-</div>
-</div>
-<h2 id="module-pypplrunnersrunner_ssh">module: pyppl.runners.runner_ssh</h2>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Runner</code></p>
-<p>The base runner class  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>finish (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>getpid (self)</code></p>
-<p>Get the job id  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>isRunning (self)</code></p>
-<p>Try to tell whether the job is still running.  </p>
-<ul>
-<li><strong>returns:</strong><br />
-<code>True</code> if yes, otherwise <code>False</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>kill (self)</code></p>
-<p>Try to kill the running jobs if I am exiting  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>retry (self)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>run (self)</code></p>
-<ul>
-<li><strong>returns:</strong><br />
-    True: success/fail<br />
-    False: needs retry  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>submit (self)</code></p>
-<p>Try to submit the job  </p>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>RunnerSsh</code></p>
-<p>The ssh runner  </p>
-<ul>
-<li><strong>static variables:</strong><br />
-<code>SERVERID</code>: The incremental number used to calculate which server should be used.  <ul>
-<li>Don't touch unless you know what's going on!  </li>
-</ul>
+<li>
+<p><strong>static variables:</strong><br />
+<code>RUNNERS</code>:       The regiested runners<br />
+<code>ALIAS</code>:         The alias for the properties<br />
+<code>LOG_NLINE</code>:     The limit of lines of logging information of same type of messages  </p>
+</li>
+<li>
+<p><strong>magic methods:</strong><br />
+<code>__getattr__(self, name)</code>: get the value of a property in <code>self.props</code><br />
+<code>__setattr__(self, name, value)</code>: set the value of a property in <code>self.config</code>  </p>
 </li>
 </ul>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
-<p>Constructor  </p>
+<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
+<p>Get the value of a property in <code>self.props</code><br />
+It recognizes alias as well.  </p>
 <ul>
-<li><strong>params:</strong><br />
-<code>job</code>:    The job object  </li>
+<li>
+<p><strong>params:</strong><br />
+<code>name</code>: The name of the property  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The value of the property  </p>
+</li>
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">staticmethod: <code>isServerAlive (server, key)</code></p>
+<p class="admonition-title">method: <code>__init__ (self, tag, desc, id, **kwargs)</code></p>
+<p>Constructor  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>tag</code>:  The tag of the process<br />
+<code>desc</code>: The description of the process<br />
+<code>id</code>:   The identify of the process  </p>
+</li>
+<li>
+<p><strong>config:</strong><br />
+    id, input, output, ppldir, forks, cache, acache, rc, echo, runner, script, depends, tag, desc, dirsig<br />
+    exdir, exhow, exow, errhow, errntry, lang, beforeCmd, afterCmd, workdir, args, aggr<br />
+    callfront, callback, expect, expart, template, tplenvs, resume, nsub  </p>
+</li>
+<li>
+<p><strong>props</strong><br />
+    input, output, rc, echo, script, depends, beforeCmd, afterCmd, workdir, expect<br />
+    expart, template, channel, jobs, ncjobids, size, sets, procvars, suffix, logs  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
+<p>Set the value of a property in <code>self.config</code>  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>name</code> : The name of the property.<br />
+<code>value</code>: The new value of the property.  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>copy (self, tag, desc, id)</code></p>
+<p>Copy a process  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>id</code>: The new id of the process, default: <code>None</code> (use the varname)<br />
+<code>tag</code>:   The tag of the new process, default: <code>None</code> (used the old one)<br />
+<code>desc</code>:  The desc of the new process, default: <code>None</code> (used the old one)  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The new process  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>name (self, aggr)</code></p>
+<p>Get my name include <code>aggr</code>, <code>id</code>, <code>tag</code>  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    the name  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>run (self, profile, profiles)</code></p>
+<p>Run the jobs with a configuration  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>config</code>: The configuration  </li>
+</ul>
 </div>
 </div>
+<h2 id="module-pypplrunnersrunner_local">module: pyppl.runners.runner_local</h2>
+<p>Local runner  </p>
+<h2 id="module-pypplrunnersrunner_sge">module: pyppl.runners.runner_sge</h2>
+<p>SGE runner for PyPPL  </p>
+<h2 id="module-pypplrunnersrunner_slurm">module: pyppl.runners.runner_slurm</h2>
+<p>Slurm runner for PyPPL  </p>
+<h2 id="module-pypplrunnersrunner_ssh">module: pyppl.runners.runner_ssh</h2>
+<p>The ssh runner  </p>
 <h2 id="module-pyppltemplate">module: pyppl.template</h2>
+<p>Template adaptor for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Template</code></p>
 <p>Template wrapper base  </p>
@@ -2785,10 +2819,23 @@ Examples:  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>registerEnvs (self, **envs)</code></p>
+<p>Register extra environment  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>**envs</code>: The environment  </li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>render (self, data)</code></p>
+<p>Render the template  </p>
+<ul>
+<li><strong>parmas:</strong><br />
+<code>data</code>: The data used to render  </li>
+</ul>
 </div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>string_types</code></p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">class: <code>TemplateJinja2</code></p>
@@ -2805,7 +2852,7 @@ Examples:  </p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">class: <code>TemplateLiquid</code></p>
-<p>liquid.py template wrapper.  </p>
+<p>liquidpy template wrapper.  </p>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__init__ (self, source, **envs)</code></p>
 <p>Initiate the engine with source and envs  </p>
@@ -2863,27 +2910,6 @@ Try to get the source first, if failed, try to get its name, otherwise return No
 <li>
 <p><strong>returns:</strong><br />
     The signature  </p>
-</li>
-</ul>
-</div>
-<div class="admonition example">
-<p class="admonition-title">function: <code>alwaysList</code></p>
-<p>Convert a string or a list with element  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>data</code>: the data to be converted  </p>
-</li>
-<li>
-<p><strong>examples:</strong><br />
-    <div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a, b, c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]</span>  
-<span class="n">ret</span>  <span class="o">=</span> <span class="n">alwaysList</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>  
-<span class="c1"># ret == [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]  </span>
-</pre></div></p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-    The split list  </p>
 </li>
 </ul>
 </div>
@@ -2955,6 +2981,27 @@ Try to get the source first, if failed, try to get its name, otherwise return No
 </ul>
 </div>
 <div class="admonition example">
+<p class="admonition-title">function: <code>alwaysList</code></p>
+<p>Convert a string or a list with element  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>data</code>: the data to be converted  </p>
+</li>
+<li>
+<p><strong>examples:</strong><br />
+    <div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a, b, c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]</span>  
+<span class="n">ret</span>  <span class="o">=</span> <span class="n">alwaysList</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>  
+<span class="c1"># ret == [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]  </span>
+</pre></div></p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The split list  </p>
+</li>
+</ul>
+</div>
+<div class="admonition example">
 <p class="admonition-title">function: <code>varname</code></p>
 <p>Get the variable name for ini  </p>
 <ul>
@@ -2968,6 +3015,9 @@ Try to get the source first, if failed, try to get its name, otherwise return No
     The variable name  </p>
 </li>
 </ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>string_types</code></p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">function: <code>filter</code></p>
@@ -3020,11 +3070,8 @@ Try to get the source first, if failed, try to get its name, otherwise return No
 </li>
 </ul>
 </div>
-<div class="admonition example">
-<p class="admonition-title">function: <code>asStr</code></p>
-<p>Convert everything (str, unicode, bytes) to str with python2, python3 compatiblity  </p>
-</div>
 <h2 id="module-pypplutilsbox">module: pyppl.utils.box</h2>
+<p>box module for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Box</code></p>
 <p>Allow dot operation for OrderedDict  </p>
@@ -3041,6 +3088,7 @@ Try to get the source first, if failed, try to get its name, otherwise return No
 <p>OD.fromkeys(S[, v]) -&gt; New ordered dictionary with keys from S.<br />
         If not specified, the value defaults to None.  </p>
 <h2 id="module-pypplutilscmd">module: pyppl.utils.cmd</h2>
+<p>cmd utility for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">function: <code>run</code></p>
 <p>A shortcut of <code>Command.run</code><br />
@@ -3111,7 +3159,36 @@ To chain another command, you can do:<br />
 </ul>
 </div>
 </div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>string_types</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>Timeout</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>ResourceWarning</code></p>
+</div>
+<p>ResourceWarning for python2  </p>
 <h2 id="module-pypplutilsparallel">module: pyppl.utils.parallel</h2>
+<div class="admonition example">
+<p class="admonition-title">function: <code>as_completed</code></p>
+</div>
+<p>An iterator over the given futures that yields each as it completes.  </p>
+<pre><code>Args:  
+    fs: The sequence of Futures (possibly created by different Executors) to  
+        iterate over.  
+    timeout: The maximum number of seconds to wait. If None, then there  
+        is no limit on the wait time.
+
+Returns:  
+    An iterator that yields the given Futures as they complete (finished or  
+    cancelled). If any given Futures are duplicated, they will be returned  
+    once.
+
+Raises:  
+    TimeoutError: If the entire result iterator could not be generated  
+        before the given timeout.
+</code></pre>
 <div class="admonition example">
 <p class="admonition-title">function: <code>run</code></p>
 <p>A shortcut of <code>Parallel.run</code>  </p>
@@ -3163,66 +3240,30 @@ To chain another command, you can do:<br />
 </div>
 </div>
 <h2 id="module-pypplutilsps">module: pyppl.utils.ps</h2>
+<p>ps utility for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">function: <code>exists</code></p>
 <p>Check whether pid exists in the current process table.<br />
 From https://github.com/kennethreitz/delegator.py/blob/master/delegator.py  </p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">class: <code>Cmd</code></p>
-<p>A command (subprocess) wapper  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, cmd, raiseExc, timeout, **kwargs)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>cmd</code>     : The command, could be a string or a list<br />
-<code>raiseExc</code>: raise the expcetion or not<br />
-<code>**kwargs</code>: other arguments for <code>Popen</code>  </li>
-</ul>
+<p class="admonition-title">function: <code>killtree</code></p>
+<p>Kill process and its children  </p>
 </div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>pipe (self, cmd, **kwargs)</code></p>
-<p>Pipe another command  </p>
-<ul>
-<li>
-<p><strong>examples:</strong><br />
-    <div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="s1">&#39;seq 1 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="s1">&#39;grep 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>  
-<span class="n">c</span><span class="o">.</span><span class="n">stdout</span> <span class="o">==</span> <span class="s1">&#39;1</span><span class="se">\n</span><span class="s1">&#39;</span>  
-</pre></div></p>
-</li>
-<li>
-<p><strong>params:</strong><br />
-<code>cmd</code>: The other command<br />
-<code>**kwargs</code>: Other arguments for <code>Popen</code> for the other command  </p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-<code>Command</code> instance of the other command  </p>
-</li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>run (self, bg)</code></p>
-<p>Wait for the command to run  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>bg</code>: Run in background or not. Default: <code>False</code><br />
-        - If it is <code>True</code>, <code>rc</code> and <code>stdout/stderr</code> will be default (no value retrieved).  </p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-<code>self</code>  </p>
-</li>
-</ul>
-</div>
+<div class="admonition example">
+<p class="admonition-title">function: <code>kill</code></p>
+<p>Kill a batch of processes  </p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">function: <code>child</code></p>
 <p>Direct children  </p>
 </div>
+<div class="admonition example">
+<p class="admonition-title">function: <code>children</code></p>
+<p>Find the children of a mother process  </p>
+</div>
 <h2 id="module-pypplutilssafefs">module: pyppl.utils.safefs</h2>
+<p>safefs utility for PyPPL  </p>
 <div class="admonition example">
 <p class="admonition-title">function: <code>exists</code></p>
 <p>A shortcut of <code>SafeFs.exists</code>  </p>
@@ -3678,9 +3719,9 @@ If it is a directory like '/a/b/c/', return <code>c</code>  </p>
       
     </div>
     
-      <script src="../assets/javascripts/application.a26c1c19.js"></script>
+      <script src="../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
     
     
