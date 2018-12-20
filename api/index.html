@@ -1945,6 +1945,43 @@ Check whether output files generated, expectation met and return code met.  </p>
 </ul>
 </div>
 </div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>PQueue</code></p>
+<p>A modified PriorityQueue, which allows jobs to be submitted in batch  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, maxsize, batch_len)</code></p>
+<p>Initialize the queue  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>maxsize</code>  : The maxsize of the queue<br />
+<code>batch_len</code>: What's the length of a batch  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>get (self, block, timeout)</code></p>
+<p>Get an item from the queue  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>get_nowait (self)</code></p>
+<p>Get an item from the queue without waiting  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>put (self, item, block, timeout, where)</code></p>
+<p>Put item to the queue, just like <code>PriorityQueue.put</code> but with an extra argument  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>where</code>: Which batch to put the item  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>put_nowait (self, item, where)</code></p>
+<p>Put item to the queue, just like <code>PriorityQueue.put_nowait</code> but with an extra argument  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>where</code>: Which batch to put the item  </li>
+</ul>
+</div>
+</div>
 <h2 id="module-pyppllogger">module: pyppl.logger</h2>
 <p>A customized logger for pyppl  </p>
 <div class="admonition example">
@@ -3608,6 +3645,43 @@ If it is a directory like '/a/b/c/', return <code>c</code>  </p>
 </div>
 <h2 id="module-pypplutilstaskmgr">module: pyppl.utils.taskmgr</h2>
 <p>A thread module for PyPPL  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>PQueue</code></p>
+<p>A modified PriorityQueue, which allows jobs to be submitted in batch  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, maxsize, batch_len)</code></p>
+<p>Initialize the queue  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>maxsize</code>  : The maxsize of the queue<br />
+<code>batch_len</code>: What's the length of a batch  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>get (self, block, timeout)</code></p>
+<p>Get an item from the queue  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>get_nowait (self)</code></p>
+<p>Get an item from the queue without waiting  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>put (self, item, block, timeout, where)</code></p>
+<p>Put item to the queue, just like <code>PriorityQueue.put</code> but with an extra argument  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>where</code>: Which batch to put the item  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>put_nowait (self, item, where)</code></p>
+<p>Put item to the queue, just like <code>PriorityQueue.put_nowait</code> but with an extra argument  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>where</code>: Which batch to put the item  </li>
+</ul>
+</div>
+</div>
 <div class="admonition example">
 <p class="admonition-title">class: <code>ThreadPool</code></p>
 <p>A thread manager for ThreadEx.  </p>
