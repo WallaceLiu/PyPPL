@@ -535,13 +535,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#module-pypplutilsparallel" title="module: pyppl.utils.parallel" class="md-nav__link">
-    module: pyppl.utils.parallel
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#module-pypplutilsps" title="module: pyppl.utils.ps" class="md-nav__link">
     module: pyppl.utils.ps
   </a>
@@ -751,13 +744,6 @@
         <li class="md-nav__item">
   <a href="#module-pypplutilscmd" title="module: pyppl.utils.cmd" class="md-nav__link">
     module: pyppl.utils.cmd
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#module-pypplutilsparallel" title="module: pyppl.utils.parallel" class="md-nav__link">
-    module: pyppl.utils.parallel
   </a>
   
 </li>
@@ -3179,57 +3165,6 @@ To chain another command, you can do:<br />
 <li>
 <p><strong>returns:</strong><br />
 <code>self</code>  </p>
-</li>
-</ul>
-</div>
-</div>
-<h2 id="module-pypplutilsparallel">module: pyppl.utils.parallel</h2>
-<div class="admonition example">
-<p class="admonition-title">function: <code>run</code></p>
-<p>A shortcut of <code>Parallel.run</code>  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>func</code>    : The function to run<br />
-<code>args</code>    : The arguments for the function, should be a <code>list</code> with <code>tuple</code>s<br />
-<code>nthread</code> : Number of jobs to run simultaneously. Default: <code>1</code><br />
-<code>backend</code> : The backend, either <code>process</code> (default) or <code>thread</code><br />
-<code>raiseExc</code>: Whether raise exception or not. Default: <code>True</code>  </p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-    The merged results from each job.  </p>
-</li>
-</ul>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Parallel</code></p>
-<p>A parallel runner  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, nthread, backend, raiseExc)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>nthread</code> : Number of jobs to run simultaneously. Default: <code>1</code><br />
-<code>backend</code> : The backend, either <code>process</code> (default) or <code>thread</code><br />
-<code>raiseExc</code>: Whether raise exception or not. Default: <code>True</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>run (self, func, args)</code></p>
-<p>Run parallel jobs  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>func</code>    : The function to run<br />
-<code>args</code>    : The arguments for the function, should be a <code>list</code> with <code>tuple</code>s<br />
-<code>nthread</code> : Number of jobs to run simultaneously. Default: <code>1</code><br />
-<code>backend</code> : The backend, either <code>process</code> (default) or <code>thread</code><br />
-<code>raiseExc</code>: Whether raise exception or not. Default: <code>True</code>  </p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-    The merged results from each job.  </p>
 </li>
 </ul>
 </div>
