@@ -877,19 +877,6 @@ For running profiles:
 	<span class="k">pass</span>
 </pre></div></p>
 <p>The base class <code>Runner</code> defines the runners where the jobs will immediately run after submission; while <code>RunnerQueue</code> defines the runners where the jobs will be put into a queue and wait for its turn to run (for example, clusters).</p>
-<p>Before you define your own runner, you may have to write a helper class, which includes following methods:</p>
-<ul>
-<li><code>__init__(self, script, cmds = None)</code> The constructor.</li>
-<li><code>script</code>: The real script to run.</li>
-<li><code>cmds</code>: Some extra commands, such as <code>qsub</code>, <code>qstat</code> and <code>qdel</code> for sge runner</li>
-<li><code>@property pid(self)</code>: How to get the job id from job pid file.</li>
-<li><code>@pid.setter pid(self, pid)</code>: Save job id to job pid file.</li>
-<li><code>submit(self)</code>: How to submit the job</li>
-<li><code>kill(self)</code>: How to kill the job</li>
-<li><code>alive(self)</code>: Tell if a job is alive</li>
-</ul>
-<p>See https://github.com/pwwang/PyPPL/blob/master/pyppl/runners/helpers.py .</p>
-<p>Then it's easy to write your own runner, just parse the configuration and create a real script to run, and use it to initialize a <code>helper</code>.</p>
 <p>Example: a delay runner:
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RunnerDelay</span> <span class="p">(</span><span class="n">Runner</span><span class="p">):</span>
 	<span class="k">def</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">):</span>
@@ -909,11 +896,12 @@ For running profiles:
 		<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">delayfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 			<span class="n">f</span><span class="o">.</span><span class="n">write</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">delaysrc</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 		
-		<span class="bp">self</span><span class="o">.</span><span class="n">helper</span> <span class="o">=</span> <span class="n">DelayHelper</span><span class="p">(</span><span class="n">delayfile</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">script</span> <span class="o">=</span> <span class="n">delayfile</span>
 </pre></div></p>
 <p><strong>Key points in writing your own runner</strong>:</p>
 <ul>
-<li>Write a proper helper class</li>
+<li>Write a proper <code>__init__</code> function</li>
+<li>Write proper functions (<code>submit</code>, <code>kill</code> and <code>isRunning</code>) to submit, kill a job and tell if a job is running.</li>
 <li>Compose the right script to run the job (<code>self.script</code>) in <code>__init__</code>.</li>
 <li>MAKE SURE you save the identity of the job to <code>job.pidfile</code>, rc to <code>job.rcfile</code>, stdout to <code>job.outfile</code> and <code>stderr</code> to <code>job.errfile</code></li>
 </ul>
