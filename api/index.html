@@ -797,7 +797,8 @@
 <li><strong>static variables:</strong><br />
 <code>TIPS</code>: The tips for users<br />
 <code>RUNNERS</code>: Registered runners<br />
-<code>DEFAULT_CFGFILES</code>: Default configuration file  </li>
+<code>DEFAULT_CFGFILES</code>: Default configuration file<br />
+<code>COUNTER</code>: The counter for <code>PyPPL</code> instance  </li>
 </ul>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__init__ (self, config, cfgfile)</code></p>
@@ -904,14 +905,20 @@
 <ul>
 <li>
 <p><strong>static variables:</strong><br />
-<code>RUNNERS</code>:       The regiested runners<br />
 <code>ALIAS</code>:         The alias for the properties<br />
-<code>LOG_NLINE</code>:     The limit of lines of logging information of same type of messages  </p>
-</li>
-<li>
-<p><strong>magic methods:</strong><br />
-<code>__getattr__(self, name)</code>: get the value of a property in <code>self.props</code><br />
-<code>__setattr__(self, name, value)</code>: set the value of a property in <code>self.config</code>  </p>
+<code>DEPRECATED</code>:    Deprecated property names  </p>
+<p><code>OUT_VARTYPE</code>:    Variable types for output<br />
+<code>OUT_FILETYPE</code>:   File types for output<br />
+<code>OUT_DIRTYPE</code>:    Directory types for output<br />
+<code>OUT_STDOUTTYPE</code>: Stdout types for output<br />
+<code>OUT_STDERRTYPE</code>: Stderr types for output  </p>
+<p><code>IN_VARTYPE</code>:   Variable types for input<br />
+<code>IN_FILETYPE</code>:  File types for input<br />
+<code>IN_FILESTYPE</code>: Files types for input  </p>
+<p><code>EX_GZIP</code>: <code>exhow</code> value to gzip output files while exporting them<br />
+<code>EX_COPY</code>: <code>exhow</code> value to copy output files while exporting them<br />
+<code>EX_MOVE</code>: <code>exhow</code> value to move output files while exporting them<br />
+<code>EX_LINK</code>: <code>exhow</code> value to link output files while exporting them  </p>
 </li>
 </ul>
 <div class="admonition abstract">
@@ -935,9 +942,10 @@ It recognizes alias as well.  </p>
 <ul>
 <li>
 <p><strong>params:</strong><br />
-<code>tag</code>:  The tag of the process<br />
-<code>desc</code>: The description of the process<br />
-<code>id</code>:   The identify of the process  </p>
+<code>tag</code>     : The tag of the process<br />
+<code>desc</code>    : The description of the process<br />
+<code>id</code>      : The identify of the process<br />
+<code>**kwargs</code>: Other properties of the process, which can be set by <code>proc.xxx</code> later.  </p>
 </li>
 <li>
 <p><strong>config:</strong><br />
@@ -991,326 +999,6 @@ It recognizes alias as well.  </p>
 <ul>
 <li><strong>params:</strong><br />
 <code>config</code>: The configuration  </li>
-</ul>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Jobmgr</code></p>
-<p>A job manager for PyPPL  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, jobs, config)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>canSubmit (self)</code></p>
-<p>Tell if jobs can be submitted.  </p>
-<ul>
-<li><strong>return:</strong><br />
-<code>True</code> if they can else <code>False</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>cleanup (self, ex)</code></p>
-<p>Cleanup the pipeline when<br />
-- Ctrl-c hit<br />
-- error encountered and <code>proc.errhow</code> = 'terminate'  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>ex</code>: The exception raised by workers  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>killWorker (self, rq)</code></p>
-<p>The worker to kill the jobs.  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>rq</code>: The queue that has running jobs.  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>progressbar (self, jobidx)</code></p>
-<p>Generate progressbar.  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>jobidx</code>: The job index.<br />
-<code>loglevel</code>: The log level in PyPPL log system  </p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-    The string representing the progressbar  </p>
-</li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>worker (self, queue)</code></p>
-<p>Worker for the queue  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>workon (self, index, queue)</code></p>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Job</code></p>
-<p>PyPPL Job  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, index, config)</code></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>build (self)</code></p>
-<p>Initiate a job, make directory and prepare input, output and script.  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>cache (self)</code></p>
-<p>Truly cache the job (by signature)  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>done (self)</code></p>
-<p>Do some cleanup when job finished  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>export (self)</code></p>
-<p>Export the output files  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>isExptCached (self)</code></p>
-<p>Prepare to use export files as cached information<br />
-True if succeed, otherwise False  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>isTrulyCached (self)</code></p>
-<p>Check whether a job is truly cached (by signature)  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>kill (self)</code></p>
-<p>Kill the job  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>poll (self)</code></p>
-<p>Check the status of a running job  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>report (self)</code></p>
-<p>Report the job information to logger  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>reset (self)</code></p>
-<p>Clear the intermediate files and output files  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>retry (self)</code></p>
-<p>If the job is available to retry  </p>
-<ul>
-<li><strong>return:</strong><br />
-<code>True</code> if it is else <code>False</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>signature (self)</code></p>
-<p>Calculate the signature of the job based on the input/output and the script  </p>
-<ul>
-<li><strong>returns:</strong><br />
-    The signature of the job  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>submit (self)</code></p>
-<p>Submit the job  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>succeed (self)</code></p>
-<p>Tell if a job succeeds.<br />
-Check whether output files generated, expectation met and return code met.  </p>
-<ul>
-<li><strong>return:</strong><br />
-<code>True</code> if succeed else <code>False</code>  </li>
-</ul>
-</div>
-</div>
-<div class="admonition example">
-<p class="admonition-title">class: <code>Aggr</code></p>
-<p>The aggregation of a set of processes  </p>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
-<p>Get the property of an aggregation.  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>name</code>: The name of the property  </p>
-</li>
-<li>
-<p><strong>returns:</strong>  </p>
-<ul>
-<li>Return a proc if name in <code>self._procs</code>  </li>
-<li>Return a property value if name in <code>self.__dict__</code>  </li>
-<li>Return a <code>_Proxy</code> instance else.  </li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__getitem__ (self, key)</code></p>
-<p>Select processes<br />
-<div class="highlight"><pre><span></span># self._procs = OrderedDict([  
-#	(&#39;a&#39;, Proc(id = &#39;a&#39;)),  
-#	(&#39;b&#39;, Proc(id = &#39;b&#39;)),  
-#	(&#39;c&#39;, Proc(id = &#39;c&#39;)),  
-#	(&#39;d&#39;, Proc(id = &#39;d&#39;))  
-# ])  
-
-self[&#39;a&#39;] # proc a  
-self[0]   # proc a  
-self[1:2] # _Proxy of (proc b, proc c)  
-self[1,3] # _Proxy of (proc b, proc d)  
-self[&#39;b&#39;, &#39;c&#39;] # _Proxy of (proc b, proc c)  
-self[&#39;b,c&#39;] # _Proxy of (proc b, proc c)  
-self[Proc(id = &#39;d&#39;)] # proc d  
-</pre></div></p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__init__ (self, *args, **kwargs)</code></p>
-<p>Constructor  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>args</code>: the set of processes<br />
-<code>depends</code>: Whether auto deduce depends. Default: True<br />
-<code>id</code>: The id of the aggr. Default: None (the variable name)<br />
-<code>tag</code>: The tag of the processes. Default: None (a unique 4-char str according to the id)  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
-<p>Set property value of an aggregation.<br />
-    - if it's a common property, set it to all processes<br />
-    - if it is <code>input</code> set it to starting processes<br />
-    - if it is <code>depends</code> set it to the end processes<br />
-    - if it is related to <code>export</code> (startswith <code>ex</code>), set it to the end processes<br />
-    - if it is in ['starts', 'ends', 'id'], set it to the aggregation itself.<br />
-    - Otherwise a <code>ValueError</code> raised.<br />
-    - You can use <code>[aggr].[proc].[prop]</code> to set/get the properties of a processes in the aggregation.  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>name</code> : The name of the property<br />
-<code>value</code>: The value of the property  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>addEnd (self, *procs)</code></p>
-<p>Add end processes  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>procs</code>: The selector of processes to add  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>addProc (self, p, tag, where, copy)</code></p>
-<p>Add a process to the aggregation.<br />
-Note that you have to adjust the dependencies after you add processes.  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>p</code>:     The process<br />
-<code>where</code>: Add to where: 'starts', 'ends', 'both' or None (default)  </p>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-    the aggregation itself  </p>
-</li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>addStart (self, *procs)</code></p>
-<p>Add start processes  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>procs</code>: The selector of processes to add  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>copy (self, tag, depends, id, delegates, modules)</code></p>
-<p>Like <code>proc</code>'s <code>copy</code> function, copy an aggregation. Each processes will be copied.  </p>
-<ul>
-<li>
-<p><strong>params:</strong><br />
-<code>tag</code>:      The new tag of all copied processes<br />
-<code>depends</code>: Whether to copy the dependencies or not. Default: True  </p>
-<ul>
-<li>dependences for processes in starts will not be copied<br />
-<code>id</code>:    Use a different id if you don't want to use the variant name<br />
-<code>delegates</code>: Copy delegates? Default: <code>True</code><br />
-<code>configs</code>: Copy configs? Default: <code>True</code>  </li>
-</ul>
-</li>
-<li>
-<p><strong>returns:</strong><br />
-    The new aggregation  </p>
-</li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>delEnd (self, *procs)</code></p>
-<p>Delete end processes  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>procs</code>: The selector of processes to delete  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>delStart (self, *procs)</code></p>
-<p>Delete start processes  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>procs</code>: The selector of processes to delete  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>delegate (self, attrs, procs)</code></p>
-<p>Delegate the procs to have the attributes set by:<br />
-<code>aggr.args.a.b = 1</code><br />
-Instead of setting <code>args.a.b</code> of all processes, <code>args.a.b</code> of only delegated processes will be set.<br />
-<code>procs</code> can be <code>starts</code>/<code>ends</code>, but it cannot be set with other procs, which means you can do:<br />
-<code>aggr.delegate('args', 'starts')</code>, but not <code>aggr.delegate('args', ['starts', 'pXXX'])</code>  </p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>module (self, name, starts, depends, ends, starts_shared, depends_shared, ends_shared)</code></p>
-<p>Define a function for aggr.<br />
-The "shared" parameters will be indicators not to remove those processes<br />
-when the shared function is on.  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>name</code>          : The name of the function<br />
-<code>starts</code>        : A list of start processes.<br />
-<code>depends</code>       : A dict of dependences of the procs<br />
-<code>ends</code>          : A list of end processes<br />
-<code>starts_shared</code> : A dict of functions that shares the same starts<br />
-<code>depends_shared</code>: A dict of functions that shares the same depends<br />
-<code>ends_shared</code>   : A dict of functions that shares the same ends<br />
-        - For example: <code>{&lt;procs&gt;: &lt;func&gt;}</code>  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>moduleFunc (self, name, on, off)</code></p>
-<p>Define modules using functions  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>name</code>: The name of the module<br />
-<code>on</code>  : The function when the module is turned on<br />
-<code>off</code> : The function when the module is turned off  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>off (self, *names)</code></p>
-<p>Turn off modules  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>names</code>: The names of the modules.  </li>
-</ul>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>on (self, *names)</code></p>
-<p>Turn on modules  </p>
-<ul>
-<li><strong>params:</strong><br />
-<code>names</code>: The names of the modules.  </li>
 </ul>
 </div>
 </div>
@@ -2061,8 +1749,36 @@ Try to keep the order  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Job</code></p>
 <p>PyPPL Job  </p>
+<ul>
+<li>
+<p><strong>static variables:</strong><br />
+<code>STATUS_INITIATED</code>    : Job status when a job has just initiated<br />
+<code>STATUS_BUILDING</code>     : Job status when a job is being built<br />
+<code>STATUS_BUILT</code>        : Job status when a job has been built<br />
+<code>STATUS_BUILTFAILED</code>  : Job status when a job fails to build<br />
+<code>STATUS_SUBMITTING</code>   : Job status when a job is submitting<br />
+<code>STATUS_SUBMITTED</code>    : Job status when a job has submitted<br />
+<code>STATUS_SUBMITFAILED</code> : Job status when a job fails to submit<br />
+<code>STATUS_RUNNING</code>      : Job status when a job is running<br />
+<code>STATUS_RETRYING</code>     : Job status when a job is about to retry<br />
+<code>STATUS_DONE</code>         : Job status when a job has done<br />
+<code>STATUS_DONECACHED</code>   : Job status when a job has cached<br />
+<code>STATUS_DONEFAILED</code>   : Job status when a job fails temporarily (may retry later)<br />
+<code>STATUS_ENDFAILED</code>    : Job status when a job fails finally<br />
+<code>STATUS_KILLING</code>      : Job status when a job is being killed<br />
+<code>STATUS_KILLED</code>       : Job status when a job has been killed  </p>
+<p><code>RC_NOTGENERATE</code> : A return code if no rcfile has been generated<br />
+<code>RC_SUBMITFAILED</code>: A return code when a job fails to submit  </p>
+</li>
+</ul>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__init__ (self, index, config)</code></p>
+<p>Initiate a job  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>index</code>:  The index of the job.<br />
+<code>config</code>: The configurations of the job.  </li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>build (self)</code></p>
@@ -2239,9 +1955,21 @@ To implement the progress bar for JOBONE and SUBMIT logs.  </p>
 <p>Support sub-command for command line argument parse.  </p>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
+<p>Get the value of the attribute  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>name</code> : The name of the attribute  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The value of the attribute  </p>
+</li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__getitem__ (self, name)</code></p>
+<p>Alias of <code>__getattr__</code>  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__init__ (self, theme)</code></p>
@@ -2253,6 +1981,12 @@ To implement the progress bar for JOBONE and SUBMIT logs.  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
+<p>Set the value of the attribute  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>name</code> : The name of the attribute<br />
+<code>value</code>: The value of the attribute  </li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>help (self, error, printNexit)</code></p>
@@ -2288,6 +2022,21 @@ To implement the progress bar for JOBONE and SUBMIT logs.  </p>
 <div class="admonition example">
 <p class="admonition-title">class: <code>Parameters</code></p>
 <p>A set of parameters  </p>
+<ul>
+<li>
+<p><strong>static variables:</strong><br />
+<code>ARG_TYPES</code>           : shortcuts for argument types<br />
+<code>ARG_NAME_PATTERN</code>    : A pattern to recognize an argument name<br />
+<code>ARG_VALINT_PATTERN</code>  : An integer argument pattern<br />
+<code>ARG_VALFLOAT_PATTERN</code>: A float argument pattern<br />
+<code>ARG_VALBOOL_PATTERN</code> : A bool argument pattern<br />
+<code>ARG_VALPY_PATTERN</code>   : A python expression argument pattern  </p>
+<p><code>VAL_TRUES</code> : Values translated to <code>True</code><br />
+<code>VAL_FALSES</code>: Values translated to <code>False</code>  </p>
+<p><code>POSITIONAL</code>   : Flag for positional arguments<br />
+<code>ALLOWED_TYPES</code>: All allowed argument types  </p>
+</li>
+</ul>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__call__ (self, option, value)</code></p>
 <p>Set options values in <code>self._props</code>.<br />
@@ -2307,9 +2056,22 @@ Will be deprecated in the future!  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
+<p>Get a <code>Parameter</code> instance if possible, otherwise return an attribute value  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>name</code>: The name of the <code>Parameter</code> or the attribute  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    A <code>Parameter</code> instance if <code>name</code> exists in <code>self._params</code>, otherwise,<br />
+    the value of the attribute <code>name</code>  </p>
+</li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__getitem__ (self, name)</code></p>
+<p>Alias of <code>__getattr__</code>  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__init__ (self, command, theme)</code></p>
@@ -2322,9 +2084,21 @@ Will be deprecated in the future!  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
+<p>Change the value of an existing <code>Parameter</code> or create a <code>Parameter</code> using the <code>name</code> and <code>value</code>. If <code>name</code> is an attribute, return its value.  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>name</code> : The name of the Parameter<br />
+<code>value</code>: The value of the Parameter  </li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__setitem__ (self, name, value)</code></p>
+<p>Compose a <code>Parameter</code> using the <code>name</code> and <code>value</code>  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>name</code> : The name of the <code>Parameter</code><br />
+<code>value</code>: The value of the <code>Parameter</code>  </li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>asDict (self)</code></p>
@@ -2500,6 +2274,17 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 <p>The class for a single parameter  </p>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__getattr__ (self, name)</code></p>
+<p>Get the value of the attribute  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>name</code> : The name of the attribute  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The value of the attribute  </p>
+</li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__init__ (self, name, value)</code></p>
@@ -2512,6 +2297,12 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__setattr__ (self, name, value)</code></p>
+<p>Set the value of the attribute  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>name</code> : The name of the attribute<br />
+<code>value</code>: The value of the attribute  </li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>setDesc (self, d)</code></p>
