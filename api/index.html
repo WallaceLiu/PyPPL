@@ -555,6 +555,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#module-pypplutilstaskmgr" title="module: pyppl.utils.taskmgr" class="md-nav__link">
+    module: pyppl.utils.taskmgr
+  </a>
+  
+</li>
+      
       
       
       
@@ -765,6 +772,13 @@
         <li class="md-nav__item">
   <a href="#module-pypplutilssafefs" title="module: pyppl.utils.safefs" class="md-nav__link">
     module: pyppl.utils.safefs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-pypplutilstaskmgr" title="module: pyppl.utils.taskmgr" class="md-nav__link">
+    module: pyppl.utils.taskmgr
   </a>
   
 </li>
@@ -1853,6 +1867,84 @@ Check whether output files generated, expectation met and return code met.  </p>
 </div>
 <h2 id="module-pyppljobmgr">module: pyppl.jobmgr</h2>
 <p>jobmgr module for PyPPL  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>Jobmgr</code></p>
+<p>A job manager for PyPPL  </p>
+<ul>
+<li><strong>static variables</strong><br />
+<code>PBAR_SIZE</code>:  The length of the progressbar<br />
+<code>PBAR_MARKS</code>: The marks for different job status<br />
+<code>PBAR_LEVEL</code>: The log levels for different job status<br />
+<code>SMBLOCK</code>   : The lock used to relatively safely to tell whether jobs can be submitted.  </li>
+</ul>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, jobs, config)</code></p>
+<p>Initialize the job manager  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>jobs</code>: All the jobs<br />
+<code>config</code>: The configurations for the job manager  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>canSubmit (self)</code></p>
+<p>Tell if jobs can be submitted.  </p>
+<ul>
+<li><strong>return:</strong><br />
+<code>True</code> if they can else <code>False</code>  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>cleanup (self, ex)</code></p>
+<p>Cleanup the pipeline when<br />
+- Ctrl-c hit<br />
+- error encountered and <code>proc.errhow</code> = 'terminate'  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>ex</code>: The exception raised by workers  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>killWorker (self, rq)</code></p>
+<p>The worker to kill the jobs.  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>rq</code>: The queue that has running jobs.  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>progressbar (self, jobidx)</code></p>
+<p>Generate progressbar.  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>jobidx</code>: The job index.<br />
+<code>loglevel</code>: The log level in PyPPL log system  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The string representing the progressbar  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>worker (self, queue)</code></p>
+<p>Worker for the queue  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>queue</code>: The priority queue  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>workon (self, index, queue)</code></p>
+<p>Work on a queue item  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>index</code>: The job index and batch number, got from the queue<br />
+<code>queue</code>: The priority queue  </li>
+</ul>
+</div>
+</div>
 <h2 id="module-pyppllogger">module: pyppl.logger</h2>
 <p>A customized logger for pyppl  </p>
 <div class="admonition example">
@@ -2578,14 +2670,143 @@ Paths for p3: [[p4], [p2, p1]]
 </div>
 <h2 id="module-pypplrunnersrunner_dry">module: pyppl.runners.runner_dry</h2>
 <p>Dry runner for PyPPL  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>RunnerDry</code></p>
+<p>The dry runner  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
+<p>Constructor  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>job</code>:    The job object  </li>
+</ul>
+</div>
+</div>
 <h2 id="module-pypplrunnersrunner_local">module: pyppl.runners.runner_local</h2>
 <p>Local runner  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>RunnerLocal</code></p>
+<p>Constructor  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>job</code>:    The job object<br />
+<code>config</code>: The properties of the process  </li>
+</ul>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
+</div>
+</div>
 <h2 id="module-pypplrunnersrunner_sge">module: pyppl.runners.runner_sge</h2>
 <p>SGE runner for PyPPL  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>RunnerSge</code></p>
+<p>The sge runner  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
+<p>Constructor  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>job</code>:    The job object<br />
+<code>config</code>: The properties of the process  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
+<p>Tell if the job is alive  </p>
+<ul>
+<li><strong>returns:</strong><br />
+<code>True</code> if it is else <code>False</code>  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>kill (self)</code></p>
+<p>Kill the job  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>submit (self)</code></p>
+<p>Submit the job  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    The <code>utils.cmd.Cmd</code> instance if succeed<br />
+    else a <code>Box</code> object with stderr as the exception and rc as 1  </li>
+</ul>
+</div>
+</div>
 <h2 id="module-pypplrunnersrunner_slurm">module: pyppl.runners.runner_slurm</h2>
 <p>Slurm runner for PyPPL  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>RunnerSlurm</code></p>
+<p>The slurm runner  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
+<p>Constructor  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>job</code>:    The job object<br />
+<code>config</code>: The properties of the process  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
+<p>Tell if the job is alive  </p>
+<ul>
+<li><strong>returns:</strong><br />
+<code>True</code> if it is else <code>False</code>  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>kill (self)</code></p>
+<p>Kill the job  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>submit (self)</code></p>
+<p>Submit the job  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    The <code>utils.cmd.Cmd</code> instance if succeed<br />
+    else a <code>Box</code> object with stderr as the exception and rc as 1  </li>
+</ul>
+</div>
+</div>
 <h2 id="module-pypplrunnersrunner_ssh">module: pyppl.runners.runner_ssh</h2>
 <p>The ssh runner  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>RunnerSsh</code></p>
+<p>The ssh runner  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, job)</code></p>
+<p>Constructor  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>job</code>:    The job object  </li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>isRunning (self)</code></p>
+<p>Tell if the job is alive  </p>
+<ul>
+<li><strong>returns:</strong><br />
+<code>True</code> if it is else <code>False</code>  </li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">staticmethod: <code>isServerAlive (server, key)</code></p>
+<p>Check if an ssh server is alive  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>kill (self)</code></p>
+<p>Kill the job  </p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>submit (self)</code></p>
+<p>Submit the job  </p>
+<ul>
+<li><strong>returns:</strong><br />
+    The <code>utils.cmd.Cmd</code> instance if succeed<br />
+    else a <code>Box</code> object with stderr as the exception and rc as 1  </li>
+</ul>
+</div>
+</div>
 <h2 id="module-pyppltemplate">module: pyppl.template</h2>
 <p>Template adaptor for PyPPL  </p>
 <div class="admonition example">
@@ -2852,12 +3073,7 @@ Try to get the source first, if failed, try to get its name, otherwise return No
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>__setattr__ (self, name, val)</code></p>
 </div>
-<div class="admonition abstract">
-<p class="admonition-title">method: <code>fromkeys (cls, iterable, value)</code></p>
 </div>
-</div>
-<p>OD.fromkeys(S[, v]) -&gt; New ordered dictionary with keys from S.<br />
-        If not specified, the value defaults to None.  </p>
 <h2 id="module-pypplutilscmd">module: pyppl.utils.cmd</h2>
 <p>cmd utility for PyPPL  </p>
 <div class="admonition example">
@@ -3389,6 +3605,35 @@ If it is a directory like '/a/b/c/', return <code>c</code>  </p>
 <code>True</code> if succeed else <code>False</code>  </p>
 </li>
 </ul>
+</div>
+<h2 id="module-pypplutilstaskmgr">module: pyppl.utils.taskmgr</h2>
+<p>A thread module for PyPPL  </p>
+<div class="admonition example">
+<p class="admonition-title">class: <code>ThreadPool</code></p>
+<p>A thread manager for ThreadEx.  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, nthread, initializer, initargs)</code></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>join (self, interval, cleanup)</code></p>
+<p>Try to join the threads, able to respond to KeyboardInterrupt  </p>
+<ul>
+<li><strong>params:</strong><br />
+<code>interval</code>: The interval/timeout to join every time.<br />
+<code>cleanup</code> : The cleanup function  </li>
+</ul>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">class: <code>ThreadEx</code></p>
+<p>A thread able to send exception to main thread<br />
+thread.ex will hold the exception.  </p>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>__init__ (self, group, target, name, args, kwargs)</code></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">method: <code>run (self)</code></p>
+</div>
 </div>
                 
                   
