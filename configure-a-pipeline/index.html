@@ -72,7 +72,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#full-pipeline-configuration" tabindex="1" class="md-skip">
+      <a href="#priority-of-configuration-options" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -348,22 +348,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#full-pipeline-configuration" title="Full pipeline configuration" class="md-nav__link">
-    Full pipeline configuration
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#priority-of-configuration-options" title="Priority of configuration options" class="md-nav__link">
     Priority of configuration options
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -469,22 +456,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#full-pipeline-configuration" title="Full pipeline configuration" class="md-nav__link">
-    Full pipeline configuration
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#priority-of-configuration-options" title="Priority of configuration options" class="md-nav__link">
     Priority of configuration options
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -507,8 +481,7 @@
                 
                   <h1>Pipeline configuration</h1>
                 
-                <h2 id="full-pipeline-configuration">Full pipeline configuration</h2>
-<p>To configure your pipeline, you just pass the configurations (a <code>dict</code>) to the constructor:
+                <p>To configure your pipeline, you just pass the configurations (a <code>dict</code>) to the constructor:
 <div class="highlight"><pre><span></span><span class="n">ppl</span> <span class="o">=</span> <span class="n">PyPPL</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 Here is the full structure of the configurations (<strong><code>yaml</code> configuration file is also supported since <code>0.9.4</code></strong>):
@@ -562,7 +535,7 @@ Here is the full structure of the configurations (<strong><code>yaml</code> conf
 <p class="admonition-title">Caution</p>
 <p>You cannot define profiles with names <code>_flowchart</code> and <code>_log</code></p>
 </div>
-<h3 id="priority-of-configuration-options">Priority of configuration options</h3>
+<h2 id="priority-of-configuration-options">Priority of configuration options</h2>
 <p>See <a href="./runners/#defining-running-profiles">here</a> for use of configuration files.<br />
 Now you have 3 ways to set attributes for a process: 
 - directly set the process attributes <em>(1)</em>, 

@@ -72,7 +72,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#templating" tabindex="1" class="md-skip">
+      <a href="#common-data-avaible-for-rendering" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -216,57 +216,44 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#templating" title="Templating" class="md-nav__link">
-    Templating
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#common-data-avaible-for-rendering" title="Common data avaible for rendering" class="md-nav__link">
     Common data avaible for rendering
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#other-data-for-rendering" title="Other data for rendering" class="md-nav__link">
     Other data for rendering
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#the-scope-of-data" title="The scope of data" class="md-nav__link">
     The scope of data
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#built-in-filters" title="Built-in filters" class="md-nav__link">
     Built-in filters
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#use-liquid" title="Use Liquid:" class="md-nav__link">
     Use Liquid:
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#use-jinja2" title="Use Jinja2" class="md-nav__link">
     Use Jinja2
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -504,57 +491,44 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#templating" title="Templating" class="md-nav__link">
-    Templating
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#common-data-avaible-for-rendering" title="Common data avaible for rendering" class="md-nav__link">
     Common data avaible for rendering
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#other-data-for-rendering" title="Other data for rendering" class="md-nav__link">
     Other data for rendering
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#the-scope-of-data" title="The scope of data" class="md-nav__link">
     The scope of data
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#built-in-filters" title="Built-in filters" class="md-nav__link">
     Built-in filters
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#use-liquid" title="Use Liquid:" class="md-nav__link">
     Use Liquid:
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#use-jinja2" title="Use Jinja2" class="md-nav__link">
     Use Jinja2
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -577,9 +551,8 @@
                 
                   <h1>Templating</h1>
                 
-                <h2 id="templating">Templating</h2>
-<p><code>PyPPL</code> uses <a href="https://github.com/pwwang/liquidpy">liquidpy</a> as default template engine. It also supports <a href="http://jinja.pocoo.org/">Jinja2</a> if you have it installed and specify <code>"Jinja2"</code> to <code>pXXX.template</code>.</p>
-<h3 id="common-data-avaible-for-rendering">Common data avaible for rendering</h3>
+                <p><code>PyPPL</code> uses <a href="https://github.com/pwwang/liquidpy">liquidpy</a> as default template engine. It also supports <a href="http://jinja.pocoo.org/">Jinja2</a> if you have it installed and specify <code>"Jinja2"</code> to <code>pXXX.template</code>.</p>
+<h2 id="common-data-avaible-for-rendering">Common data avaible for rendering</h2>
 <p>When rendering a template, following data are fed to the render function. So that you can use those values in the template. Some attribute values of a process are shared for all templates that are applied:</p>
 <ul>
 <li><code>proc.aggr</code>: The aggregation name of the process</li>
@@ -608,7 +581,7 @@
 <li><code>proc.tag</code>: The tag of the process</li>
 <li><code>proc.workdir</code>: The workdir of the process</li>
 </ul>
-<h3 id="other-data-for-rendering">Other data for rendering</h3>
+<h2 id="other-data-for-rendering">Other data for rendering</h2>
 <p>For each job, we also have some value available for rendering:</p>
 <ul>
 <li><code>job.index</code>: The index of the job</li>
@@ -625,7 +598,7 @@ For example, you have following definition:
 <span class="n">pXXX</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;a:{{i.a}} world!&quot;</span>
 </pre></div>
 Now you can access them by: <code>{{i.a}}</code>, <code>{{i.b}}</code> and <code>{{o.a}}</code></p>
-<h3 id="the-scope-of-data">The scope of data</h3>
+<h2 id="the-scope-of-data">The scope of data</h2>
 <table>
 <thead>
 <tr>
@@ -647,7 +620,7 @@ Now you can access them by: <code>{{i.a}}</code>, <code>{{i.b}}</code> and <code
 </tr>
 <tr>
 <td><code>pXXX.output</code></td>
-<td><code>{{proc.*}}</code>, <code>{{job.*}}</code>, <code>{{i.*}}</code>, <code>{{bring.*}}</code></td>
+<td><code>{{proc.*}}</code>, <code>{{job.*}}</code>, <code>{{i.*}}</code></td>
 <td>The output of the process</td>
 </tr>
 <tr>
@@ -667,7 +640,7 @@ Now you can access them by: <code>{{i.a}}</code>, <code>{{i.b}}</code> and <code
 </tr>
 </tbody>
 </table>
-<h3 id="built-in-filters">Built-in filters</h3>
+<h2 id="built-in-filters">Built-in filters</h2>
 <p>Sometimes we need to transform the data in a template. We have some built-in functions available for the transformation.<br />
 For built-in template engine, you may use pipe, for example: <code>{{i.file | basename}}</code>; for <code>Jinja2</code>, you have to use functions as "functions", for example: <code>{{basename(in.file)}}</code>. Here we give the examples with built-in template engine syntax.</p>
 <ul>
@@ -683,7 +656,7 @@ For built-in template engine, you may use pipe, for example: <code>{{i.file | ba
 </thead>
 <tbody>
 <tr>
-<td><code>{{v</code>&#x7c;<code>R}}</code></td>
+<td><code>{{v</code> &#x7c; <code>R}}</code></td>
 <td><code>{'v': True}</code></td>
 <td><code>TRUE</code></td>
 </tr>
@@ -714,16 +687,29 @@ For built-in template engine, you may use pipe, for example: <code>{{i.file | ba
 </tr>
 <tr>
 <td></td>
+<td><code>{'v': [1,2,3]}</code></td>
+<td><code>c(1,2,3)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>{'v': {'a':1, 'b':2}}</code></td>
+<td><code>list(a=1, b=2)</code></td>
+</tr>
+<tr>
+<td></td>
 <td><code>{'v': 'plainstring'}</code></td>
 <td><code>"plainstring"</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><code>Rvec</code>: Transform a python list to a R vector. For example:</li>
-<li><code>{{v | Rvec}}</code> with <code>{'v': [1,2,3]}</code> results in <code>c(1,2,3)</code></li>
+<li>~~<code>Rvec</code>: Transform a python list to a R vector. For example:~~ will be deprecated, use <code>R</code> instead.</li>
+<li>~~<code>{{v | Rvec}}</code> with <code>{'v': [1,2,3]}</code> results in <code>c(1,2,3)</code>~~</li>
 <li><code>Rlist</code>: Transform a python dict to a R list. For example:</li>
 <li><code>{{v | Rlist}}</code> with <code>{'v': {'a':1, 'b':2}}</code> results in <code>list(a=1, b=2)</code></li>
+<li><code>{{v | Rlist}}</code> with <code>{'v': {0:1, 1:2}}</code> results in <code>list(`0`=1, `1`=2)</code></li>
+<li><code>{{v | Rlist: False}}</code> with <code>{'v': {0:1, 1:2}}</code> results in <code>list(1, 2)</code></li>
+<li>This also applies for <code>R</code></li>
 <li><code>realpath</code>: Alias of <code>os.path.realpath</code></li>
 <li><code>readlink</code>: Alias of <code>os.readlink</code></li>
 <li><code>dirname</code>: Alias of <code>os.path.dirname</code></li>
@@ -739,7 +725,7 @@ For built-in template engine, you may use pipe, for example: <code>{{i.file | ba
 </thead>
 <tbody>
 <tr>
-<td><code>{{v</code>&#x7c;<code>basename}}</code></td>
+<td><code>{{v</code> &#x7c; <code>basename}}</code></td>
 <td><code>{'v': '/path/to/file.txt'}</code></td>
 <td><code>file.txt</code></td>
 </tr>
@@ -749,8 +735,8 @@ For built-in template engine, you may use pipe, for example: <code>{{i.file | ba
 <td><code>file.txt</code></td>
 </tr>
 <tr>
-<td><code>{{v, orig</code>&#x7c;<code>basename}}</code></td>
-<td><code>{'v': '/path/to/file[1].txt', 'orig': True}</code></td>
+<td><code>{{v</code> &#x7c; <code>basename: True}}</code></td>
+<td><code>{'v': '/path/to/file[1].txt'}</code></td>
 <td><code>file[1].txt</code></td>
 </tr>
 </tbody>
@@ -759,6 +745,7 @@ For built-in template engine, you may use pipe, for example: <code>{{i.file | ba
 <li><code>bn</code>: Alias of <code>basename</code></li>
 <li><code>filename</code>: Similar as <code>basename</code> but without extension.</li>
 <li><code>fn</code>: Alias of <code>filename</code></li>
+<li><code>stem</code>: Alias of <code>filename</code></li>
 <li><code>filename2</code>: Get the filename without dot.</li>
 <li><code>fn2</code>: Alias of <code>filename2</code>. (i.e: <code>/a/b/c.d.e.txt</code> -&gt; <code>c</code>)</li>
 <li><code>ext</code>: Get extension of a file. Alias of <code>os.path.splitext(x)[1]</code></li>
@@ -776,9 +763,9 @@ For built-in template engine, you may use pipe, for example: <code>{{i.file | ba
 <li><code>{{v, skipEmptyLines | readlines}}</code></li>
 <li><code>repr</code>: Alias of python <code>repr</code> built-in function.</li>
 </ul>
-<h3 id="use-liquid">Use <code>Liquid</code>:</h3>
+<h2 id="use-liquid">Use <code>Liquid</code>:</h2>
 <p>For usage of <code>Jinja2</code>, you may refer to its <a href="https://github.com/pwwang/liquidpy">official documentation</a>.</p>
-<h3 id="use-jinja2">Use Jinja2</h3>
+<h2 id="use-jinja2">Use Jinja2</h2>
 <p>All the data and environment definition mentioned above are all applicable when you use <code>Jinja2</code> as your template engine.<br />
 For usage of <code>Jinja2</code>, you may refer to its <a href="http://jinja.pocoo.org/">official documentation</a>.</p>
                 

@@ -72,7 +72,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#export-output-files" tabindex="1" class="md-skip">
+      <a href="#partial-export" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -264,29 +264,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#export-output-files" title="Export output files" class="md-nav__link">
-    Export output files
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#partial-export" title="Partial export" class="md-nav__link">
     Partial export
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#control-of-export-of-cached-jobs" title="Control of export of cached jobs" class="md-nav__link">
     Control of export of cached jobs
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -476,29 +463,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#export-output-files" title="Export output files" class="md-nav__link">
-    Export output files
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#partial-export" title="Partial export" class="md-nav__link">
     Partial export
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#control-of-export-of-cached-jobs" title="Control of export of cached jobs" class="md-nav__link">
     Control of export of cached jobs
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -521,8 +495,7 @@
                 
                   <h1>Output file exporting</h1>
                 
-                <h2 id="export-output-files">Export output files</h2>
-<!-- toc -->
+                <!-- toc -->
 
 <p>Output files are generated in <code>&lt;outdir&gt;</code>(<code>&lt;job.index&gt;/output</code>) if you specify the basename for a <code>file/path/dir</code> for process output. You can export them to a specific directory by specify the directory to <code>exdir</code> of a process: <code>pXXX.exdir = &lt;exdir&gt;</code>.</p>
 <p>You can use different ways (specify it to <code>exporthow</code> (alias: <code>exhow</code>) of a process) to export output files:</p>
@@ -563,7 +536,7 @@
 <p class="admonition-title">Note</p>
 <p>if the directory you specified to <code>pXXX.exdir</code> does not exist, it will be created automatically, including those intermediate directories if necessary.</p>
 </div>
-<h3 id="partial-export">Partial export</h3>
+<h2 id="partial-export">Partial export</h2>
 <p>You can also partially export the output files by set value to <code>pXXX.expart</code>.<br />
 You have 2 ways to select the files:
 - Output key. For example, for <code>p.output = "outfile1:file:a.txt1, outfile2:file:b.txt2"</code>, you can export only <code>outfile1</code> by: <code>p.expart = "outfile1"</code>
@@ -583,7 +556,7 @@ You have 2 ways to select the files:
 then <code>b.txt2</code> will be exported instead of <code>&lt;job.outdir&gt;/outfile2</code></li>
 </ol>
 </div>
-<h3 id="control-of-export-of-cached-jobs">Control of export of cached jobs</h3>
+<h2 id="control-of-export-of-cached-jobs">Control of export of cached jobs</h2>
 <p>By default, if a job is cached, then it will not try to export the output files again (assuming that you have already successfully run the job and exported the output files). But you can force to export them anyway by setting <code>p.cclean = True</code></p>
                 
                   

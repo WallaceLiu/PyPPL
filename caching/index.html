@@ -72,7 +72,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#caching-and-resuming-processes" tabindex="1" class="md-skip">
+      <a href="#process-caching" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -276,36 +276,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#caching-and-resuming-processes" title="Caching and resuming processes" class="md-nav__link">
-    Caching and resuming processes
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#process-caching" title="Process caching" class="md-nav__link">
     Process caching
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#resuming-from-processes" title="Resuming from processes" class="md-nav__link">
     Resuming from processes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#calculating-signatures-for-caching" title="Calculating signatures for caching" class="md-nav__link">
     Calculating signatures for caching
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -483,36 +470,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#caching-and-resuming-processes" title="Caching and resuming processes" class="md-nav__link">
-    Caching and resuming processes
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#process-caching" title="Process caching" class="md-nav__link">
     Process caching
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#resuming-from-processes" title="Resuming from processes" class="md-nav__link">
     Resuming from processes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#calculating-signatures-for-caching" title="Calculating signatures for caching" class="md-nav__link">
     Calculating signatures for caching
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -535,10 +509,9 @@
                 
                   <h1>Caching and resuming processes</h1>
                 
-                <h2 id="caching-and-resuming-processes">Caching and resuming processes</h2>
-<!-- toc -->
+                <!-- toc -->
 
-<h3 id="process-caching">Process caching</h3>
+<h2 id="process-caching">Process caching</h2>
 <p>Once a job is cached, <code>PyPPL</code> will skip running this job. But you have to tell a process how to cache its jobs by setting <code>pXXX.cache</code> with a valid caching method:</p>
 <table>
 <thead>
@@ -566,7 +539,7 @@
 <p><strong>Hint</strong>: <code>p.cache = "export"</code> is extremely useful for a process that you only want it to run successfully once, export the result files and never run the process again. You can even delete the <code>&lt;workdir&gt;</code> of the process, but <code>PyPPL</code> will find the exported files and use them as the input for processes depending on it, so that you don't need to modify the pipeline.<br />
 One scenario is that you can use it to download some files and never need to download them again.</p>
 </blockquote>
-<h3 id="resuming-from-processes">Resuming from processes</h3>
+<h2 id="resuming-from-processes">Resuming from processes</h2>
 <p>Sometimes, you may not want to start at the very begining of a pipeline. Then you can resume it from some intermediate processes.<br />
 To resume pipeline from a process, you have to make sure that the output files of the processes that this process depends on are already generated. Then you can do:
 <div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">resume</span><span class="p">(</span><span class="n">pXXX</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -581,7 +554,7 @@ You may also use a common id to set a set of processes:
 <span class="c1"># pipeline will be resumed from p1, p2, p3</span>
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">resume</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div></p>
-<h3 id="calculating-signatures-for-caching">Calculating signatures for caching</h3>
+<h2 id="calculating-signatures-for-caching">Calculating signatures for caching</h2>
 <p>By default, <code>PyPPL</code> uses the last modified time to generate signatures for files and directories. However, for large directories, it may take notably long time to walk over all the files in those directories. If not necessary, you may simply as <code>PyPPL</code> to get the last modified time for the directories themselves instead of the infiles inside them by setting <code>p.dirsig = False</code></p>
                 
                   

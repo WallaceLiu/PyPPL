@@ -72,7 +72,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#command-line-tool" tabindex="1" class="md-skip">
+      <a href="#list-processes" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -384,36 +384,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#command-line-tool" title="Command line tool" class="md-nav__link">
-    Command line tool
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#list-processes" title="List processes" class="md-nav__link">
     List processes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#clean-processes" title="Clean processes" class="md-nav__link">
     Clean processes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#compare-the-settings-of-two-pipeines" title="Compare the settings of two pipeines" class="md-nav__link">
     Compare the settings of two pipeines
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -483,36 +470,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#command-line-tool" title="Command line tool" class="md-nav__link">
-    Command line tool
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#list-processes" title="List processes" class="md-nav__link">
     List processes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#clean-processes" title="Clean processes" class="md-nav__link">
     Clean processes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#compare-the-settings-of-two-pipeines" title="Compare the settings of two pipeines" class="md-nav__link">
     Compare the settings of two pipeines
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -535,8 +509,7 @@
                 
                   <h1>Command line tool</h1>
                 
-                <h2 id="command-line-tool">Command line tool</h2>
-<!-- toc -->
+                <!-- toc -->
 
 <p>When you are debuggin a processes, specially when you are modify input, output and script, the suffix a process will change. Then there will be several <code>&lt;workdir&gt;</code> created in <code>&lt;ppldir&gt;</code>. The command line tool helps to maintain and clean up the <code>&lt;workdir&gt;</code>s</p>
 <div class="highlight"><pre><span></span>&gt; bin/pyppl
@@ -550,10 +523,10 @@ COMMANDS:
   <span class="nb">help</span> &lt;COMMAND&gt;                          - Print <span class="nb">help</span> information <span class="k">for</span> the <span class="nb">command</span>
 </pre></div>
 
-<h3 id="list-processes">List processes</h3>
+<h2 id="list-processes">List processes</h2>
 <p><img alt="pyppl-list" src="../pyppl-cli-list.png" /></p>
 <p><code>pyppl list</code> command will list the processes in<code>./workdir</code>. It will group the processes with same <code>id</code> and <code>tag</code>, and compare their time start to run. The latest one will show at the first place, follows the second latest, ... If a <code>proc.settings</code> cannot be found in the process directory, it will be shown in red.</p>
-<h3 id="clean-processes">Clean processes</h3>
+<h2 id="clean-processes">Clean processes</h2>
 <p><img alt="pyppl-clean" src="../pyppl-cli-clean.png" /></p>
 <p><code>pyppl clean</code> command will ask whether you want to remove the process directory for the older processes with the same <code>id</code> and <code>tag</code>.</p>
 <p>You can remove all those older process directories without confirmation by <code>pyppl clean -force</code></p>
@@ -562,7 +535,7 @@ COMMANDS:
 <p class="admonition-title">Caution</p>
 <p>Be careful when you are using <code>pyppl clean -force</code>, which will remove all workdirs in <code>&lt;wdir&gt;</code></p>
 </div>
-<h3 id="compare-the-settings-of-two-pipeines">Compare the settings of two pipeines</h3>
+<h2 id="compare-the-settings-of-two-pipeines">Compare the settings of two pipeines</h2>
 <p><img alt="pyppl-compare" src="../pyppl-cli-compare.png" /></p>
 <p><code>pyppl compare</code> uses python's <code>difflib</code> to compare the <code>proc.settings</code> files in the directories of two processes. it can take a process group name (i.e. <code>-pro pSort.notag</code>, in this case, actually, the tag can be omitted if it is <code>notag</code>, so you can use <code>-pro pSort</code>) to compare the top 2 latest processes or two process names with suffices (i.e. <code>-proc1 pSort.notag.4HIhyVbp -proc2 pSort.notag.7hNBe2uT</code>. </p>
                 

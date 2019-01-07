@@ -72,7 +72,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#draw-flowchart-of-a-pipeline" tabindex="1" class="md-skip">
+      <a href="#generate-the-flowchart" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -336,36 +336,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#draw-flowchart-of-a-pipeline" title="Draw flowchart of a pipeline" class="md-nav__link">
-    Draw flowchart of a pipeline
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#generate-the-flowchart" title="Generate the flowchart" class="md-nav__link">
     Generate the flowchart
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#use-the-dark-theme" title="Use the dark theme" class="md-nav__link">
     Use the dark theme
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#define-your-own-theme" title="Define your own theme" class="md-nav__link">
     Define your own theme
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -483,36 +470,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#draw-flowchart-of-a-pipeline" title="Draw flowchart of a pipeline" class="md-nav__link">
-    Draw flowchart of a pipeline
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#generate-the-flowchart" title="Generate the flowchart" class="md-nav__link">
     Generate the flowchart
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#use-the-dark-theme" title="Use the dark theme" class="md-nav__link">
     Use the dark theme
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#define-your-own-theme" title="Define your own theme" class="md-nav__link">
     Define your own theme
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -535,12 +509,11 @@
                 
                   <h1>Pipeline flowchart</h1>
                 
-                <h2 id="draw-flowchart-of-a-pipeline">Draw flowchart of a pipeline</h2>
-<!-- toc -->
+                <!-- toc -->
 
 <p><code>PyPPL</code> will generate a graph in <a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language)">DOT language</a>, according to the process dependencies. 
 You can have multiple <a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language)#Layout_programs">renderers</a> to visualize to graph. A typical one is <a href="https://en.wikipedia.org/wiki/Graphviz">Graphviz</a>. With its python port <a href="https://github.com/xflr6/graphviz/">graphviz</a> installed, you can output the flowchart to an svg figure. </p>
-<h3 id="generate-the-flowchart">Generate the flowchart</h3>
+<h2 id="generate-the-flowchart">Generate the flowchart</h2>
 <p>For example, if we have a pipeline written in <code>pipeline.py</code>:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">PyPPL</span><span class="p">,</span> <span class="n">Proc</span>
 
@@ -596,13 +569,13 @@ You can have multiple <a href="https://en.wikipedia.org/wiki/DOT_(graph_descript
 <p>The graph (<code>svgfile</code>) will be like:<br />
 <img alt="Pipeline" src="../drawFlowchart_pyppl.png" /></p>
 <p>The green processes are the starting processes; ones with purple text are processes that will export the output files; and nodes in red are the end processes of the pipeline.</p>
-<h3 id="use-the-dark-theme">Use the dark theme</h3>
+<h2 id="use-the-dark-theme">Use the dark theme</h2>
 <p><div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">({</span>
 	<span class="s1">&#39;_flowchart&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="s1">&#39;dark&#39;</span><span class="p">}</span>
 <span class="p">})</span><span class="o">.</span><span class="n">star</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p8</span><span class="p">,</span> <span class="n">p9</span><span class="p">)</span><span class="o">.</span><span class="n">flowchart</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 <img alt="Pipeline-flowchart-dark" src="../drawFlowchart_pyppl_dark.png" /></p>
-<h3 id="define-your-own-theme">Define your own theme</h3>
+<h2 id="define-your-own-theme">Define your own theme</h2>
 <p>You just need to define the style for each type of nodes (refer <a href="http://www.graphviz.org/doc/info/shapes.html">DOT node shapes</a> for detailed styles):
 You may also put the definition in the default configuration file (<code>~/.PyPPL.json</code>)
 <div class="highlight"><pre><span></span><span class="n">PyPPL</span><span class="p">({</span>
