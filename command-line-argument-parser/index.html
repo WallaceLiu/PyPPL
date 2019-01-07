@@ -415,6 +415,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#callback" title="Callback" class="md-nav__link">
+    Callback
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -493,6 +500,13 @@
           <li class="md-nav__item">
   <a href="#add-a-subcommand" title="Add a subcommand" class="md-nav__link">
     Add a subcommand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias-of-a-command" title="Alias of a command:" class="md-nav__link">
+    Alias of a command:
   </a>
   
 </li>
@@ -668,6 +682,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#callback" title="Callback" class="md-nav__link">
+    Callback
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -746,6 +767,13 @@
           <li class="md-nav__item">
   <a href="#add-a-subcommand" title="Add a subcommand" class="md-nav__link">
     Add a subcommand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alias-of-a-command" title="Alias of a command:" class="md-nav__link">
+    Alias of a command:
   </a>
   
 </li>
@@ -848,7 +876,8 @@ Then you can use <code>params.xxx</code> to get the value directly:
 - <code>show</code>: Whether this option should be shown in the help page. Default: <code>True</code>
 - <code>type</code>: The type of the option value. Default: <code>str</code>
 - <code>name</code>: The name of the option, then in command line, <code>-&lt;name&gt;</code> refers to the option.
-- <code>value</code>: The default value of the option.</p>
+- <code>value</code>: The default value of the option.
+- <code>callback</code>: The callback to check or transform the value</p>
 <p>You can either set the value of an option by 
 <div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">required</span> <span class="o">=</span> <span class="bp">True</span>
 </pre></div>
@@ -905,6 +934,26 @@ Then we will get: <code>params.opt.value == [1,2,3]</code> instead of <code>para
 Flexibly, we can have mixed types of elements in a list option:<br />
 <code>&gt; program -opt:list:bool 1 -opt:list:int 2 -opt:list:str 3</code><br />
 We will get: <code>params.opt.value == [True, 2, '3']</code></p>
+<h3 id="callback">Callback</h3>
+<p>You may use a callback function to check the value of an option:
+<div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">infile</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">str</span>
+<span class="n">params</span><span class="o">.</span><span class="n">infile</span><span class="o">.</span><span class="n">callback</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">opt</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&quot;infile&quot; does not exist.&#39;</span>
+<span class="c1"># python pipeline.py -infile __no_such_file__</span>
+<span class="c1"># gives error: &quot;infile&quot; does not exist.</span>
+</pre></div></p>
+<p>Or transform the value. Let's we want to get the full path of a file by passing its dirname and filename:
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="n">params</span><span class="o">.</span><span class="n">dir</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">str</span>
+<span class="n">params</span><span class="o">.</span><span class="n">fn</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">str</span>
+<span class="n">params</span><span class="o">.</span><span class="n">fn</span><span class="o">.</span><span class="n">callback</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">opt</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">dir</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="c1"># python pipeline.py -dir path/to/dir -fn a.txt</span>
+<span class="c1"># params.fn.value then will be &quot;path/to/dir/a.txt&quot; instead of &quot;a.txt&quot;</span>
+</pre></div></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>About the returns of the callback:<br />
+If it returns <code>True</code>, <code>None</code> or an instance of <code>Parameter</code>, then no errors assumed. Otherwise, a string or a list of errors should be returned.</p>
+</div>
 <h2 id="load-params-from-a-dict">Load params from a dict</h2>
 <p>You can define a <code>dict</code>, and then load it to <code>params</code>:
 <div class="highlight"><pre><span></span><span class="n">d2load</span> <span class="o">=</span> <span class="p">{</span>
@@ -1014,6 +1063,15 @@ To parse the arguments:
 <span class="c1">#          To get the value of an option: params.wdir</span>
 <span class="c1"># if you want to get the Parameter objects:</span>
 <span class="c1"># params.wdir == commands[command].wdir.value</span>
+</pre></div></p>
+<h3 id="alias-of-a-command">Alias of a command:</h3>
+<p>You can simply add an alias for an option by:
+<div class="highlight"><pre><span></span><span class="n">commands</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="s1">&#39;list work directories under &lt;wdir&gt;&#39;</span>
+<span class="n">commands</span><span class="o">.</span><span class="n">show</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">list</span>
+<span class="c1"># the help page gives:</span>
+<span class="c1"># COMMANDS:</span>
+<span class="c1">#   list | show                           - list work directories under &lt;wdir&gt;                        </span>
+<span class="c1">#   help &lt;COMMAND&gt;                        - Print help information for the command   </span>
 </pre></div></p>
 <h3 id="use-a-different-help-command">Use a different 'help' command</h3>
 <p>By default, you may use <code>prog help &lt;command&gt;</code> to print the help information for the command. Alternatively, you can change it by: 

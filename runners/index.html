@@ -697,9 +697,12 @@ You can define profiles in <code>PyPPL</code>'s default configuration files: <co
 <p>To tell a process the available ssh servers:
 <div class="highlight"><pre><span></span><span class="n">pXXX</span><span class="o">.</span><span class="n">sshRunner</span> <span class="o">=</span> <span class="p">{</span>
 	<span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span><span class="p">,</span> <span class="s2">&quot;server2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> 
-	<span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/keyfile1&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/keyfile2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+	<span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;/path/to/keyfile1&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/to/keyfile2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+	<span class="s2">&quot;checkAlive&quot;</span><span class="p">:</span> <span class="bp">False</span>
 <span class="p">}</span>
-</pre></div></p>
+</pre></div>
+<code>checkAlive</code> is to tell the pipeline to check whether the <code>servers</code> are alive, then use only the alive servers. Otherwise use all the <code>servers</code>.<br />
+You may also specify a number for <code>checkAlive</code> to set a timeout. (see: https://pwwang.github.io/PyPPL/api/#module-pypplrunnersrunner_ssh)</p>
 <p>You can have complicated ssh configurations which can be set by the system ssh config subsystem:</p>
 <p><code>$HOME/.ssh/config</code>:
 <div class="highlight"><pre><span></span># contents of $HOME/.ssh/config

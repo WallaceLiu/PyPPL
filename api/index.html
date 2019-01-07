@@ -2425,6 +2425,9 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </ul>
 </div>
 <div class="admonition abstract">
+<p class="admonition-title">method: <code>setCallback (self, callback)</code></p>
+</div>
+<div class="admonition abstract">
 <p class="admonition-title">method: <code>setDesc (self, d)</code></p>
 <p>Set the description of the parameter  </p>
 <ul>
@@ -2818,8 +2821,20 @@ Paths for p3: [[p4], [p2, p1]]
 </ul>
 </div>
 <div class="admonition tip">
-<p class="admonition-title">staticmethod: <code>isServerAlive (server, key)</code></p>
+<p class="admonition-title">staticmethod: <code>isServerAlive (server, key, timeout)</code></p>
 <p>Check if an ssh server is alive  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>server</code>: The server to check<br />
+<code>key</code>   : The keyfile to login the server<br />
+<code>timeout</code>: The timeout to check whether the server is alive.  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+<code>True</code> if alive else <code>False</code>  </p>
+</li>
+</ul>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">method: <code>kill (self)</code></p>
