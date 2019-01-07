@@ -845,6 +845,19 @@ To use the value:
 <span class="n">var2</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">opt2</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 <span class="c1"># var2 is [1, 2, 3, 4]</span>
 </pre></div></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can also reset a list argument, by speicifying nothing to its key:
+<div class="highlight"><pre><span></span># Let&#39;s say you specified defaults for a list argument:
+params.opt2 = [1,2,3]
+# just
+# python pipeline.py -opt2 4
+# will give you: [1,2,3,4]
+# If you only want [4] instead, you could do:
+# python pipeline.py -opt2 -opt2 4
+#                    ^^^^^ resets the list
+</pre></div></p>
+</div>
 <p>If you feel annoying using <code>params.xxx.value</code> to have the value of the option, you can convert the <code>params</code> object to a <code>Box</code> object (inherited from <code>OrderedDict</code>):
 <div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
 <span class="n">ps</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">asDict</span><span class="p">()</span>
