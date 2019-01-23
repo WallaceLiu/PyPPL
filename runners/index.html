@@ -620,18 +620,18 @@ A typical running profile is as follows:
 <span class="n">PyPPL</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">pXXX</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;profile2&#39;</span><span class="p">)</span>
 </pre></div>
 You can define profiles in <code>PyPPL</code>'s default configuration files: <code>$HOME/.PyPPL.yaml</code>, <code>$HOME/.PyPPL</code> and/or <code>$HOME/.PyPPL.json</code>. The latter ones have high priorities. <code>$HOME/.PyPPL</code> should also be in <code>JSON</code> format. Take <code>$HOME/.PyPPL.yaml</code> (requiring <code>pyyaml</code>) for example, the content is like:
-<div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span> 
-<span class="err">	</span><span class="nt">runner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-<span class="err">	</span><span class="nt">forks</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="err">	</span><span class="nt">echo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stderr</span>
-<span class="nt">profile1</span><span class="p">:</span>
-<span class="err">	</span><span class="nt">runner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
-<span class="err">	</span><span class="nt">sgeRunner</span><span class="p">:</span>
-<span class="err">		</span><span class="nt">queue</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1-day</span>
-<span class="nt">profile2</span><span class="p">:</span>
-<span class="err">	</span><span class="nt">runner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
-<span class="err">	</span><span class="nt">sgeRunner</span><span class="p">:</span>
-<span class="err">		</span><span class="nt">queue</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7-days</span>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> 
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">forks</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">echo</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">stderr</span>
+<span class="l l-Scalar l-Scalar-Plain">profile1</span><span class="p p-Indicator">:</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
+<span class="err">		</span><span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1-day</span>
+<span class="l l-Scalar l-Scalar-Plain">profile2</span><span class="p p-Indicator">:</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sge</span>
+<span class="err">	</span><span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
+<span class="err">		</span><span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">7-days</span>
 </pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -966,7 +966,7 @@ After registration, you are able to ask a process to use it: <code>pXXX.runner =
       
     </div>
     
-      <script src="../assets/javascripts/application.b41f3d20.js"></script>
+      <script src="../assets/javascripts/application.b3a2063f.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       

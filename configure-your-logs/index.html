@@ -358,6 +358,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#shorten-the-paths-in-logs" title="Shorten the paths in logs" class="md-nav__link">
+    Shorten the paths in logs
+  </a>
+  
+</li>
+      
       
       
       
@@ -514,6 +521,13 @@
         <li class="md-nav__item">
   <a href="#progress-bar" title="Progress bar" class="md-nav__link">
     Progress bar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shorten-the-paths-in-logs" title="Shorten the paths in logs" class="md-nav__link">
+    Shorten the paths in logs
   </a>
   
 </li>
@@ -737,7 +751,16 @@ The bar length defaults to <code>50</code>. You can change it in your code:
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyppl</span> <span class="kn">import</span> <span class="n">Jobmgr</span>
 <span class="n">Jobmgr</span><span class="o">.</span><span class="n">PBAR_SIZE</span> <span class="o">=</span> <span class="mi">80</span>
 </pre></div>
-Here is an explanation about how a cell (one sign or element of the bar) corresponds to job(s):
+Or you can also now (v1.4.2+) configure the length of the progress bar:
+<div class="highlight"><pre><span></span>{
+    &quot;_log&quot;: {
+        #...
+        &quot;pbar&quot;: 30,
+        #...
+    }
+}
+</pre></div></p>
+<p>Here is an explanation about how a cell (one sign or element of the bar) corresponds to job(s):
 Let's say <code>Jobmgr.PBAR_SIZE = 9</code> and we have 5 jobs, then every two cells represent 1 job for first 8 cells, and last one represents job #5. The rule is trying to equally distributed the cells to jobs:
 <div class="highlight"><pre><span></span> 1 2 3 4 5         1  2  345      1    2345
 [==XX!!&gt;&gt;-]  NOT  [===XXX!&gt;-] OR [=====X!&gt;-]
@@ -761,6 +784,27 @@ First cell represents job #1, #2; second job #3, #4; ...; the last one represent
            ^ Indicating current job
 </pre></div>
 So even job #2 belongs to the first cell and it's running, the sign is still <code>=</code>.</p>
+<h2 id="shorten-the-paths-in-logs">Shorten the paths in logs</h2>
+<p>As in most cases, we use real paths. So sometimes they can be so long to show in the logs. We now (v1.4.2+) allow to shorten these paths in the way of changing:
+<div class="highlight"><pre><span></span>/abcdef/ghijkl/mnopqr/stuvw/xyz1234
+</pre></div>
+to
+<div class="highlight"><pre><span></span>/a/g/m/s/xyz1234
+</pre></div>
+The are 3 parameters to configure:
+1. <code>cutoff</code>: The cutoff of # parts (split by <code>/</code>) whether we should do shortening. Remember <code>/abc</code> will be 2 parts.<br />
+2. <code>keeplast</code>: # last parts to keep. It is <code>1</code> in the above case.<br />
+3. <code>shorten</code>: The length of first parts to be shortened to. It is <code>1</code> in the above case.  </p>
+<p>By default, the paths won't be shorted (<code>cutoff = 999</code>), and the default values for <code>keeplast</code> and <code>shorten</code> is <code>3</code> and <code>1</code>, respectively.</p>
+<p>You can configure them in the configuration file:
+<div class="highlight"><pre><span></span>{
+    &quot;_log&quot;: {
+        #...
+        &quot;shortpath&quot;: {&quot;cutoff&quot;: 5, &quot;keeplast&quot;: 3, &quot;shorten&quot;: 1},
+        #...
+    }
+}
+</pre></div></p>
                 
                   
                 
@@ -832,7 +876,7 @@ So even job #2 belongs to the first cell and it's running, the sign is still <co
       
     </div>
     
-      <script src="../assets/javascripts/application.b41f3d20.js"></script>
+      <script src="../assets/javascripts/application.b3a2063f.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       

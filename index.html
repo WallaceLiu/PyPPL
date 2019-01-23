@@ -1057,18 +1057,18 @@ We can define a set of runner profiles in a <code>json</code> file (<code>./prof
 </pre></div>
 
 <p>or you can also use <code>.yaml</code>(<code>pyyaml</code> is required) file:
-<div class="highlight"><pre><span></span><span class="nt">default</span><span class="p">:</span>
-  <span class="nt">runner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="nt">forks </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-  <span class="nt">sgeRunner</span><span class="p">:</span>
-    <span class="nt">sge.q</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1-day</span>
-<span class="nt">local5</span><span class="p">:</span>
-  <span class="nt">runner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="nt">forks </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="nt">sge7days</span><span class="p">:</span>
-  <span class="nt">runner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="nt">sgeRunner</span><span class="p">:</span>
-    <span class="nt">sge.q</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7-days</span>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">forks</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">sge.q</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1-day</span>
+<span class="l l-Scalar l-Scalar-Plain">local5</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">forks</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="l l-Scalar l-Scalar-Plain">sge7days</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">runner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">sgeRunner</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">sge.q</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">7-days</span>
 </pre></div></p>
 <p>To switch profile:
 <div class="highlight"><pre><span></span><span class="c1"># default profile (default)</span>
@@ -1205,7 +1205,7 @@ We can define a set of runner profiles in a <code>json</code> file (<code>./prof
       
     </div>
     
-      <script src="assets/javascripts/application.b41f3d20.js"></script>
+      <script src="assets/javascripts/application.b3a2063f.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
       
