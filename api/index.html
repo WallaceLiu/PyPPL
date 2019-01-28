@@ -1856,6 +1856,24 @@ Check whether output files generated, expectation met and return code met.  </p>
 </ul>
 </div>
 </div>
+<div class="admonition example">
+<p class="admonition-title">function: <code>briefPath</code></p>
+<p>Show briefed path in logs<br />
+/abcde/hijklm/opqrst/uvwxyz/123456 will be shorted as:<br />
+/a/h/opqrst/uvwxyz/123456  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>p</code>       : The path<br />
+<code>cutoff</code>  : Shorten the whole path if it more than length of cutoff. Default: <code>0</code><br />
+<code>keep</code>    : First N alphabetic chars to keep. Default: <code>1</code>  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The shorted path  </p>
+</li>
+</ul>
+</div>
 <h2 id="module-pyppljobmgr">module: pyppl.jobmgr</h2>
 <p>jobmgr module for PyPPL  </p>
 <div class="admonition example">
@@ -2325,7 +2343,7 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>error (self, msg)</code></p>
+<p class="admonition-title">method: <code>error (self, msg, withPrefix)</code></p>
 <p>Render an error message  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -2381,7 +2399,7 @@ For config file other than json, a section name is needed, whatever it is.  </p>
 </ul>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">method: <code>warning (self, msg)</code></p>
+<p class="admonition-title">method: <code>warning (self, msg, withPrefix)</code></p>
 <p>Render an warning message  </p>
 <ul>
 <li><strong>params:</strong><br />
@@ -3036,6 +3054,24 @@ Try to get the source first, if failed, try to get its name, otherwise return No
 <li>
 <p><strong>returns:</strong><br />
     The split list  </p>
+</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">function: <code>briefPath</code></p>
+<p>Show briefed path in logs<br />
+/abcde/hijklm/opqrst/uvwxyz/123456 will be shorted as:<br />
+/a/h/opqrst/uvwxyz/123456  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>p</code>       : The path<br />
+<code>cutoff</code>  : Shorten the whole path if it more than length of cutoff. Default: <code>0</code><br />
+<code>keep</code>    : First N alphabetic chars to keep. Default: <code>1</code>  </p>
+</li>
+<li>
+<p><strong>returns:</strong><br />
+    The shorted path  </p>
 </li>
 </ul>
 </div>
@@ -3735,7 +3771,7 @@ thread.ex will hold the exception.  </p>
       
     </div>
     
-      <script src="../assets/javascripts/application.b3a2063f.js"></script>
+      <script src="../assets/javascripts/application.b41f3d20.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       

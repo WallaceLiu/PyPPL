@@ -791,19 +791,26 @@ So even job #2 belongs to the first cell and it's running, the sign is still <co
 to
 <div class="highlight"><pre><span></span>/a/g/m/s/xyz1234
 </pre></div>
-The are 3 parameters to configure:
-1. <code>cutoff</code>: The cutoff of # parts (split by <code>/</code>) whether we should do shortening. Remember <code>/abc</code> will be 2 parts.<br />
-2. <code>keeplast</code>: # last parts to keep. It is <code>1</code> in the above case.<br />
-3. <code>shorten</code>: The length of first parts to be shortened to. It is <code>1</code> in the above case.  </p>
-<p>By default, the paths won't be shorted (<code>cutoff = 999</code>), and the default values for <code>keeplast</code> and <code>shorten</code> is <code>3</code> and <code>1</code>, respectively.</p>
+The are 2 parameters to configure:
+1. <code>cutoff</code>: The cutoff length of the path. Default: <code>0</code> (don't shorten)<br />
+2. <code>keep</code>  : The minimal # chars to keep for each part of the path  </p>
 <p>You can configure them in the configuration file:
 <div class="highlight"><pre><span></span>{
     &quot;_log&quot;: {
         #...
-        &quot;shortpath&quot;: {&quot;cutoff&quot;: 5, &quot;keeplast&quot;: 3, &quot;shorten&quot;: 1},
+        &quot;shortpath&quot;: {&quot;cutoff&quot;: 50, &quot;keep&quot;: 3},
         #...
     }
 }
+</pre></div></p>
+<p>Examples:
+<div class="highlight"><pre><span></span># shortpath: {&quot;cutoff&quot;: 10, &quot;keep&quot;: 1}
+&quot;/abcd/efghi&quot; -&gt; &quot;/abc/efghi&quot; (final length: 10)
+&quot;/abcdef/efghi&quot; -&gt; &quot;/abc/efghi&quot; (final length: 10)
+
+# shortpath: {&quot;cutoff&quot;: 10, &quot;keep&quot;: 5}
+&quot;/abcdef/efghi&quot; -&gt; &quot;/abcde/efghi&quot; (final length: 12)
+# at least 5 chars to be kept for &quot;abcdef&quot;
 </pre></div></p>
                 
                   
@@ -876,7 +883,7 @@ The are 3 parameters to configure:
       
     </div>
     
-      <script src="../assets/javascripts/application.b3a2063f.js"></script>
+      <script src="../assets/javascripts/application.b41f3d20.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
