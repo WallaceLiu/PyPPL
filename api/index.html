@@ -3210,6 +3210,21 @@ To chain another command, you can do:<br />
 </ul>
 </div>
 <div class="admonition abstract">
+<p class="admonition-title">method: <code>readline (self, stream, saveother)</code></p>
+<p>Stream out the stderr or stdout  </p>
+<ul>
+<li>
+<p><strong>params:</strong><br />
+<code>stream</code>: Which stream to stream out, stdout or stderr. Default: <code>stderr</code><br />
+<code>saveother</code>: Save the other stream to self.stdout or self.stderr. Default: <code>False</code>  </p>
+</li>
+<li>
+<p><strong>yield:</strong><br />
+    Generator of lines from stderr or stdout  </p>
+</li>
+</ul>
+</div>
+<div class="admonition abstract">
 <p class="admonition-title">method: <code>run (self, bg)</code></p>
 <p>Wait for the command to run  </p>
 <ul>
